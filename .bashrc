@@ -64,7 +64,7 @@ fi
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-        if [[ "$git_status" =~ Untracked\ files ]] || [[ "$git_status" =~ Changes\ not\ staged ]]; then
+        if [[ "$git_status" =~ Changed\ but\ not\ updated ]] || [[ "$git_status" =~ Untracked\ files ]] || [[ "$git_status" =~ Changes\ not\ staged ]]; then
             local color=31 # red
         elif [[ "$git_status" =~ Changes\ to\ be\ committed ]]; then
             local color=32
