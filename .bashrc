@@ -76,6 +76,6 @@ function _git_prompt() {
 }
 function _prompt_command() {
     PS1='\u@\h:\w'"`_git_prompt`"'\$\[\e[0m\] ';
+    PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
 }
 PROMPT_COMMAND=_prompt_command
-
