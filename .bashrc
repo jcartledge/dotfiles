@@ -64,14 +64,14 @@ fi
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-        if [[ "$git_status" =~ Changed\ but\ not\ updated ]] || [[ "$git_status" =~ Untracked\ files ]] || [[ "$git_status" =~ Changes\ not\ staged ]]; then
+        if [[ "$git_status" =~ Changed\ but\ not\ updated ]] || [[ "$git_status" =~ Untracked\ files ]] || [[ "$git_status" =~ Changes\ not\ staged ]] || [[ "$git_status" =~ Unmerged\ paths ]]; then
             local color=31 # red
         elif [[ "$git_status" =~ Changes\ to\ be\ committed ]]; then
             local color=32
         else
             local color=37
         fi
-        echo -n '\[\033[0;'$color'm\]$(__git_ps1)\[\033[0m\]'
+        echo -n '\[\033[1;'$color'm\]$(__git_ps1)\[\033[0m\]'
     fi
 }
 function _prompt_command() {
