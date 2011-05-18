@@ -1,0 +1,1 @@
+wget -O- http://www.catonmat.net/download/bash-vi-editing-mode-cheat-sheet.txt 2>/dev/null | more

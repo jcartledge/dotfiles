@@ -1,0 +1,9 @@
+#!/bin/bash
+sudo sh -c "echo \"127.0.0.1 $1\" >> /etc/hosts"
+DIR=`pwd`
+sudo sh -c "echo \"<VirtualHost *:80>
+  ServerName $1
+  DocumentRoot $DIR
+</VirtualHost>\" > /etc/apache2/sites-available/$1"
+sudo a2ensite $1
+sudo /etc/init.d/apache2 restart
