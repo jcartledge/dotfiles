@@ -78,7 +78,9 @@ function _git_prompt() {
     fi
 }
 function _prompt_command() {
+    laststatus=$?
     PS1='\u@\h:\w'"`_git_prompt`"'\$\[\e[0m\] ';
     PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+    if [ $laststatus != 0 ]; then PS1="\[\033[1;31m\]($laststatus)\[\033[0m\] $PS1"; fi;
 }
 PROMPT_COMMAND=_prompt_command
