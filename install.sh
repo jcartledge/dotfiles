@@ -31,7 +31,7 @@ for file in `find .`; do
   fi
 
   dir=$(dirname $canonical_original)
-  if [[ -d $dir ]]; then
+  if [[ ! -d $dir ]]; then
     $(mkdir -p $dir)
   fi
 
