@@ -1,3 +1,3 @@
 [submodule ".repl"]
-	path = .repl
+	path = all/.repl
 	url = https://github.com/defunkt/repl-completion.git
