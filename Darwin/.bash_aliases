@@ -4,7 +4,7 @@ function t {
   if [ $# -gt 0 ]; then
     todo.sh $@
   else
-    todo.sh ls
+    echo; todo.sh ls; echo
     repl todo.sh
   fi
 }
