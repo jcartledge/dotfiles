@@ -70,19 +70,19 @@ function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
         if [[ "$git_status" =~ Changed\ but\ not\ updated ]] || [[ "$git_status" =~ Untracked\ files ]] || [[ "$git_status" =~ Changes\ not\ staged ]] || [[ "$git_status" =~ Unmerged\ paths ]]; then
-            local color=31 # red
+            local color="0;31" # red
         elif [[ "$git_status" =~ Changes\ to\ be\ committed ]]; then
-            local color=32
+            local color="0;32"
         else
-            local color=37
+            local color="1;32"
         fi
-        echo -n '\[\033[1;'$color'm\]$(__git_ps1)\[\033[0m\]'
+        echo -n '\[\033['$color'm\]$(__git_ps1)\[\033[0m\]'
     fi
 }
 function _prompt_command() {
     laststatus=$?
-    PS1='\u@\h:\w'"`_git_prompt`"'\$\[\e[0m\] ';
-    PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+    PS1='\w'"`_git_prompt`"'\$\[\e[0m\] ';
+    PS1="\[\033[1;32m\]\$(~/.rvm/bin/rvm-prompt | cut -d - -f 1,2 -)\[\033[0m\] $PS1"
     if [ $laststatus != 0 ]; then PS1="\[\033[1;31m\]($laststatus)\[\033[0m\] $PS1"; fi;
 }
 PROMPT_COMMAND=_prompt_command
