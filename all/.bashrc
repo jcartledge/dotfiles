@@ -5,9 +5,10 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# VI mode baby
-set -o vi
+# full color term so solarized works in regauler vim
+export TERM=xterm-256color
 
+# path for my bins
 export PATH=/usr/local/bin:$PATH
 
 # don't put duplicate lines in the history. See bash(1) for more options
