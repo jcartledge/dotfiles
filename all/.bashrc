@@ -87,3 +87,6 @@ function _prompt_command() {
     if [ $laststatus != 0 ]; then PS1="\[\033[1;31m\]($laststatus)\[\033[0m\] $PS1"; fi;
 }
 PROMPT_COMMAND=_prompt_command
+
+# tip of the day
+whatis $(ls ${PATH//:/ } 2>/dev/null| gshuf -n 1)
