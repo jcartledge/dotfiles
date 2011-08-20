@@ -22,5 +22,6 @@
   lg = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   fixup = commit -a --amend -CHEAD
   plush = "!sh -c 'git pull --rebase && git push'"
+  sh = "!sh -c 'rlwrap git repl'"
 [core]
 	editor = /usr/bin/vim

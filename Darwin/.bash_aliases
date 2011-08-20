@@ -1,6 +1,5 @@
 alias o=open
 alias telehack="telnet telehack.com"
-alias git="rlwrap git"
 function t {
   if [ $# -gt 0 ]; then
     todo.sh $@
