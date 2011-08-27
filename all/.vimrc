@@ -11,7 +11,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'spf13/PIV'
-Bundle 'taxilian/VimDebugger'
 Bundle 'mileszs/ack.vim'
 Bundle 'AutoTag'
 Bundle 'skammer/vim-css-color'
