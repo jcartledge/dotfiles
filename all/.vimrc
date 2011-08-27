@@ -31,7 +31,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'ciaranm/securemodelines'
 Bundle 'sherlock.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'SuperTab-continued.'
+Bundle 'SuperTab'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
@@ -79,22 +79,11 @@ colorscheme solarized
 " ctags: look for tags file in current directory, or recurse up
 set tags=tags;/
 
-" xml tag autoclose
-au FileType php,xhtml,xml so ~/.vim/bundle/html_autoclosetag/ftplugin/html_autoclosetag.vim
-
 " format xml on load
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
 " save when focus lost
 au FocusLost * silent! w
-
-" alt-arrow to navigate buffers
-" (option-arrow on mac)
-" @FIXME: doesn't work
-"nmap <M-Left>   :bN<CR>
-"nmap <M-Right>  :bn<CR>
-"imap <M-Left>   <ESC>:bN<CR>
-"imap <M-Right>  <ESC>:bn<CR>
 
 " shift-arrow to navigate windows
 nmap <S-Left>   <C-w>h
@@ -105,9 +94,6 @@ nmap <S-Down>   <C-w>j
 imap <S-Down>   <ESC><C-w>ja
 nmap <S-Up>     <C-w>k
 imap <S-Up>     <ESC><C-w>ka
-
-" yankring UI
-nmap <silent> <leader>y :YRShow<CR>
 
 " The following two options interfere with one another.
 "
@@ -130,16 +116,6 @@ nmap <silent> <leader>T :TagbarToggle<CR>
 
 " nerdtree
 nmap <silent> <leader>f :NERDTreeToggle<CR>
-
-" gnome-open
-nmap <silent> <leader>o :call g:Open_Word_Under_Cursor()<CR>
-vmap <silent> <leader>o :call g:Open_Visual_Selection()<CR>
-
-" fullscreen
-" only works where wmctrl is present (i.e. not mac)
-imap <silent> <F11> <Esc>:!wmctrl -r :ACTIVE: -b toggle,fullscreen<CR>a
-nmap <silent> <F11> :!wmctrl -r :ACTIVE: -b toggle,fullscreen<CR>
-vmap <silent> <F11> :!wmctrl -r :ACTIVE: -b toggle,fullscreen<CR>
 
 " spellcheck
 nmap <silent> <leader>s :setlocal invspell<CR>
