@@ -10,6 +10,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'shemerey/vim-peepopen'
 Bundle 'spf13/PIV'
 Bundle 'mileszs/ack.vim'
 Bundle 'AutoTag'
@@ -40,6 +41,8 @@ Bundle 'tpope/vim-git'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'YankRing.vim'
+
+ru macros/matchit.vim
 
 " basic editor config
 syntax on
