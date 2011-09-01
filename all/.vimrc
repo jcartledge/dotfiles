@@ -1,5 +1,3 @@
-" ~/.vimrc should only source this file.
-
 " vundle
 set nocompatible
 filetype off
@@ -70,7 +68,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " gui options
 if has("gui_running")
- "  "gui_running")
   set background=light
   set guioptions-=T  " remove toolbar
   set guioptions-=m  " remove menubar
