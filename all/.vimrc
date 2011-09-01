@@ -42,7 +42,9 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'YankRing.vim'
 
+" these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
+ru macros/editexisting.vim
 
 " basic editor config
 syntax on
