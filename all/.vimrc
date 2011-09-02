@@ -66,6 +66,7 @@ set display=lastline
 nmap <silent> <leader>ev :split $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+nmap <leader><leader> :noh<CR><ESC>
 " gui options
 if has("gui_running")
   set background=light
