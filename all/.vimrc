@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'shemerey/vim-peepopen'
-Bundle 'spf13/PIV'
 Bundle 'mileszs/ack.vim'
 Bundle 'AutoTag'
 Bundle 'skammer/vim-css-color'
