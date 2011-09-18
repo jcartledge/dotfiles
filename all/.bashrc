@@ -9,7 +9,7 @@
 export TERM=xterm-256color
 
 # path for my bins
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/share/python:$PATH
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
