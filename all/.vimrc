@@ -138,6 +138,11 @@ set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" useful for browsing URLs, opening files in their default app etc
+" relies on OS X CLI open command
+nmap <silent> go :call system("open " . expand('<cWORD>'))<CR>
+vmap <silent> go :call system("open " . @*)<CR>
+
 " drupal stuff
 if has("autocmd")
   autocmd BufRead,BufNewFile *.module set filetype=php
