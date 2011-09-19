@@ -8,6 +8,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'Auto-Pairs'
 Bundle 'AutoTag'
 Bundle 'IndexedSearch'
 Bundle 'Raimondi/delimitMate'
@@ -149,7 +150,6 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.install set filetype=php
 endif
 
-" ctrlp
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_mru_files = 1
+"good enough folding for PHP
+au FileType php setlocal foldmethod=marker
+au FileType php setlocal foldmarker={,}
