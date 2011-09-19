@@ -66,7 +66,12 @@ set display=lastline
 nmap <silent> <leader>ev :split $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" clear search highlight
 nmap <leader><leader> :noh<CR><ESC>
+
+" resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
 " gui options
 if has("gui_running")
   set background=light
