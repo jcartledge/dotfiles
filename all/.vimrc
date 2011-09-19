@@ -8,36 +8,36 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-Bundle 'shemerey/vim-peepopen'
-Bundle 'mileszs/ack.vim'
 Bundle 'AutoTag'
-Bundle 'skammer/vim-css-color'
-Bundle 'tpope/vim-cucumber'
-Bundle 'Raimondi/delimitMate'
-Bundle 'file-line'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
 Bundle 'IndexedSearch'
-Bundle 'tpope/vim-markdown'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+Bundle 'Raimondi/delimitMate'
+Bundle 'SuperTab'
+Bundle 'YankRing.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ciaranm/securemodelines'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'empanda/vim-varnish'
+Bundle 'file-line'
+Bundle 'majutsushi/tagbar'
+Bundle 'mileszs/ack.vim'
 Bundle 'preview'
 Bundle 'rodjek/vim-puppet'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'shemerey/vim-peepopen'
+Bundle 'sherlock.vim'
+Bundle 'skammer/vim-css-color'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
-Bundle 'ciaranm/securemodelines'
-Bundle 'sherlock.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'SuperTab'
 Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'empanda/vim-varnish'
-Bundle 'tpope/vim-git'
-Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
-Bundle 'YankRing.vim'
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -148,3 +148,8 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.module set filetype=php
   autocmd BufRead,BufNewFile *.install set filetype=php
 endif
+
+" ctrlp
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_mru_files = 1
