@@ -156,6 +156,13 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.install set filetype=php
 endif
 
-"good enough folding for PHP
-au FileType php setlocal foldmethod=marker
-au FileType php setlocal foldmarker={,}
+" good enough folding for bracey languages
+au FileType php,css,javascript setlocal foldmethod=marker
+au FileType php,css,javascript setlocal foldmarker={,}
+au FileType php,css,javascript normal zR
+
+" good enough highlighting for JSON
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" don't show HTML errors
+let g:syntastic_disabled_filetypes=['html']
