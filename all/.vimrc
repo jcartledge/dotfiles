@@ -83,7 +83,6 @@ if has("gui_running")
 endif
 
 " colours
-let g:solarized_visibility="low"    "default value is normal
 colorscheme solarized
 
 " ctags: look for tags file in current directory, or recurse up
