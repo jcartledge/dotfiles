@@ -25,3 +25,6 @@
   sh = "!sh -c 'rlwrap git repl'"
 [core]
 	editor = /usr/bin/vim
+[github]
+	user = jcartledge
+	token = 0402216597f0e59c9fb20103e89abe17

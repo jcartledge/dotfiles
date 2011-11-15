@@ -12,14 +12,16 @@ Bundle 'Auto-Pairs'
 Bundle 'AutoTag'
 Bundle 'IndexedSearch'
 Bundle 'Raimondi/delimitMate'
-Bundle 'msanders/snipmate.vim'
-Bundle 'SuperTab'
+Bundle 'SuperTab-continued.'
 Bundle 'YankRing.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ciaranm/securemodelines'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'empanda/vim-varnish'
 Bundle 'file-line'
+Bundle 'groenewege/vim-less'
+Bundle 'jcartledge/snipmate-snippets'
+Bundle 'jcartledge/snipmate.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'othree/xml.vim'
@@ -31,6 +33,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'shemerey/vim-peepopen'
 Bundle 'sherlock.vim'
 Bundle 'skammer/vim-css-color'
+Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
@@ -63,6 +66,7 @@ set encoding=utf-8
 set mouse=a
 set mousemodel=popup_setpos
 set display=lastline
+set shortmess=atI
 
 " quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :split $MYVIMRC<CR>
@@ -169,3 +173,11 @@ autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
 " don't show HTML errors
 let g:syntastic_disabled_filetypes=['html']
+
+" Change supertab mappings so they don't interfere with snipmate
+let g:SuperTabMappingForward = '<c-space>'
+let g:SuperTabMappingBackward = '<s-c-space>'
+
+" Load my snippets
+let g:snippets_dir = '~/.vim/bundle/snipmate-snippets'
+let g:snips_author = "jcartledge@gmail.com"

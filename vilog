@@ -1,0 +1,91 @@
+
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.016  000.016: --- VIM STARTING ---
+000.072  000.056: Allocated generic buffers
+000.301  000.229: locale set
+000.309  000.008: window checked
+000.776  000.467: inits 1
+000.781  000.005: parsing arguments
+000.781  000.000: expanding arguments
+000.793  000.012: shell init
+001.193  000.400: Termcap init
+001.209  000.016: inits 2
+001.305  000.096: init highlight
+001.587  000.133  000.133: sourcing $VIM/vimrc
+068.538  000.059  000.059: sourcing /usr/share/vim/vim73/ftoff.vim
+084.891  000.201  000.201: sourcing /Users/jcartledge/.vim/bundle/vundle/autoload/vundle.vim
+085.300  000.109  000.109: sourcing /Users/jcartledge/.vim/bundle/vundle/autoload/vundle/config.vim
+224.725  000.795  000.795: sourcing /usr/share/vim/vim73/macros/matchit.vim
+237.885  000.124  000.124: sourcing /usr/share/vim/vim73/macros/editexisting.vim
+239.236  000.238  000.238: sourcing /usr/share/vim/vim73/syntax/syncolor.vim
+239.558  000.946  000.708: sourcing /usr/share/vim/vim73/syntax/synload.vim
+294.339  000.072  000.072: sourcing /Users/jcartledge/.vim/bundle/vim-jade/ftdetect/jade.vim
+298.977  000.064  000.064: sourcing /Users/jcartledge/.vim/bundle/vim-varnish/ftdetect/vcl.vim
+302.751  000.071  000.071: sourcing /Users/jcartledge/.vim/bundle/vim-puppet/ftdetect/puppet.vim
+314.338  000.090  000.090: sourcing /Users/jcartledge/.vim/bundle/vim-cucumber/ftdetect/cucumber.vim
+317.376  000.266  000.266: sourcing /Users/jcartledge/.vim/bundle/vim-git/ftdetect/git.vim
+332.325  000.128  000.128: sourcing /Users/jcartledge/.vim/bundle/vim-haml/ftdetect/haml.vim
+346.128  000.155  000.155: sourcing /Users/jcartledge/.vim/bundle/vim-markdown/ftdetect/markdown.vim
+346.536  000.083  000.083: sourcing /Users/jcartledge/.vim/bundle/vim-stylus/ftdetect/stylus.vim
+347.040  074.207  073.278: sourcing /usr/share/vim/vim73/filetype.vim
+347.255  109.203  034.050: sourcing /usr/share/vim/vim73/syntax/syntax.vim
+347.479  000.014  000.014: sourcing /usr/share/vim/vim73/filetype.vim
+348.106  000.050  000.050: sourcing /usr/share/vim/vim73/ftplugin.vim
+348.713  000.046  000.046: sourcing /usr/share/vim/vim73/indent.vim
+363.442  000.198  000.198: sourcing /usr/share/vim/vim73/syntax/syncolor.vim
+364.104  000.197  000.197: sourcing /usr/share/vim/vim73/syntax/syncolor.vim
+367.137  005.124  004.729: sourcing /Users/jcartledge/.vim/bundle/vim-colors-solarized/colors/solarized.vim
+390.489  322.374  206.649: sourcing $HOME/.vimrc
+390.501  066.689: sourcing vimrc file(s)
+400.973  000.451  000.451: sourcing /Users/jcartledge/.vim/bundle/Auto-Pairs/plugin/auto-pairs.vim
+416.439  000.364  000.364: sourcing /Users/jcartledge/.vim/bundle/AutoTag/plugin/autotag.vim
+422.228  000.788  000.788: sourcing /Users/jcartledge/.vim/bundle/IndexedSearch/plugin/IndexedSearch.vim
+435.368  003.249  003.249: sourcing /Users/jcartledge/.vim/bundle/delimitMate/plugin/delimitMate.vim
+447.705  000.999  000.999: sourcing /Users/jcartledge/.vim/bundle/snipmate.vim/plugin/snipMate.vim
+463.430  000.522  000.522: sourcing /Users/jcartledge/.vim/bundle/SuperTab/plugin/supertab.vim
+553.005  079.735  079.735: sourcing /Users/jcartledge/.vim/bundle/YankRing.vim/plugin/yankring.vim
+560.711  000.459  000.459: sourcing /Users/jcartledge/.vim/bundle/securemodelines/plugin/securemodelines.vim
+573.992  000.077  000.077: sourcing /Users/jcartledge/.vim/bundle/file-line/plugin/file:line.vim
+574.820  000.238  000.238: sourcing /Users/jcartledge/.vim/bundle/tagbar/plugin/tagbar.vim
+575.370  000.204  000.204: sourcing /Users/jcartledge/.vim/bundle/ack.vim/plugin/ack.vim
+597.882  022.216  022.216: sourcing /Users/jcartledge/.vim/bundle/preview/plugin/preview.vim
+618.030  006.428  006.428: sourcing /Users/jcartledge/.vim/bundle/nerdcommenter/plugin/NERD_commenter.vim
+623.311  004.890  004.890: sourcing /Users/jcartledge/.vim/bundle/nerdtree/plugin/NERD_tree.vim
+658.423  004.483  004.483: sourcing /Users/jcartledge/.vim/bundle/syntastic/plugin/syntastic.vim
+659.057  000.254  000.254: sourcing /Users/jcartledge/.vim/bundle/vim-peepopen/plugin/peepopen.vim
+676.111  000.181  000.181: sourcing /Users/jcartledge/.vim/bundle/sherlock.vim/plugin/sherlock.vim
+698.431  004.147  004.147: sourcing /Users/jcartledge/.vim/bundle/vim-fugitive/plugin/fugitive.vim
+743.110  033.814  033.814: sourcing /Users/jcartledge/.vim/bundle/vim-ragtag/plugin/ragtag.vim
+745.364  000.959  000.959: sourcing /Users/jcartledge/.vim/bundle/vim-rails/plugin/rails.vim
+751.478  001.063  001.063: sourcing /Users/jcartledge/.vim/bundle/vim-surround/plugin/surround.vim
+752.020  000.103  000.103: sourcing /usr/share/vim/vim73/plugin/getscriptPlugin.vim
+752.394  000.228  000.228: sourcing /usr/share/vim/vim73/plugin/gzip.vim
+752.804  000.208  000.208: sourcing /usr/share/vim/vim73/plugin/matchparen.vim
+753.655  000.678  000.678: sourcing /usr/share/vim/vim73/plugin/netrwPlugin.vim
+753.813  000.020  000.020: sourcing /usr/share/vim/vim73/plugin/rrhelper.vim
+753.980  000.038  000.038: sourcing /usr/share/vim/vim73/plugin/spellfile.vim
+754.297  000.182  000.182: sourcing /usr/share/vim/vim73/plugin/tarPlugin.vim
+754.494  000.061  000.061: sourcing /usr/share/vim/vim73/plugin/tohtml.vim
+754.791  000.155  000.155: sourcing /usr/share/vim/vim73/plugin/vimballPlugin.vim
+755.077  000.142  000.142: sourcing /usr/share/vim/vim73/plugin/zipPlugin.vim
+770.761  001.109  001.109: sourcing /Users/jcartledge/.vim/bundle/snipmate.vim/after/plugin/snipMate.vim
+770.847  211.901: loading plugins
+770.859  000.012: inits 3
+771.136  000.277: reading viminfo
+771.171  000.035: setting raw mode
+771.180  000.009: start termcap
+771.218  000.038: clearing screen
+771.982  000.764: opening buffers
+775.366  003.384: BufEnter autocommands
+775.370  000.004: editing files in windows
+785.980  000.170  000.170: sourcing /Users/jcartledge/.vim/bundle/nerdtree/nerdtree_plugin/exec_menuitem.vim
+802.481  000.638  000.638: sourcing /Users/jcartledge/.vim/bundle/nerdtree/nerdtree_plugin/fs_menu.vim
+805.188  029.010: VimEnter autocommands
+805.190  000.002: before starting main loop
+810.473  005.283: first screen update
+810.475  000.002: --- VIM STARTED ---
