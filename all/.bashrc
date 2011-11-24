@@ -89,8 +89,15 @@ function _prompt_command() {
 PROMPT_COMMAND=_prompt_command
 
 # z is a quick directory jump thing
+# https://github.com/rupa/z
 if [ -f /usr/local/etc/profile.d/z.sh ]; then
   . /usr/local/etc/profile.d/z.sh
+fi
+
+# brew completion
+# https://github.com/miku/brew-completion
+if [ -f ~/.brew-completion/brew-completion.sh ]; then
+  . ~/.brew-completion/brew-completion.sh
 fi
 
 # bash VI mode

@@ -1,3 +1,6 @@
 [submodule ".repl"]
 	path = all/.repl
 	url = https://github.com/defunkt/repl-completion.git
+[submodule "Darwin/.brew-completion"]
+	path = Darwin/.brew-completion
+	url = https://github.com/miku/brew-completion.git
