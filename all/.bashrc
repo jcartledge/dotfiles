@@ -89,7 +89,9 @@ function _prompt_command() {
 PROMPT_COMMAND=_prompt_command
 
 # z is a quick directory jump thing
- . /usr/local/etc/profile.d/z.sh
+if [ -f /usr/local/etc/profile.d/z.sh ]; then
+  . /usr/local/etc/profile.d/z.sh
+fi
 
 # bash VI mode
 set -o vi
