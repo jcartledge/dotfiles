@@ -44,6 +44,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'wavded/vim-stylus'
+Bundle "bingaman/vim-sparkup"
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
