@@ -159,6 +159,7 @@ vmap <silent> go :call system("open " . @*)<CR>
 if has("autocmd")
   autocmd BufRead,BufNewFile *.module set filetype=php
   autocmd BufRead,BufNewFile *.install set filetype=php
+  autocmd BufRead,BufNewFile *.info set filetype=dosini
 endif
 
 " good enough folding for bracey languages
