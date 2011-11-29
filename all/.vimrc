@@ -26,7 +26,7 @@ Bundle 'jcartledge/snipmate-snippets'
 Bundle 'jcartledge/snipmate.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
-Bundle 'othree/xml.vim'
+" Bundle 'othree/xml.vim' " Buggy in php files
 Bundle 'preview'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
