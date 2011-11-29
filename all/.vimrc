@@ -12,13 +12,15 @@ Bundle 'Auto-Pairs'
 Bundle 'AutoTag'
 Bundle 'IndexedSearch'
 Bundle 'Raimondi/delimitMate'
-Bundle 'SuperTab-continued.'
 Bundle 'YankRing.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'bingaman/vim-sparkup'
 Bundle 'ciaranm/securemodelines'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'empanda/vim-varnish'
+Bundle 'ervandew/supertab'
 Bundle 'file-line'
+Bundle 'gmarik/sudo-gui.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'jcartledge/snipmate-snippets'
 Bundle 'jcartledge/snipmate.vim'
@@ -44,7 +46,6 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'wavded/vim-stylus'
-Bundle "bingaman/vim-sparkup"
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -85,6 +86,11 @@ if has("gui_running")
   set guioptions-=T  " remove toolbar
   set guioptions-=m  " remove menubar
   set guioptions+=c  " console dialogs not popups
+  " mac-specific stuff
+  if has("gui_macvim")
+    set macmeta
+    set guifont=Menlo\ Regular:h13
+  endif
 endif
 
 " colours
@@ -121,9 +127,6 @@ set lbr formatoptions=l
 " highlight whitespace
 set list listchars=tab:»·,trail:·
 
-" save file with sudo
-cmap w!! %!sudo tee > /dev/null %
-
 " tagbar
 let g:tagbar_ctags_bin="/usr/local/bin/ctags" " brew ctags, not the default mac one
 nmap <silent> <leader>T :TagbarToggle<CR>
@@ -137,18 +140,13 @@ nmap <silent> <leader>s :setlocal invspell<CR>
 " ack command
 let g:ackprg="ack -H --nocolor --nogroup --column"
 
-" mac-specific stuff
-if has("gui_macvim")
-  set macmeta
-  set guifont=Menlo\ Regular:h13
-endif
-
 " syntastic setup
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
@@ -157,9 +155,9 @@ vmap <silent> go :call system("open " . @*)<CR>
 
 " drupal stuff
 if has("autocmd")
-  autocmd BufRead,BufNewFile *.module set filetype=php
-  autocmd BufRead,BufNewFile *.install set filetype=php
-  autocmd BufRead,BufNewFile *.info set filetype=dosini
+  autocmd BufRead,BufNewFile *.module   set filetype=php
+  autocmd BufRead,BufNewFile *.install  set filetype=php
+  autocmd BufRead,BufNewFile *.info     set filetype=dosini
 endif
 
 " good enough folding for bracey languages
@@ -173,13 +171,12 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
-" don't show HTML errors
-let g:syntastic_disabled_filetypes=['html']
-
-" Change supertab mappings so they don't interfere with snipmate
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
-
 " Load my snippets
 let g:snippets_dir = '~/.vim/bundle/snipmate-snippets'
 let g:snips_author = "jcartledge@gmail.com"
+
+" Try to force snipmate and supertab to be nice
+let g:SuperTabDefaultCompletionType = 'context'
+" Give up and remap supertab
+let g:SuperTabMappingForward        = '<c-space>'
+let g:SuperTabMappingBackward       = '<s-c-space>'
