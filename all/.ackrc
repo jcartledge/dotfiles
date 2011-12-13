@@ -1,1 +1,2 @@
 --type-set=drupal=.php,.inc,.module,.info,.install
+--type-add=css=.less

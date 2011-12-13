@@ -161,9 +161,9 @@ if has("autocmd")
 endif
 
 " good enough folding for bracey languages
-au FileType php,css,javascript setlocal foldmethod=marker
-au FileType php,css,javascript setlocal foldmarker={,}
-au FileType php,css,javascript normal zR
+au FileType php,css,less,javascript setlocal foldmethod=marker
+au FileType php,css,less,javascript setlocal foldmarker={,}
+au FileType php,css,less,javascript normal zR
 
 " good enough highlighting for JSON
 autocmd BufNewFile,BufRead *.json set ft=javascript
