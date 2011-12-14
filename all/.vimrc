@@ -106,15 +106,23 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 " save when focus lost
 au FocusLost * silent! w
 
+" get out of insert mode with motion keys
+imap jj <Esc>
+imap kk <Esc>
+imap hhh <Esc>
+imap lll <Esc>
+
 " shift-arrow to navigate windows
 nmap <S-Left>   <C-w>h
-imap <S-Left>   <Esc>Bi
 nmap <S-Right>  <C-w>l
-imap <S-Right>  <Esc>Ea
 nmap <S-Down>   <C-w>j
-imap <S-Down>   <ESC><C-w>ja
 nmap <S-Up>     <C-w>k
-imap <S-Up>     <ESC><C-w>ka
+
+" sensible tab navigation
+nmap <C-Tab>    :tabn<CR>
+nmap <C-S-Tab>  :tabN<CR>
+imap <C-Tab>    <Esc>:tabn<CR>
+imap <C-S-Tab>  <Esc>:tabN<CR>
 
 " The following two options interfere with one another.
 "
