@@ -107,10 +107,10 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 au FocusLost * silent! w
 
 " get out of insert mode with motion keys
-imap jj <Esc>
-imap kk <Esc>
-imap hhh <Esc>
-imap lll <Esc>
+imap jj <Esc>j
+imap kk <Esc>k
+imap hhh <Esc>h
+imap lll <Esc>l
 
 " shift-arrow to navigate windows
 nmap <S-Left>   <C-w>h
