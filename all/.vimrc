@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Auto-Pairs'
 Bundle 'AutoTag'
+Bundle 'HTML-AutoCloseTag'
 Bundle 'IndexedSearch'
 Bundle 'Raimondi/delimitMate'
 Bundle 'YankRing.vim'
@@ -27,7 +28,6 @@ Bundle 'jcartledge/snipmate-snippets'
 Bundle 'jcartledge/snipmate.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
-" Bundle 'othree/xml.vim' " Buggy in php files
 Bundle 'preview'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
@@ -189,3 +189,6 @@ let g:SuperTabDefaultCompletionType = 'context'
 " Give up and remap supertab
 let g:SuperTabMappingForward        = '<c-space>'
 let g:SuperTabMappingBackward       = '<s-c-space>'
+
+" Autoclosetag
+au FileType xhtml,xml so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
