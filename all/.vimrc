@@ -195,3 +195,6 @@ let g:SuperTabMappingBackward       = '<s-c-space>'
 
 " Autoclosetag
 au FileType xhtml,xml so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
+
+" Encryption
+set cm=blowfish
