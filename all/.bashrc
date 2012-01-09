@@ -100,5 +100,10 @@ if [ -f ~/.brew-completion/brew-completion.sh ]; then
   . ~/.brew-completion/brew-completion.sh
 fi
 
+# npm completion
+if [ -f ~/.npm/npm/$(npm -v)/package/lib/utils/completion.sh ]; then
+  . ~/.npm/npm/$(npm -v)/package/lib/utils/completion.sh
+fi
+
 # bash VI mode
 set -o vi
