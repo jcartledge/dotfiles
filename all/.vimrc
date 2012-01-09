@@ -177,6 +177,9 @@ au FileType php,css,less,javascript normal zR
 " good enough highlighting for JSON
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
+" make space toggle folds in
+noremap <SPACE> za
+
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
