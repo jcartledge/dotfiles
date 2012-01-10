@@ -46,6 +46,7 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-coffee-script'
 Bundle 'wavded/vim-stylus'
 
 " these plugins are bundled in $VIMRUNTIME
