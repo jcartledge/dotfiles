@@ -21,10 +21,11 @@
 [alias]
   lg = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   fixup = commit -a --amend -CHEAD
+  co = checkout
   plush = "!sh -c 'git pull --rebase && git push'"
   sh = "!sh -c 'rlwrap git repl'"
 [core]
-	editor = /usr/bin/vim
+  editor = /usr/bin/vim
 [github]
-	user = jcartledge
-	token = f7b57d5137fd40dbe0cd04933902bb40
+  user = jcartledge
+  token = f7b57d5137fd40dbe0cd04933902bb40
