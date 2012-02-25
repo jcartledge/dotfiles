@@ -102,3 +102,6 @@ fi
 
 # bash VI mode
 set -o vi
+
+# keep github credentials out of version control
+. ~/.github
