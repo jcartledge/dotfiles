@@ -27,6 +27,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'groenewege/vim-less'
 Bundle 'jcartledge/snipmate-snippets'
 Bundle 'jcartledge/snipmate.vim'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'preview'
@@ -74,7 +75,7 @@ set display=lastline
 set shortmess=atI
 
 " quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :split $MYVIMRC<CR>
+nmap <silent> <leader>ev :tabedit $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " clear search highlight
@@ -83,18 +84,28 @@ nmap <leader><leader> :noh<CR><ESC>
 " resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-" gui options
-if has("gui_running")
-  set background=light
-  set guioptions-=T  " remove toolbar
-  set guioptions-=m  " remove menubar
-  set guioptions+=c  " console dialogs not popups
-  " mac-specific stuff
-  if has("gui_macvim")
-    set macmeta
-    set guifont=Menlo\ Regular:h13
-  endif
-endif
+" Insert cursor in CLI
+" http://paste.stevelosh.com/4f83354246f98e0007000000?vim
+ if exists('$TMUX')
+   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+ else
+   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+ endif
+
+ " gui options
+ if has("gui_running")
+   set background=light
+   set guioptions-=T  " remove toolbar
+   set guioptions-=m  " remove menubar
+   set guioptions+=c  " console dialogs not popups
+   " mac-specific stuff
+   if has("gui_macvim")
+     set macmeta
+     set guifont=Menlo\ Regular:h13
+   endif
+ endif
 
 " colours
 colorscheme solarized
@@ -192,8 +203,8 @@ let g:snips_author = "jcartledge@gmail.com"
 " Try to force snipmate and supertab to be nice
 let g:SuperTabDefaultCompletionType = 'context'
 " Give up and remap supertab
-let g:SuperTabMappingForward        = '<c-space>'
-let g:SuperTabMappingBackward       = '<s-c-space>'
+" let g:SuperTabMappingForward        = '<c-space>'
+" let g:SuperTabMappingBackward       = '<s-c-space>'
 
 " Autoclosetag
 au FileType xhtml,xml so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
