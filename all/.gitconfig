@@ -26,3 +26,5 @@
   sh = "!sh -c 'rlwrap git repl'"
 [core]
   editor = /usr/bin/vim
+[merge]
+	tool = mvim -d
