@@ -22,8 +22,13 @@
   lg = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   fixup = commit -a --amend -CHEAD
   co = checkout
-  plush = "!sh -c 'git pull --rebase && git push'"
-  sh = "!sh -c 'rlwrap git repl'"
+  ap = add --patch
+  ai = add --interactive
+  pr = pull --rebase
+  ps = push
+  pom = push origin master
+  phm = push heroku master
+  dc = diff --cached
 [core]
   editor = /usr/bin/vim
 [merge]

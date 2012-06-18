@@ -55,6 +55,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Load some dynamic aliases for dealing with remote hosts
+if [ -f ~/.remote-aliases ]; then
+    eval `~/.remote-aliases` 2>/dev/null
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -87,12 +92,6 @@ PROMPT_COMMAND=_prompt_command
 # https://github.com/rupa/z
 if [ -f /usr/local/etc/profile.d/z.sh ]; then
   . /usr/local/etc/profile.d/z.sh
-fi
-
-# brew completion
-# https://github.com/miku/brew-completion
-if [ -f ~/.brew-completion/brew-completion.sh ]; then
-  . ~/.brew-completion/brew-completion.sh
 fi
 
 # npm completion
