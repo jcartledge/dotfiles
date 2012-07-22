@@ -94,11 +94,6 @@ if [ -f /usr/local/etc/profile.d/z.sh ]; then
   . /usr/local/etc/profile.d/z.sh
 fi
 
-# npm completion
-if [ -f ~/.npm/npm/$(npm -v)/package/lib/utils/completion.sh ]; then
-  . ~/.npm/npm/$(npm -v)/package/lib/utils/completion.sh
-fi
-
 # bash VI mode
 set -o vi
 
