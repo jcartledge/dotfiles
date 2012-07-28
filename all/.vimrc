@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'Auto-Pairs'
-Bundle 'AutoTag'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'IndexedSearch'
 Bundle 'Raimondi/delimitMate'
