@@ -67,6 +67,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# prompt
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
@@ -80,12 +81,14 @@ function _git_prompt() {
         echo -n '\[\033['$color'm\]$(__git_ps1)\[\033[0m\]'
     fi
 }
+
 function _prompt_command() {
     laststatus=$?
     PS1='\w'"`_git_prompt`"'\$\[\e[0m\] ';
     PS1="\[\033[1;32m\]\$(~/.rvm/bin/rvm-prompt | cut -d - -f 1,2 -)\[\033[0m\] $PS1"
     if [ $laststatus != 0 ]; then PS1="\[\033[1;31m\]($laststatus)\[\033[0m\] $PS1"; fi;
 }
+
 PROMPT_COMMAND=_prompt_command
 
 # z is a quick directory jump thing
