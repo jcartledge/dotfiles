@@ -1,3 +1,6 @@
+# VIM mode
+set editing-mode vi
+
 # smart up & down in history
 "\e[A":history-search-backward
 "\e[B":history-search-forward

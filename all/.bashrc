@@ -41,11 +41,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -91,14 +86,19 @@ function _prompt_command() {
 
 PROMPT_COMMAND=_prompt_command
 
-# z is a quick directory jump thing
-# https://github.com/rupa/z
-if [ -f /usr/local/etc/profile.d/z.sh ]; then
-  . /usr/local/etc/profile.d/z.sh
+# keep github credentials out of version control
+if [ -f ~/.github ]; then
+  . ~/.github
 fi
 
-# bash VI mode
-set -o vi
+# lol java
+export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/
 
-# keep github credentials out of version control
-. ~/.github
+# setup fasd
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache"  ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+
