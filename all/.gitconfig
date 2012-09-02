@@ -19,16 +19,33 @@
   changed = green
   untracked = cyan
 [alias]
-  lg = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  s     = status -s
+  sv    = status
+
+  d     = diff
+  dc    = diff --cached
+
+  lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  ci    = commit
+  cia   = commit -a
+  ciam  = commit -am
   fixup = commit --amend -CHEAD
-  co = checkout
-  ap = add --patch
-  ai = add --interactive
-  pr = pull --rebase
-  ps = push
-  pom = push origin master
-  phm = push heroku master
-  dc = diff --cached
+
+  co    = checkout
+  cob   = checkout -b
+
+  a     = add
+  ap    = add --patch
+  ai    = add --interactive
+
+  pr    = pull --rebase
+
+  ps    = push
+  pom  = push origin master
+  phm  = push heroku master
+
 [core]
   editor = /usr/bin/vim
 [merge]

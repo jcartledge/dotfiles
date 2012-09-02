@@ -55,6 +55,13 @@ if [ -f ~/.remote-aliases ]; then
     eval `~/.remote-aliases` 2>/dev/null
 fi
 
+# git aliases
+if $(type -P git &>/dev/null) ; then
+  for alias in $(git alias | awk '{print $1}'); do
+    alias g${alias}="git $alias"
+  done
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
