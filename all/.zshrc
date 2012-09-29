@@ -28,6 +28,7 @@ zstyle ':vcs_info:git*' use-prompt-escapes true
 zstyle ':vcs_info:git*' stagedstr "%{$fg_no_bold[green]%}"
 zstyle ':vcs_info:git*' unstagedstr "%{$fg_no_bold[red]%}"
 zstyle ':vcs_info:git*' formats "%{$fg_bold[green]%}%c%u(%b)%{$reset_color%}"
+zstyle ':vcs_info:git*' actionformats "%{$fg_bold[green]%}%c%u(%a|%b)%{$reset_color%}"
 precmd() {
   vcs_info
 }
