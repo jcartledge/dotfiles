@@ -4,3 +4,6 @@
 [submodule "Darwin/.brew-completion"]
 	path = Darwin/.brew-completion
 	url = https://github.com/miku/brew-completion.git
+[submodule "all/antigen"]
+	path = all/antigen
+	url = https://github.com/zsh-users/antigen.git
