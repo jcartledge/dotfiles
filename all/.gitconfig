@@ -26,15 +26,21 @@
   d     = diff
   dc    = diff --cached
 
+  l     = log
   lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
   ci    = commit
   cia   = commit -a
+  cim   = commit -m
   ciam  = commit -am
   fixup = commit --amend -CHEAD
 
   co    = checkout
   cob   = checkout -b
+
+  b     = branch
+  bd    = branch -d
+  bfd   = branch -D
 
   a     = add
   ap    = add --patch
@@ -42,11 +48,17 @@
 
   pr    = pull --rebase
 
-  ps    = push
+  ps   = push
   pom  = push origin master
   phm  = push heroku master
+
+  rb   = rebase
+  rbi  = rebase -i
 
 [core]
   editor = /usr/bin/vim
 [merge]
 	tool = mvim -d
+[github]
+	user = jcartledge
+	password = 6OfDetifibumfek|
