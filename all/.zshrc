@@ -35,7 +35,7 @@ precmd() {
 setopt prompt_subst
 
 # Prompt
-PROMPT='%~ ${vcs_info_msg_0_}%(?,$,%{$fg[red]%}$%{$reset_color%}) '
+PROMPT='%~ ${vcs_info_msg_0_}$ '
 RPROMPT='%{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
 
 # Show completion on first TAB
