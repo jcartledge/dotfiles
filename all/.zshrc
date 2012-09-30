@@ -36,7 +36,7 @@ setopt prompt_subst
 
 # Prompt
 PROMPT='%~ ${vcs_info_msg_0_}$ '
-RPROMPT='%{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
+RPROMPT='$(vi_mode_prompt_info) %{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
 
 # Show completion on first TAB
 setopt menucomplete
@@ -44,3 +44,6 @@ setopt menucomplete
 # Load completions for Ruby, Git, etc.
 autoload compinit
 compinit
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+

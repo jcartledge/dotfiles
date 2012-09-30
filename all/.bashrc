@@ -163,3 +163,5 @@ function alias_completion {
   source "$tmp_file" && rm -f "$tmp_file"
 }; alias_completion
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
