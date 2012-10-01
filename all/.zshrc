@@ -10,6 +10,7 @@ antigen-bundle heroku
 antigen-bundle npm
 antigen-bundle ruby
 antigen-bundle rvm
+antigen-bundle sublime
 antigen-bundle vi-mode
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
@@ -45,5 +46,5 @@ setopt menucomplete
 autoload compinit
 compinit
 
+PATH=$HOME/local/bin:$PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
