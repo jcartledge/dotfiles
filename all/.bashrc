@@ -130,7 +130,7 @@ function alias_completion {
 
   # read in "<alias> '<aliased command>' '<command args>'" lines from defined aliases
   local line; while read line; do
-    eval "local alias_tokens=($line)" 2>/dev/null || continue # some alias arg patterns cause an eval parse error 
+    eval "local alias_tokens=($line)" 2>/dev/null || continue # some alias arg patterns cause an eval parse error
     local alias_name="${alias_tokens[0]}" alias_cmd="${alias_tokens[1]}" alias_args="${alias_tokens[2]# }"
 
     # skip aliases to pipes, boolan control structures and other command lists
