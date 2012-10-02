@@ -28,9 +28,15 @@ zstyle ':vcs_info:git*' check-for-changes true
 zstyle ':vcs_info:git*' use-prompt-escapes true
 zstyle ':vcs_info:git*' stagedstr "%{$fg_no_bold[green]%}"
 zstyle ':vcs_info:git*' unstagedstr "%{$fg_no_bold[red]%}"
-zstyle ':vcs_info:git*' formats "%{$fg_bold[green]%}%c%u(%b)%{$reset_color%}"
-zstyle ':vcs_info:git*' actionformats "%{$fg_bold[green]%}%c%u(%a|%b)%{$reset_color%}"
+
 precmd() {
+  if [[ -z $(git ls-files --other --exclude-standard -- $(git rev-parse --show-cdup 2>/dev/null) 2>/dev/null) ]] {
+    untracked=''
+  } else {
+    untracked="%{$fg_no_bold[red]%}"
+  }
+  zstyle ':vcs_info:git*' formats "%{$fg_bold[green]%}%c%u$untracked(%b)%{$reset_color%}"
+  zstyle ':vcs_info:git*' actionformats "%{$fg_bold[green]%}%c%u$untracked(%a|%b)%{$reset_color%}"
   vcs_info
 }
 setopt prompt_subst
