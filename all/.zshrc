@@ -11,6 +11,7 @@ antigen-bundle npm
 antigen-bundle ruby
 antigen-bundle rvm
 antigen-bundle sublime
+antigen-bundle supki/zsh-cabal-completion
 antigen-bundle vi-mode
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
