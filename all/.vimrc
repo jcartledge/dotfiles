@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'Auto-Pairs'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'IndexedSearch'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'YankRing.vim'
 Bundle 'altercation/vim-colors-solarized'
@@ -73,10 +74,14 @@ set mouse=a
 set mousemodel=popup_setpos
 set display=lastline
 set shortmess=atI
+set laststatus=2
 
 " quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :tabedit $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" powerline
+let g:Powerline_symbols = 'fancy'
 
 " clear search highlight
 nmap <leader><leader> :noh<CR><ESC>
