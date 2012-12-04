@@ -17,7 +17,11 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 
 antigen-theme git://gist.github.com/4182164.git gist-4182164
 
-export DEFAULT_USER=e5020488
+if [[ -s /Users/jcartledge ]] ; then
+  export DEFAULT_USER=jcartledge
+elif [[ -s /Users/e5020488 ]] ; then
+  export DEFAULT_USER=e5020488
+fi
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
