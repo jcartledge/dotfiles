@@ -54,11 +54,10 @@
 
   rb   = rebase
   rbi  = rebase -i
+  fix = !git status -s|grep \"^U\"|cut -d \" \" -f 2|xargs subl -nw
 
 [core]
   editor = /usr/bin/vim
 [merge]
-	tool = mvim -d
-[github]
-	user = jcartledge
-	password = 6OfDetifibumfek|
+  tool = mvim -d
+
