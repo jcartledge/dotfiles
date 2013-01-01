@@ -43,9 +43,6 @@ autoload -U zmv
 PATH=$HOME/local/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# wrap git with hub: https://github.com/defunkt/hub
-eval "$(hub alias -s)"
-
 # Load github credentials for hub
 if [[ -s ~/.github-credentials ]] ; then source ~/.github-credentials ; fi
 
