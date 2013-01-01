@@ -36,6 +36,10 @@ setopt menucomplete
 autoload compinit
 compinit
 
+# zmv looks useful: http://strcat.de/zsh/#zmv
+autoload -U zmv
+
+# path
 PATH=$HOME/local/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
