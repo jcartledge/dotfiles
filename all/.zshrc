@@ -2,6 +2,8 @@
 source ~/antigen/antigen.zsh
 antigen-lib
 
+antigen-bundle vi-mode
+
 antigen-bundle brew
 antigen-bundle fasd
 antigen-bundle gem
@@ -11,8 +13,6 @@ antigen-bundle npm
 antigen-bundle ruby
 antigen-bundle rvm
 antigen-bundle sublime
-antigen-bundle supki/zsh-cabal-completion
-antigen-bundle vi-mode
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
 antigen-theme git://gist.github.com/4182164.git gist-4182164
@@ -41,6 +41,8 @@ autoload -U zmv
 
 # path
 PATH=$HOME/local/bin:$PATH
+PATH=/usr/local/bin:$PATH
+PATH=/usr/local/share/npm/bin/:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Load github credentials for hub
