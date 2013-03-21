@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'Auto-Pairs'
-Bundle 'HTML-AutoCloseTag'
 Bundle 'IndexedSearch'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Raimondi/delimitMate'
@@ -101,7 +100,6 @@ au VimResized * exe "normal! \<c-w>="
 
  " gui options
  if has("gui_running")
-   set background=light
    set guioptions-=T  " remove toolbar
    set guioptions-=m  " remove menubar
    set guioptions+=c  " console dialogs not popups
@@ -114,6 +112,7 @@ au VimResized * exe "normal! \<c-w>="
 
 " colours
 colorscheme solarized
+set background=light
 
 " ctags: look for tags file in current directory, or recurse up
 set tags=tags;/
