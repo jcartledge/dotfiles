@@ -2,9 +2,10 @@
 source ~/antigen/antigen.zsh
 antigen-lib
 
-antigen-bundle vi-mode
+# antigen-bundle vi-mode
 
 antigen-bundle brew
+antigen-bundle bundler
 antigen-bundle fasd
 antigen-bundle gem
 antigen-bundle git
@@ -26,7 +27,8 @@ fi
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 if [[ -s ~/.rvm/bin/rvm-prompt ]] ; then
-  RPROMPT='$(vi_mode_prompt_info) %{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
+  # RPROMPT='$(vi_mode_prompt_info) %{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
+  RPROMPT='%{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
 fi
 
 # Show completion on first TAB
