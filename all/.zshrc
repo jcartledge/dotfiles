@@ -41,6 +41,10 @@ compinit
 # zmv looks useful: http://strcat.de/zsh/#zmv
 autoload -U zmv
 
+# bind ctrl-r and esc-. emacs-style
+bindkey '^R' history-incremental-search-backward
+bindkey '^[.' insert-last-word
+
 # path
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
