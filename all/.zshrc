@@ -34,6 +34,9 @@ fi
 # Show completion on first TAB
 setopt menucomplete
 
+# Lazy cd
+setopt autocd
+
 # Load completions for Ruby, Git, etc.
 autoload compinit
 compinit
