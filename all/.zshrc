@@ -55,5 +55,5 @@ PATH=/usr/local/share/npm/bin/:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Load github credentials for hub
-if [[ -s ~/.github-credentials ]] ; then source ~/.github-credentials ; fi
+if [[ -s ~/Dropbox/.github-credentials ]] ; then source ~/Dropbox/.github-credentials ; fi
 
