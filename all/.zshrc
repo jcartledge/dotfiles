@@ -57,3 +57,5 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # Load github credentials for hub
 if [[ -s ~/Dropbox/.github-credentials ]] ; then source ~/Dropbox/.github-credentials ; fi
 
+# wrap git with hub: https://github.com/defunkt/hub
+eval "$(hub alias -s)"
