@@ -38,7 +38,7 @@ setopt menucomplete
 setopt autocd
 
 # Load completions for Ruby, Git, etc.
-autoload compinit
+autoload -U compinit
 compinit
 
 # zmv looks useful: http://strcat.de/zsh/#zmv
@@ -59,3 +59,9 @@ if [[ -s ~/Dropbox/.github-credentials ]] ; then source ~/Dropbox/.github-creden
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
+
+# git file completion is hell of slow
+# http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it
+__git_files () {
+  _wanted files expl 'local files' _files
+}
