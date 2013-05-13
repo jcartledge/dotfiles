@@ -65,3 +65,6 @@ eval "$(hub alias -s)"
 __git_files () {
   _wanted files expl 'local files' _files
 }
+
+# gitignore.io
+function gi() { curl http://gitignore.io/api/ ;}
