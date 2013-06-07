@@ -31,9 +31,6 @@ if [[ -s ~/.rvm/bin/rvm-prompt ]] ; then
   RPROMPT='$(vi_mode_prompt_info) %{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
 fi
 
-# Show completion on first TAB
-setopt menucomplete
-
 # Lazy cd
 setopt autocd
 
@@ -67,4 +64,4 @@ __git_files () {
 }
 
 # gitignore.io
-function gi() { curl http://gitignore.io/api/ ;}
+function gi() { curl http://gitignore.io/api/$@ ;}
