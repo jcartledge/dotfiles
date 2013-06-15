@@ -58,6 +58,7 @@
 
 [core]
   editor = /usr/bin/vim
+  excludesfile = ~/.gitignore
 [merge]
   tool = mvim -d
 
