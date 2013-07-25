@@ -15,6 +15,7 @@ antigen-bundle npm
 antigen-bundle ruby
 antigen-bundle rvm
 antigen-bundle sublime
+antigen-bundle vagrant
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
 antigen-theme git://gist.github.com/4182164.git gist-4182164
@@ -36,6 +37,10 @@ setopt autocd
 
 # ugh
 unsetopt correct
+
+# History
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
 
 # Load completions for Ruby, Git, etc.
 autoload -U compinit
