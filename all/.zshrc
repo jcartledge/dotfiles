@@ -34,6 +34,9 @@ fi
 # Lazy cd
 setopt autocd
 
+# ugh
+unsetopt correct
+
 # Load completions for Ruby, Git, etc.
 autoload -U compinit
 compinit
