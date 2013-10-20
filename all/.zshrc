@@ -36,6 +36,7 @@ fi
 setopt autocd
 
 # ugh
+unsetopt correct_all
 unsetopt correct
 
 # History
@@ -73,3 +74,9 @@ __git_files () {
 
 # gitignore.io
 function gi() { curl http://gitignore.io/api/$@ ;}
+
+# find replace
+findrepl() {
+  ack -l "$1" | xargs sed -i '' "s/$1/$2/g"
+}
+

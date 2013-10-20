@@ -54,7 +54,7 @@
 
   rb   = rebase
   rbi  = rebase -i
-  fix = !git status -s|grep \"^U\"|cut -d \" \" -f 2|xargs subl -nw
+  fix = !git status -s|grep \"^U\"|cut -d \" \" -f 2|xargs st2 -nw
 
 [core]
   editor = /usr/bin/vim
@@ -62,3 +62,5 @@
 [merge]
   tool = mvim -d
 
+[push]
+	default = matching
