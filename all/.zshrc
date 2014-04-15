@@ -17,8 +17,10 @@ antigen-bundle rvm
 antigen-bundle sublime
 antigen-bundle vagrant
 antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen bundle sindresorhus/pure
 
-antigen-theme git://gist.github.com/4182164.git gist-4182164
+autoload -U promptinit && promptinit
+prompt pure
 
 if [[ -s /Users/jcartledge ]] ; then
   export DEFAULT_USER=jcartledge
@@ -38,6 +40,9 @@ setopt autocd
 # ugh
 unsetopt correct_all
 unsetopt correct
+
+# also seriously
+unsetopt nomatch
 
 # History
 setopt hist_ignore_all_dups
@@ -73,7 +78,7 @@ __git_files () {
 }
 
 # gitignore.io
-function gi() { curl http://gitignore.io/api/$@ ;}
+function gi() { curl http://www.gitignore.io/api/$@ ;}
 
 # find replace
 findrepl() {

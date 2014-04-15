@@ -13,7 +13,6 @@ Bundle 'IndexedSearch'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'YankRing.vim'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'bingaman/vim-sparkup'
 Bundle 'ciaranm/securemodelines'
 Bundle 'claco/jasmine.vim'
@@ -50,6 +49,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-coffee-script'
 Bundle 'wavded/vim-stylus'
+
+" color
+colo torte
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -109,10 +111,6 @@ au VimResized * exe "normal! \<c-w>="
      set guifont=Menlo\ Regular:h13
    endif
  endif
-
-" colours
-colorscheme solarized
-set background=light
 
 " ctags: look for tags file in current directory, or recurse up
 set tags=tags;/
