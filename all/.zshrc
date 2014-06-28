@@ -19,9 +19,6 @@ antigen-bundle vagrant
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen bundle sindresorhus/pure
 
-autoload -U promptinit && promptinit
-prompt pure
-
 if [[ -s /Users/jcartledge ]] ; then
   export DEFAULT_USER=jcartledge
 elif [[ -s /Users/e5020488 ]] ; then
@@ -50,7 +47,7 @@ setopt hist_ignore_space
 
 # Load completions for Ruby, Git, etc.
 autoload -U compinit
-compinit
+compinit -u
 
 # zmv looks useful: http://strcat.de/zsh/#zmv
 autoload -U zmv
