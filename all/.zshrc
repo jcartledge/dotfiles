@@ -1,6 +1,6 @@
 # Antigen
 source ~/antigen/antigen.zsh
-antigen-lib
+antigen-use oh-my-zsh
 
 antigen-bundle vi-mode
 
@@ -55,6 +55,10 @@ autoload -U zmv
 # bind ctrl-r and esc-. emacs-style
 bindkey '^R' history-incremental-search-backward
 bindkey '^[.' insert-last-word
+
+# and fix history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # path
 PATH=$HOME/local/bin:$PATH
