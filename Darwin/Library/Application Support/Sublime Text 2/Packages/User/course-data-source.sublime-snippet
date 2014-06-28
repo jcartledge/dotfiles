@@ -1,0 +1,36 @@
+<snippet>
+  <content><![CDATA[
+## ${1:name}
+
+
+### Background
+
+${2:background}
+
+### Contents
+
+ * ${3:contents}
+
+### Owner
+
+ * ${4:area}
+ * ${5:contact}
+
+### Format/process
+
+ * ${6:format}
+
+### Lifecycle
+
+ * ${7:lifecycle}
+
+### Issues
+
+ * ${8:issues}
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>cds</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>
