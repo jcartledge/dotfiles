@@ -7,3 +7,6 @@
 [submodule "all/antigen"]
 	path = all/antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule "all/.vim/bundle/Vundle.vim"]
+	path = all/.vim/bundle/Vundle.vim
+	url = git://github.com/gmarik/Vundle.vim.git
