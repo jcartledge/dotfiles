@@ -2,6 +2,7 @@
 	"bold_folder_labels": true,
 	"caret_style": "phase",
 	"color_scheme": "Packages/Base16 Color Schemes/base16-eighties.dark.tmTheme",
+	"copy_with_empty_selection": false,
 	"default_line_ending": "unix",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,

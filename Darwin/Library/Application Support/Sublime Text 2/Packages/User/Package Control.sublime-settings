@@ -31,7 +31,6 @@
 		"jQuery",
 		"LESS",
 		"Liquid",
-		"Live CSS",
 		"Logs Colorize",
 		"MakeExecutable",
 		"Markdown Extended",
@@ -51,7 +50,6 @@
 		"Ruby Slim",
 		"Sass",
 		"SCSS",
-		"SearchInProject",
 		"SideBarEnhancements",
 		"SideBarGit",
 		"Simple Print Function",
@@ -75,8 +73,7 @@
 		"Vintage Surround",
 		"VintageEx",
 		"Xdebug",
-		"YUI Compressor",
-		"ZenCoding"
+		"YUI Compressor"
 	],
 	"repositories":
 	[
