@@ -70,7 +70,7 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 if [[ -s ~/Dropbox/.github-credentials ]] ; then source ~/Dropbox/.github-credentials ; fi
 
 # wrap git with hub: https://github.com/defunkt/hub
-eval "$(hub alias -s)"
+eval "$(gh alias -s)"
 
 # git file completion is hell of slow
 # http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it
@@ -79,7 +79,7 @@ __git_files () {
 }
 
 # gitignore.io
-function gi() { curl http://www.gitignore.io/api/$@ ;}
+function gi() { curl https://www.gitignore.io/api/$@ ;}
 
 # find replace
 findrepl() {
