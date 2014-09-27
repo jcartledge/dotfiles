@@ -8,18 +8,31 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-Bundle 'Auto-Pairs'
+" shows a git diff in the gutter (sign column) and stages/reverts hunks.
+Bundle 'airblade/vim-gitgutter'
+
+" insert or delete brackets, parens, quotes in pair
+" Bundle 'Auto-Pairs'
+
+" shows  'Nth match out of M'  at every search
 Bundle 'IndexedSearch'
+
+" Provides auto-balancing and some expansions for parens, quotes, etc.
 Bundle 'Raimondi/delimitMate'
+
+" Maintains a history of previous yanks, changes and deletes
 Bundle 'YankRing.vim'
-Bundle 'bingaman/vim-sparkup'
+
+" Delete unwanted whitespace at the end of lines.
+Bundle 'DeleteTrailingWhitespace'
+
+" lean & mean status/tabline for vim that's light as air
 Bundle 'bling/vim-airline'
+
+" Secure, user-configurable modeline support
 Bundle 'ciaranm/securemodelines'
-Bundle 'claco/jasmine.vim'
-Bundle 'digitaltoad/vim-jade'
+
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'empanda/vim-varnish'
-Bundle 'ervandew/supertab'
 Bundle 'file-line'
 Bundle 'gmarik/sudo-gui.vim'
 Bundle 'godlygeek/tabular'
@@ -35,6 +48,9 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'shemerey/vim-peepopen'
+
+" add completion from current buffer for command line mode ':'
+" after a '/', and in command line mode '/' and '?'.
 Bundle 'sherlock.vim'
 Bundle 'skammer/vim-css-color'
 Bundle 'sunaku/vim-ruby-minitest'
@@ -49,9 +65,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-coffee-script'
 Bundle 'wavded/vim-stylus'
+Bundle 'chriskempson/base16-vim'
 
-" color
-colo torte
+set bg=dark
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -73,16 +89,19 @@ set nobackup noswapfile
 set encoding=utf-8
 set mouse=a
 set mousemodel=popup_setpos
-set display=lastline
+set display+=lastline
 set shortmess=atI
 set laststatus=2
 
 " quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :tabedit $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+augroup sourcevimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup end " }
 
 " powerline
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
 
 " clear search highlight
 nmap <leader><leader> :noh<CR><ESC>
@@ -102,14 +121,11 @@ au VimResized * exe "normal! \<c-w>="
 
  " gui options
  if has("gui_running")
+   colo base16-eighties
    set guioptions-=T  " remove toolbar
    set guioptions-=m  " remove menubar
    set guioptions+=c  " console dialogs not popups
-   " mac-specific stuff
-   if has("gui_macvim")
-     set macmeta
-     set guifont=Menlo\ Regular:h13
-   endif
+   set guifont=Sauce\ Code\ Powerline:h14
  endif
 
 " ctags: look for tags file in current directory, or recurse up
@@ -172,6 +188,9 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
 
+" gitgutter
+let g:gitgutter_sign_column_always = 1
+
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
 nmap <silent> go :call system("open " . expand('<cWORD>'))<CR>
@@ -202,14 +221,9 @@ autocmd BufNewFile,BufRead Gemfile set ft=ruby
 let g:snippets_dir = '~/.vim/bundle/snipmate-snippets'
 let g:snips_author = "jcartledge@gmail.com"
 
-" Try to force snipmate and supertab to be nice
-let g:SuperTabDefaultCompletionType = 'context'
-" Give up and remap supertab
-" let g:SuperTabMappingForward        = '<c-space>'
-" let g:SuperTabMappingBackward       = '<s-c-space>'
-
 " Autoclosetag
 au FileType xhtml,xml so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
 
 " Encryption
 set cm=blowfish
+
