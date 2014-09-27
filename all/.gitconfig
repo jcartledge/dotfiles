@@ -25,6 +25,7 @@
 
   d     = diff
   dc    = diff --cached
+  dw    = diff -w
 
   l     = log
   lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -58,12 +59,18 @@
 
 [core]
   editor = /usr/bin/vim
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/jcartledge/.gitignore
 [merge]
   tool = mvim -d
 
 [push]
-  default = current
+	default = current
 
 [pull]
-  default = current
+	default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
