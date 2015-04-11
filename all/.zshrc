@@ -61,16 +61,14 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # path
+PATH=$HOME/.cabal/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/share/npm/bin/:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# Load github credentials for hub
-if [[ -s ~/Dropbox/.github-credentials ]] ; then source ~/Dropbox/.github-credentials ; fi
-
 # wrap git with hub: https://github.com/defunkt/hub
-eval "$(gh alias -s)"
+eval "$(hub alias -s)"
 
 # git file completion is hell of slow
 # http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it
