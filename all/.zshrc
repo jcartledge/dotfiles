@@ -20,6 +20,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vagrant
 
   zgen load zsh-users/zsh-syntax-highlighting
+  zgen load supercrabtree/k
   zgen load sindresorhus/pure
 
   zgen save
