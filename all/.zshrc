@@ -1,23 +1,29 @@
-# Antigen
-source ~/antigen/antigen.zsh
-antigen-use oh-my-zsh
+source "${HOME}/zgen/zgen.zsh"
 
-antigen-bundle vi-mode
+if ! zgen saved; then
+  echo "Creating a zgen save"
 
-antigen-bundle brew
-antigen-bundle bundler
-antigen-bundle fasd
-antigen-bundle gem
-antigen-bundle git
-antigen-bundle heroku
-antigen-bundle history-substring-search
-antigen-bundle npm
-antigen-bundle ruby
-antigen-bundle rvm
-antigen-bundle sublime
-antigen-bundle vagrant
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen bundle sindresorhus/pure
+  zgen oh-my-zsh
+
+  zgen oh-my-zsh plugins/vi-mode
+  zgen oh-my-zsh plugins/brew
+  zgen oh-my-zsh plugins/bundler
+  zgen oh-my-zsh plugins/fasd
+  zgen oh-my-zsh plugins/gem
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/heroku
+  zgen oh-my-zsh plugins/history-substring-search
+  zgen oh-my-zsh plugins/npm
+  zgen oh-my-zsh plugins/ruby
+  zgen oh-my-zsh plugins/rvm
+  zgen oh-my-zsh plugins/sublime
+  zgen oh-my-zsh plugins/vagrant
+
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load sindresorhus/pure
+
+  zgen save
+fi
 
 if [[ -s /Users/jcartledge ]] ; then
   export DEFAULT_USER=jcartledge
