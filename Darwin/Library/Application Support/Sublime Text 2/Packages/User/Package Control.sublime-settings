@@ -1,5 +1,8 @@
 {
 	"auto_upgrade_last_run": null,
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"Abacus",
@@ -8,6 +11,7 @@
 		"AsAbove",
 		"Auto Semi-Colon",
 		"Base16 Color Schemes",
+		"Case Conversion",
 		"CoffeeScript",
 		"Color Highlighter",
 		"CTags",
@@ -30,6 +34,7 @@
 		"Indent XML",
 		"INI",
 		"Jade",
+		"Javascript Beautify",
 		"jQuery",
 		"LESS",
 		"Liquid",
@@ -43,9 +48,13 @@
 		"Package Control",
 		"Pandown",
 		"PEG.js",
+		"PHPUnit Completions",
+		"PHPUnit Snippets",
 		"PlainTasks",
 		"Play 2.0",
+		"Pretty JSON",
 		"Puppet",
+		"PureScript",
 		"QuickPrint",
 		"Racket",
 		"Rails Related Files",
@@ -57,7 +66,6 @@
 		"Simple Print Function",
 		"Stylus",
 		"sublime-closure-linter",
-		"SublimeCodeIntel",
 		"sublimelint",
 		"SublimeLinter",
 		"SublimePeek",
