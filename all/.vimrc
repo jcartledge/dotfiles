@@ -11,9 +11,6 @@ Bundle 'gmarik/vundle'
 " shows a git diff in the gutter (sign column) and stages/reverts hunks.
 Bundle 'airblade/vim-gitgutter'
 
-" insert or delete brackets, parens, quotes in pair
-" Bundle 'Auto-Pairs'
-
 " shows  'Nth match out of M'  at every search
 Bundle 'IndexedSearch'
 
@@ -66,6 +63,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-coffee-script'
 Bundle 'wavded/vim-stylus'
 Bundle 'chriskempson/base16-vim'
+Bundle 'raichoo/purescript-vim'
 
 set bg=dark
 
@@ -125,7 +123,7 @@ au VimResized * exe "normal! \<c-w>="
    set guioptions-=T  " remove toolbar
    set guioptions-=m  " remove menubar
    set guioptions+=c  " console dialogs not popups
-   set guifont=Sauce\ Code\ Powerline:h14
+   set guifont=Sauce\ Code\ Powerline:h15
  endif
 
 " ctags: look for tags file in current directory, or recurse up
@@ -221,9 +219,10 @@ autocmd BufNewFile,BufRead Gemfile set ft=ruby
 let g:snippets_dir = '~/.vim/bundle/snipmate-snippets'
 let g:snips_author = "jcartledge@gmail.com"
 
-" Autoclosetag
-au FileType xhtml,xml so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
-
 " Encryption
 set cm=blowfish
+
+" Highlight long lines
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
