@@ -26,12 +26,6 @@ if ! zgen saved; then
   zgen save
 fi
 
-if [[ -s /Users/jcartledge ]] ; then
-  export DEFAULT_USER=jcartledge
-elif [[ -s /Users/e5020488 ]] ; then
-  export DEFAULT_USER=e5020488
-fi
-
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 if [[ -s ~/.rvm/bin/rvm-prompt ]] ; then
