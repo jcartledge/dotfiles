@@ -20,6 +20,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vagrant
 
   zgen load zsh-users/zsh-syntax-highlighting
+
   zgen load supercrabtree/k
   zgen load sindresorhus/pure
 
@@ -85,3 +86,19 @@ findrepl() {
   ack -l "$1" | xargs sed -i '' "s/$1/$2/g"
 }
 
+# enter = git status or ls
+magic-enter () {
+  if [[ -z $BUFFER ]]; then
+    echo ""
+    if git rev-parse --is-inside-work-tree &>/dev/null; then
+      git status -s
+    else
+      ls -CF
+    fi
+    zle redisplay
+  else
+    zle accept-line
+  fi
+}
+zle -N magic-enter
+bindkey "^M" magic-enter
