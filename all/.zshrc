@@ -21,8 +21,10 @@ if ! zgen saved; then
 
   zgen load zsh-users/zsh-syntax-highlighting
 
+  zgen load djui/alias-tips
   zgen load supercrabtree/k
   zgen load sindresorhus/pure
+  zgen load hypebeast/dotfiles todotxt
 
   zgen save
 fi
@@ -64,6 +66,7 @@ bindkey '^[[B' history-substring-search-down
 
 # path
 PATH=$HOME/.cabal/bin:$PATH
+PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/share/npm/bin/:$PATH
@@ -91,7 +94,7 @@ magic-enter () {
   if [[ -z $BUFFER ]]; then
     echo ""
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-      git status -s
+      git status -s; git lg | head -5
     else
       ls -CF
     fi
