@@ -222,7 +222,3 @@ let g:snips_author = "jcartledge@gmail.com"
 " Encryption
 set cm=blowfish
 
-" Highlight long lines
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
