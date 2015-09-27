@@ -64,6 +64,7 @@ Bundle 'vim-coffee-script'
 Bundle 'wavded/vim-stylus'
 Bundle 'chriskempson/base16-vim'
 Bundle 'raichoo/purescript-vim'
+Bundle 'freitass/todo.txt-vim'
 
 set bg=dark
 
