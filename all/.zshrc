@@ -24,7 +24,6 @@ if ! zgen saved; then
   zgen load djui/alias-tips
   zgen load supercrabtree/k
   zgen load sindresorhus/pure
-  zgen load hypebeast/dotfiles todotxt
 
   zgen save
 fi
@@ -105,3 +104,10 @@ magic-enter () {
 }
 zle -N magic-enter
 bindkey "^M" magic-enter
+
+# todo.sh
+alias t='todo.sh'
+alias ta='todo.sh -t add'
+alias td='todo.sh do'
+alias tt='todo.sh ls && repl todo.sh -t'
+alias te='$EDITOR $TODO_FILE'
