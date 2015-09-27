@@ -7,7 +7,6 @@ if ! zgen saved; then
 
   zgen oh-my-zsh plugins/vi-mode
   zgen oh-my-zsh plugins/brew
-  zgen oh-my-zsh plugins/bundler
   zgen oh-my-zsh plugins/fasd
   zgen oh-my-zsh plugins/gem
   zgen oh-my-zsh plugins/git
@@ -76,9 +75,9 @@ eval "$(hub alias -s)"
 
 # git file completion is hell of slow
 # http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it
-__git_files () {
-  _wanted files expl 'local files' _files
-}
+#__git_files () {
+  #_wanted files expl 'local files' _files
+#}
 
 # gitignore.io
 function gi() { curl https://www.gitignore.io/api/$@ ;}
@@ -88,6 +87,8 @@ findrepl() {
   ack -l "$1" | xargs sed -i '' "s/$1/$2/g"
 }
 
+# this
+alias drupal-php='ssh -t vagrant@dev.vu.edu.au php -d auto_prepend_file="/u/drupal/src/build/drupal-cli-harness.php"'
 # enter = git status or ls
 magic-enter () {
   if [[ -z $BUFFER ]]; then
