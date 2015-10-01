@@ -22,6 +22,7 @@ if ! zgen saved; then
 
   zgen load djui/alias-tips
   zgen load supercrabtree/k
+  zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
 
   zgen save
