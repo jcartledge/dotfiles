@@ -30,9 +30,6 @@ fi
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-if [[ -s ~/.rvm/bin/rvm-prompt ]] ; then
-  RPROMPT='$(vi_mode_prompt_info) %{$fg_bold[green]%}$(~/.rvm/bin/rvm-prompt)'
-fi
 
 # Lazy cd
 setopt autocd
