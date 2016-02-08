@@ -1,70 +1,39 @@
-" vundle
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+call plug#begin()
+Plug 'tpope/vim-sensible'
 
 " shows a git diff in the gutter (sign column) and stages/reverts hunks.
-Bundle 'airblade/vim-gitgutter'
-
-" shows  'Nth match out of M'  at every search
-Bundle 'IndexedSearch'
-
-" Provides auto-balancing and some expansions for parens, quotes, etc.
-Bundle 'Raimondi/delimitMate'
-
-" Maintains a history of previous yanks, changes and deletes
-Bundle 'YankRing.vim'
-
-" Delete unwanted whitespace at the end of lines.
-Bundle 'DeleteTrailingWhitespace'
-
-" lean & mean status/tabline for vim that's light as air
-Bundle 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
 
 " Secure, user-configurable modeline support
-Bundle 'ciaranm/securemodelines'
+Plug 'ciaranm/securemodelines'
 
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'file-line'
-Bundle 'gmarik/sudo-gui.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'groenewege/vim-less'
-Bundle 'jcartledge/snipmate-snippets'
-Bundle 'jcartledge/snipmate.vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
-Bundle 'preview'
-Bundle 'rodjek/vim-puppet'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'shemerey/vim-peepopen'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'file-line'
+Plug 'gmarik/sudo-gui.vim'
+Plug 'groenewege/vim-less'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'preview'
+Plug 'rodjek/vim-puppet'
+Plug 'scrooloose/syntastic'
 
 " add completion from current buffer for command line mode ':'
 " after a '/', and in command line mode '/' and '?'.
-Bundle 'sherlock.vim'
-Bundle 'skammer/vim-css-color'
-Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-coffee-script'
-Bundle 'wavded/vim-stylus'
-Bundle 'chriskempson/base16-vim'
-Bundle 'raichoo/purescript-vim'
-Bundle 'freitass/todo.txt-vim'
+Plug 'sherlock.vim'
+Plug 'skammer/vim-css-color'
+Plug 'sunaku/vim-ruby-minitest'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-coffee-script'
+Plug 'wavded/vim-stylus'
+Plug 'chriskempson/base16-vim'
+Plug 'freitass/todo.txt-vim'
+Plug 'kien/ctrlp.vim'
+call plug#end()
 
 set bg=dark
 
@@ -186,6 +155,7 @@ set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_javascript_checkers = ['semistandard']
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
