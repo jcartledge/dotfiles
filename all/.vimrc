@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'tpope/vim-sensible'
 
 " shows a git diff in the gutter (sign column) and stages/reverts hunks.
 Plug 'airblade/vim-gitgutter'
@@ -7,35 +6,27 @@ Plug 'airblade/vim-gitgutter'
 " Secure, user-configurable modeline support
 Plug 'ciaranm/securemodelines'
 
-Plug 'editorconfig/editorconfig-vim'
 Plug 'file-line'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'groenewege/vim-less'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'preview'
-Plug 'rodjek/vim-puppet'
-Plug 'scrooloose/syntastic'
 
 " add completion from current buffer for command line mode ':'
 " after a '/', and in command line mode '/' and '?'.
-Plug 'sherlock.vim'
 Plug 'skammer/vim-css-color'
-Plug 'sunaku/vim-ruby-minitest'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-coffee-script'
-Plug 'wavded/vim-stylus'
 Plug 'chriskempson/base16-vim'
 Plug 'freitass/todo.txt-vim'
 Plug 'kien/ctrlp.vim'
 call plug#end()
 
 set bg=dark
+set clipboard=unnamed
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -68,24 +59,11 @@ augroup sourcevimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup end " }
 
-" powerline
-let g:airline_powerline_fonts = 1
-
 " clear search highlight
 nmap <leader><leader> :noh<CR><ESC>
 
 " resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
-
-" Insert cursor in CLI
-" http://paste.stevelosh.com/4f83354246f98e0007000000?vim
- if exists('$TMUX')
-   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
- else
-   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
- endif
 
  " gui options
  if has("gui_running")
@@ -96,32 +74,8 @@ au VimResized * exe "normal! \<c-w>="
    set guifont=Sauce\ Code\ Powerline:h15
  endif
 
-" ctags: look for tags file in current directory, or recurse up
-set tags=tags;/
-
-" format xml on load
-au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
 " save when focus lost
 au FocusLost * silent! w
-
-" get out of insert mode with motion keys
-imap jj <Esc>j
-imap kk <Esc>k
-imap hhh <Esc>h
-imap lll <Esc>l
-
-" shift-arrow to navigate windows
-nmap <S-Left>   <C-w>h
-nmap <S-Right>  <C-w>l
-nmap <S-Down>   <C-w>j
-nmap <S-Up>     <C-w>k
-
-" sensible tab navigation
-nmap <C-Tab>    :tabn<CR>
-nmap <C-S-Tab>  :tabN<CR>
-imap <C-Tab>    <Esc>:tabn<CR>
-imap <C-S-Tab>  <Esc>:tabN<CR>
 
 " The following two options interfere with one another.
 "
@@ -135,27 +89,8 @@ set lbr formatoptions=l
 " highlight whitespace
 set list listchars=tab:»·,trail:·
 
-" tagbar
-let g:tagbar_ctags_bin="/usr/local/bin/ctags" " brew ctags, not the default mac one
-nmap <silent> <leader>T :TagbarToggle<CR>
-
-" nerdtree
-nmap <silent> <leader>f :NERDTreeToggle<CR>
-
 " spellcheck
 nmap <silent> <leader>s :setlocal invspell<CR>
-
-" ack command
-let g:ackprg="ack -H --nocolor --nogroup --column"
-
-" syntastic setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html']
-let g:syntastic_javascript_checkers = ['semistandard']
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
@@ -185,11 +120,4 @@ noremap <SPACE> za
 
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
-
-" Load my snippets
-let g:snippets_dir = '~/.vim/bundle/snipmate-snippets'
-let g:snips_author = "jcartledge@gmail.com"
-
-" Encryption
-set cm=blowfish
 
