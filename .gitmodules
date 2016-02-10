@@ -10,3 +10,6 @@
 [submodule "all/zgen"]
 	path = all/zgen
 	url = git://github.com/tarjoilija/zgen.git
+[submodule "all/.tmux/plugins/tpm"]
+	path = all/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
