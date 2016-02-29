@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 'xero/sourcerer.vim'
+
 " shows a git diff in the gutter (sign column) and stages/reverts hunks.
 Plug 'airblade/vim-gitgutter'
 
@@ -10,6 +12,8 @@ Plug 'file-line'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'groenewege/vim-less'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'itchyny/lightline.vim'
+Plug 'jszakmeister/vim-togglecursor'
 
 " add completion from current buffer for command line mode ':'
 " after a '/', and in command line mode '/' and '?'.
@@ -25,8 +29,13 @@ Plug 'freitass/todo.txt-vim'
 Plug 'kien/ctrlp.vim'
 call plug#end()
 
-set bg=dark
 set clipboard=unnamed
+
+if !has('gui_running')
+  set t_Co=256
+endif
+set bg=dark
+colorscheme sourcerer
 
 " these plugins are bundled in $VIMRUNTIME
 ru macros/matchit.vim
@@ -64,15 +73,6 @@ nmap <leader><leader> :noh<CR><ESC>
 
 " resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
-
- " gui options
- if has("gui_running")
-   colo base16-eighties
-   set guioptions-=T  " remove toolbar
-   set guioptions-=m  " remove menubar
-   set guioptions+=c  " console dialogs not popups
-   set guifont=Sauce\ Code\ Powerline:h15
- endif
 
 " save when focus lost
 au FocusLost * silent! w
