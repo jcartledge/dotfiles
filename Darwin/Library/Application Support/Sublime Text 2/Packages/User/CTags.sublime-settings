@@ -1,3 +1,0 @@
-{
-  "ctags_command" : "tags --exclude=build/* --langmap=php:.engine.inc.module.theme.install -R ."
-}
