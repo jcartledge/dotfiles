@@ -1,45 +1,37 @@
 call plug#begin()
 
-Plug 'xero/sourcerer.vim'
-
-" shows a git diff in the gutter (sign column) and stages/reverts hunks.
+Plug 'digitaltoad/vim-pug'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'airblade/vim-gitgutter'
-
-" Secure, user-configurable modeline support
+Plug 'ap/vim-css-color'
 Plug 'ciaranm/securemodelines'
-
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'file-line'
+Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'groenewege/vim-less'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'itchyny/lightline.vim'
-Plug 'jszakmeister/vim-togglecursor'
-
-" add completion from current buffer for command line mode ':'
-" after a '/', and in command line mode '/' and '?'.
-Plug 'skammer/vim-css-color'
-Plug 'tpope/vim-fugitive'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'chriskempson/base16-vim'
-Plug 'freitass/todo.txt-vim'
-Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'xero/sourcerer.vim'
+
 call plug#end()
 
-set clipboard=unnamed
-
-if !has('gui_running')
-  set t_Co=256
-endif
-set bg=dark
+set t_Co=256
 colorscheme sourcerer
+set bg=dark
+let g:lightline = {'colorscheme': 'wombat'}
 
 " these plugins are bundled in $VIMRUNTIME
-ru macros/matchit.vim
-ru macros/editexisting.vim
+runtime macros/matchit.vim
+runtime macros/editexisting.vim
 
 " basic editor config
 syntax on
@@ -60,12 +52,16 @@ set mousemodel=popup_setpos
 set display+=lastline
 set shortmess=atI
 set laststatus=2
+set clipboard=unnamed
+
+" tree mode
+let g:netrw_liststyle=3
 
 " quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :tabedit $MYVIMRC<CR>
+nmap <silent> <leader>ev :edit $MYVIMRC<CR>
 augroup sourcevimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup end " }
 
 " clear search highlight
@@ -101,23 +97,37 @@ nmap <silent> go :call system("open " . expand('<cWORD>'))<CR>
 vmap <silent> go :call system("open " . @*)<CR>
 
 " drupal stuff
-if has("autocmd")
-  autocmd BufRead,BufNewFile *.module   set filetype=php
-  autocmd BufRead,BufNewFile *.install  set filetype=php
-  autocmd BufRead,BufNewFile *.info     set filetype=dosini
-endif
+autocmd BufRead,BufNewFile *.module   set filetype=php
+autocmd BufRead,BufNewFile *.install  set filetype=php
+autocmd BufRead,BufNewFile *.info     set filetype=dosini
 
 " good enough folding for bracey languages
-au FileType php,css,less,javascript setlocal foldmethod=marker
-au FileType php,css,less,javascript setlocal foldmarker={,}
-au FileType php,css,less,javascript normal zR
+autocmd FileType php,css,less,javascript setlocal foldmethod=marker
+autocmd FileType php,css,less,javascript setlocal foldmarker={,}
+autocmd FileType php,css,less,javascript normal zR
+
+" nice folding
+autocmd BufRead,BufNewFile,BufEnter * hi Folded ctermfg=242 ctermbg=236
+set fillchars="fold: "
+set foldtext=MyFoldText()
+function! MyFoldText()
+  return getline(v:foldstart) . " …"
+endfunction
 
 " good enough highlighting for JSON
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " make space toggle folds in
-noremap <SPACE> za
+noremap <SPACE> zc
+noremap <RETURN> zo
 
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
+" ctrlP
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_max_files = 0
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+endif
