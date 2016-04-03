@@ -1,17 +1,17 @@
 call plug#begin()
 
-Plug 'digitaltoad/vim-pug'
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ciaranm/securemodelines'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'digitaltoad/vim-pug'
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'groenewege/vim-less'
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-git'
@@ -124,10 +124,11 @@ noremap <RETURN> zo
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
-" ctrlP
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_max_files = 0
-if executable("ag")
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
-endif
+" fzf
+nnoremap <C-p> :FZF<cr>
+vnoremap <C-p> <esc>:FZF<cr>
+inoremap <C-p> <esc>:FZF<cr>
+
+" limelight
+let g:limelight_conceal_ctermfg = 240
+

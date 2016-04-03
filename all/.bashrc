@@ -167,3 +167,5 @@ function alias_completion {
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export PATH="$PATH:/Applications/DevDesktop/drush"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

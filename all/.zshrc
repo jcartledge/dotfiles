@@ -110,3 +110,5 @@ alias ta='todo.sh -t add'
 alias td='todo.sh do'
 alias tt='todo.sh ls && repl todo.sh -t'
 alias te='todo.sh edit'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
