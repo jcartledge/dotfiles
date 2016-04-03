@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'StanAngeloff/php.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ciaranm/securemodelines'
@@ -28,7 +29,7 @@ call plug#end()
 set t_Co=256
 colorscheme sourcerer
 set bg=dark
-let g:lightline = {'colorscheme': 'wombat'}
+let g:lightline={'colorscheme': 'wombat'}
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -93,7 +94,7 @@ set list listchars=tab:»·,trail:·
 nmap <silent> <leader>s :setlocal invspell<CR>
 
 " gitgutter
-let g:gitgutter_sign_column_always = 1
+let g:gitgutter_sign_column_always=1
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
@@ -106,16 +107,26 @@ autocmd BufRead,BufNewFile *.install  set filetype=php
 autocmd BufRead,BufNewFile *.info     set filetype=dosini
 
 " good enough folding for bracey languages
-autocmd FileType php,css,less,javascript setlocal foldmethod=marker
-autocmd FileType php,css,less,javascript setlocal foldmarker={,}
-autocmd FileType php,css,less,javascript normal zR
+autocmd FileType css,less,javascript setlocal foldmethod=marker
+autocmd FileType css,less,javascript setlocal foldmarker={,}
+autocmd FileType css,less,javascript normal zR
 
 " nice folding
 autocmd BufRead,BufNewFile,BufEnter * hi Folded ctermfg=242 ctermbg=236
 set fillchars="fold: "
 set foldtext=MyFoldText()
 function! MyFoldText()
-  return getline(v:foldstart) . " …"
+  let line = getline(v:foldstart)
+  if match(line, "/\*\\*") == -1
+    " not a docblock
+    return line . " …"
+  else
+    " docblock - is it @file?
+    let firstLine = getline(v:foldstart + 1)
+    let secondLine = getline(v:foldstart + 2)
+    let description = (match(firstLine, "@file") == -1) ? firstLine : secondLine
+    return line . substitute(description, "^\\s*\\*", "", "") . " */"
+  end
 endfunction
 
 " good enough highlighting for JSON
@@ -134,5 +145,21 @@ vnoremap <C-p> <esc>:FZF<cr>
 inoremap <C-p> <esc>:FZF<cr>
 
 " limelight
-let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_ctermfg=240
 
+" syntax folding for php
+autocmd FileType php setlocal foldmethod=syntax
+autocmd FileType php setlocal foldlevel=99
+let php_folding=2
+let php_phpdoc_folding=1
+
+" highlight php docblocks
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
