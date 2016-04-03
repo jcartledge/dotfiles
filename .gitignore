@@ -1,3 +1,5 @@
 *.cache
 *.log
 *.system-ca-bundle
+tags*
+.tags*
