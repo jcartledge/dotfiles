@@ -70,7 +70,7 @@ augroup sourcevimrc " {
 augroup end " }
 
 " clear search highlight
-nmap <leader><leader> :noh<CR><ESC>
+nmap <leader>/ :noh<CR><ESC>
 
 " resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
@@ -152,6 +152,7 @@ autocmd FileType php setlocal foldmethod=syntax
 autocmd FileType php setlocal foldlevel=99
 let php_folding=2
 let php_phpdoc_folding=1
+nnoremap <leader>f :set foldlevel=0<cr>
 
 " highlight php docblocks
 function! PhpSyntaxOverride()
