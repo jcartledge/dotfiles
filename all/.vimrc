@@ -140,9 +140,10 @@ noremap <RETURN> zo
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
 " fzf
-nnoremap <C-p> :FZF<cr>
-vnoremap <C-p> <esc>:FZF<cr>
-inoremap <C-p> <esc>:FZF<cr>
+map <silent> <C-p> :FZF<cr>
+map <silent> <C-t> :Tags<cr>
+map <silent> <C-r> :BTags<cr>
+map <silent> <C-f> :Ag<cr>
 
 " limelight
 let g:limelight_conceal_ctermfg=240
