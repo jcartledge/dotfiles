@@ -1,28 +1,29 @@
 call plug#begin()
 
-Plug 'StanAngeloff/php.vim'
+Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'ciaranm/securemodelines'
-Plug 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug', {'for': 'pug'}
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
-Plug 'groenewege/vim-less'
+Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'itchyny/lightline.vim'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-haml', {'for': 'haml'}
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'xero/sourcerer.vim'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -165,3 +166,13 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" project-specific .vimrc
+set exrc
+set secure
