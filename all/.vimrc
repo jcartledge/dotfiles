@@ -1,6 +1,7 @@
 call plug#begin()
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'}
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'ciaranm/securemodelines'
@@ -11,11 +12,14 @@ Plug 'gmarik/sudo-gui.vim'
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml', {'for': 'haml'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
@@ -23,7 +27,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'xero/sourcerer.vim'
-Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -34,7 +37,6 @@ let g:lightline={'colorscheme': 'wombat'}
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
-runtime macros/editexisting.vim
 
 " basic editor config
 syntax on
