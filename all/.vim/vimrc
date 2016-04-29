@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'}
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-buftabline'
 Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'ciaranm/securemodelines'
 Plug 'digitaltoad/vim-pug', {'for': 'pug'}
@@ -178,3 +179,13 @@ let g:syntastic_check_on_wq = 0
 " project-specific .vimrc
 set exrc
 set secure
+
+" buftabline
+let g:buftabline_show = 1
+let g:buftabline_numbers = 1
+let g:buftabline_indicators = 1
+let g:buftabline_separators = 1
+hi! link BufTabLineFill SignColumn
+hi! link BufTabLineHidden SignColumn
+hi! link BufTabLineActive SignColumn
+hi! link BufTabLineCurrent ModeMsg
