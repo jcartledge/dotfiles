@@ -60,6 +60,11 @@ set shortmess=atI
 set laststatus=2
 set clipboard=unnamed
 
+" Use cursorline to highlight insert mode
+highlight clear CursorLine
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set cursorline!
+
 " tree mode
 let g:netrw_liststyle=3
 
