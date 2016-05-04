@@ -84,9 +84,6 @@ augroup end " }
 " clear search highlight
 nmap <leader>/ :noh<CR><ESC>
 
-" resize splits when the window is resized
-au VimResized * exe "normal! \<c-w>="
-
 " save when focus lost
 au FocusLost * silent! w
 au FocusLost * silent! stopinsert
@@ -198,3 +195,7 @@ hi! link BufTabLineFill SignColumn
 hi! link BufTabLineHidden SignColumn
 hi! link BufTabLineActive SignColumn
 hi! link BufTabLineCurrent ModeMsg
+
+" auto-pairs
+" Interferes with markdown checkboxes.
+let g:AutoPairsMapSpace = 0
