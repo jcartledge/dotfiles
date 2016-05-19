@@ -139,9 +139,6 @@ function! MyFoldText()
   end
 endfunction
 
-" good enough highlighting for JSON
-autocmd BufNewFile,BufRead *.json set ft=javascript
-
 " make space toggle folds in
 noremap <SPACE> zc
 noremap <RETURN> zo
@@ -177,6 +174,7 @@ augroup phpSyntaxOverride
 augroup END
 
 " syntastic
+let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
