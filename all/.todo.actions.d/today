@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+shift
+date=$(date "+%Y-%m-%d")
+if [ $# -eq 0 ]; then
+  "$TODO_FULL_SH" ls due:"$date"
+else
+  "$TODO_FULL_SH" add "$@" due:"$date"
+fi
