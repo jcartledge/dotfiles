@@ -98,7 +98,8 @@ nmap <silent> <leader>w :set list!<cr>
 set lbr formatoptions=l
 
 " highlight whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=tab:⇥\ ,trail:·
+hi Specialkey ctermfg=236 ctermbg=None
 
 " spellcheck
 nmap <silent> <leader>s :setlocal invspell<CR>
