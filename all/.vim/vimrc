@@ -102,8 +102,11 @@ set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 hi Specialkey ctermfg=236 ctermbg=None
 
-" spellcheck
-nmap <silent> <leader>s :setlocal invspell<CR>
+" <leader>s:
+" toggle syntastic in codeish file
+nmap <silent> <leader>s :SyntasticToggle<cr>
+" spellcheck in textish files
+autocmd FileType txt,markdown,todo nmap <silent> <leader>s :setlocal invspell<CR>
 
 " gitgutter
 let g:gitgutter_sign_column_always=1
