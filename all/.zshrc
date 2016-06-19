@@ -106,6 +106,9 @@ alias td='todo.sh do'
 alias tt='todo.sh ls && repl todo.sh -t'
 alias te='todo.sh edit'
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# nvm
 export NVM_DIR=/Users/jcartledge/.nvm
 . /usr/local/opt/nvm/nvm.sh
