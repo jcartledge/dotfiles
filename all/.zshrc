@@ -14,7 +14,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/history-substring-search
   zgen oh-my-zsh plugins/npm
   zgen oh-my-zsh plugins/ruby
-  zgen oh-my-zsh plugins/rvm
   zgen oh-my-zsh plugins/sublime
   zgen oh-my-zsh plugins/vagrant
 
@@ -27,9 +26,6 @@ if ! zgen saved; then
 
   zgen save
 fi
-
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
 # Lazy cd
 setopt autocd
@@ -66,7 +62,6 @@ PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/share/npm/bin/:$PATH
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
