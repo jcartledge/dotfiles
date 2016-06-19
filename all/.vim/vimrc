@@ -156,6 +156,7 @@ map <silent> <C-p> :FZF<cr>
 map <silent> <C-t> :Tags<cr>
 map <silent> <C-r> :BTags<cr>
 map <silent> <C-f> :Ag<cr>
+map <silent> <C-b> :Buffers<cr>
 
 " limelight
 let g:limelight_conceal_ctermfg=240
