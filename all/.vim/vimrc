@@ -1,7 +1,6 @@
 call plug#begin()
 
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'}
-Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
 Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'ciaranm/securemodelines'
@@ -18,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'mhinz/vim-signify'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-commentary'
@@ -108,8 +108,8 @@ nmap <silent> <leader>s :SyntasticToggle<cr>
 " spellcheck in textish files
 autocmd FileType txt,markdown,todo nmap <silent> <leader>s :setlocal invspell<CR>
 
-" gitgutter
-let g:gitgutter_sign_column_always=1
+" signify
+let g:signify_vcs_list = ['git']
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
