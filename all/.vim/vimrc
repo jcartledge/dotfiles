@@ -17,7 +17,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'mhinz/vim-signify'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-commentary'
@@ -107,9 +106,6 @@ hi Specialkey ctermfg=236 ctermbg=None
 nmap <silent> <leader>s :SyntasticToggle<cr>
 " spellcheck in textish files
 autocmd FileType txt,markdown,todo nmap <silent> <leader>s :setlocal invspell<CR>
-
-" signify
-let g:signify_vcs_list = ['git']
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
