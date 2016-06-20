@@ -28,6 +28,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'xero/sourcerer.vim'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
