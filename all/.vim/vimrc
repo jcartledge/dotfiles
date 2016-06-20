@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer'}
 Plug 'ap/vim-buftabline'
 Plug 'ap/vim-css-color', {'for': 'css'}
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ciaranm/securemodelines'
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
