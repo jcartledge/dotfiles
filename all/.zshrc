@@ -112,3 +112,6 @@ alias te='todo.sh edit'
 # nvm
 export NVM_DIR=/Users/jcartledge/.nvm
 . /usr/local/opt/nvm/nvm.sh
+
+# direnv
+eval "$(direnv hook zsh)"
