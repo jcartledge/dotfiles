@@ -8,19 +8,12 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vi-mode
   zgen oh-my-zsh plugins/brew
   zgen oh-my-zsh plugins/fasd
-  zgen oh-my-zsh plugins/gem
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/heroku
-  zgen oh-my-zsh plugins/history-substring-search
-  zgen oh-my-zsh plugins/npm
-  zgen oh-my-zsh plugins/ruby
-  zgen oh-my-zsh plugins/sublime
   zgen oh-my-zsh plugins/vagrant
 
   zgen load zsh-users/zsh-syntax-highlighting
 
-  zgen load djui/alias-tips
-  zgen load supercrabtree/k
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
 
@@ -66,22 +59,9 @@ PATH=/usr/local/share/npm/bin/:$PATH
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
 
-# git file completion is hell of slow
-# http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it
-#__git_files () {
-  #_wanted files expl 'local files' _files
-#}
-
 # gitignore.io
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
-# find replace
-findrepl() {
-  ack -l "$1" | xargs sed -i '' "s/$1/$2/g"
-}
-
-# this
-alias drupal-php='ssh -t vagrant@dev.vu.edu.au php -d auto_prepend_file="/u/drupal/src/build/drupal-cli-harness.php"'
 # enter = git status or ls
 magic-enter () {
   if [[ -z $BUFFER ]]; then
@@ -108,10 +88,6 @@ alias te='todo.sh edit'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# nvm
-export NVM_DIR=/Users/jcartledge/.nvm
-. /usr/local/opt/nvm/nvm.sh
 
 # direnv
 eval "$(direnv hook zsh)"
