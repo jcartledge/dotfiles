@@ -198,3 +198,6 @@ let g:AutoPairsMapSpace = 0
 " Perhaps this will make Vim usable for large PHP files with lots of syntastic
 " warnings again?
 let g:ycm_register_as_syntastic_checker = 0
+
+" Split shell
+nnoremap <c-z> :silent !tmux split-window<cr>
