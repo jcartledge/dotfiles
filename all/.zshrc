@@ -5,6 +5,7 @@ if ! zgen saved; then
 
   zgen oh-my-zsh
 
+  zgen oh-my-zsh plugins/history-substring-search
   zgen oh-my-zsh plugins/vi-mode
   zgen oh-my-zsh plugins/brew
   zgen oh-my-zsh plugins/fasd
