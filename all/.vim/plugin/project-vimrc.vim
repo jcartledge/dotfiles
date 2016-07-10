@@ -4,6 +4,6 @@ if (v:shell_error == 0)
   let s:vimrc = substitute(s:git_root, '\n\+$', '', '') . '/.vimrc'
   if filereadable(s:vimrc)
     echo 'Sourcing ' . s:vimrc
-    source `=s:vimrc`
+    silent source `=s:vimrc`
   endif
 endif
