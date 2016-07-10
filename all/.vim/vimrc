@@ -8,7 +8,6 @@ Plug 'ciaranm/securemodelines'
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -25,14 +24,23 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
 Plug 'xero/sourcerer.vim'
+Plug 'reedes/vim-colors-pencil'
 
 call plug#end()
 
 set t_Co=256
 colorscheme sourcerer
 set bg=dark
-let g:lightline={'colorscheme': 'wombat'}
+let g:airline_theme='pencil'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+if !exists('g:airline_symbols')
+  let g:airline_symbols={}
+endif
+let g:airline_symbols.branch='⎇'
+let g:airline_symbols.readonly='🔒'
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
