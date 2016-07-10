@@ -48,7 +48,7 @@ runtime macros/matchit.vim
 " basic editor config
 syntax on
 filetype plugin indent on
-set hidden number
+set hidden number relativenumber
 set expandtab tabstop=2 shiftwidth=2
 set autoindent smartindent
 set autoread
@@ -71,9 +71,6 @@ highlight clear CursorLine
 autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set cursorline!
 
-" tree mode
-let g:netrw_liststyle=3
-
 " ctags
 set tags=./tags;,tags;
 
@@ -89,6 +86,9 @@ augroup end " }
 
 " clear search highlight
 nmap <leader>/ :noh<CR><ESC>
+
+" better search highlight
+" highlight Search ctermbg=blue
 
 " save when focus lost
 au FocusLost * silent! w
