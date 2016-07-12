@@ -4,6 +4,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
@@ -27,9 +28,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'neomake/neomake'
 
-" neomake
-autocmd! BufWritePost,BufEnter * silent Neomake
-
 " Colors
 Plug 'xero/sourcerer.vim'
 Plug 'reedes/vim-colors-pencil'
@@ -40,15 +38,24 @@ set t_Co=256
 colorscheme sourcerer
 set bg=dark
 
+" gitgutter
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_sign_modified = '±'
+let g:gitgutter_sign_modified_removed = '±'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed = '-'
+
+" neomake
+autocmd! BufWritePost,BufEnter * silent Neomake
+autocmd! InsertChange,TextChanged * update | Neomake
+let g:neomake_javascript_enabled_makers = ['standard']
+
 " airline
 let g:airline_theme='pencil'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols={}
 endif
-let g:airline_symbols.branch='⎇'
-let g:airline_symbols.readonly='🔒'
 let g:airline#extensions#tabline#enabled = 1
 
 " these plugins are bundled in $VIMRUNTIME
@@ -83,10 +90,6 @@ nmap <leader>/ :noh<CR><ESC>
 
 " better search highlight
 highlight Search ctermbg=blue
-
-" save when focus lost
-au FocusLost * silent! w
-au FocusLost * silent! stopinsert
 
 " The following two options interfere with one another.
 "
