@@ -92,3 +92,6 @@ alias te='todo.sh edit'
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# nvim
+alias vim='nvim'
