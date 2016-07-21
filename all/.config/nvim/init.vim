@@ -4,18 +4,23 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
+Plug 'Konfekt/FastFold'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
+Plug 'henrik/vim-indexed-search'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+Plug 'mbbill/undotree'
+Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-commentary'
@@ -26,7 +31,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'neomake/neomake'
 
 " Colors
 Plug 'xero/sourcerer.vim'
@@ -37,26 +41,6 @@ call plug#end()
 set t_Co=256
 colorscheme sourcerer
 set bg=dark
-
-" gitgutter
-let g:gitgutter_sign_column_always = 1
-let g:gitgutter_sign_modified = '±'
-let g:gitgutter_sign_modified_removed = '±'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_removed = '-'
-
-" neomake
-autocmd! BufWritePost,BufEnter * silent Neomake
-autocmd! InsertChange,TextChanged * update | Neomake
-let g:neomake_javascript_enabled_makers = ['standard']
-
-" airline
-let g:airline_theme='pencil'
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols={}
-endif
-let g:airline#extensions#tabline#enabled = 1
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -74,6 +58,33 @@ set nobackup noswapfile
 set mousemodel=popup_setpos
 set shortmess=atI
 set clipboard+=unnamedplus
+
+" undotree
+nnoremap <leader>u :UndotreeToggle\|UndotreeFocus<CR>
+
+" gitgutter
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_sign_modified = '±'
+let g:gitgutter_sign_modified_removed = '±'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed = '-'
+
+" neomake
+autocmd! BufWritePost,BufEnter * silent Neomake
+autocmd! InsertLeave,TextChanged * silent! update|Neomake
+autocmd! FocusLost * silent! stopinsert|update|Neomake
+
+let g:neomake_vim_enabled_makers = ['vimlint']
+let g:neomake_javascript_enabled_makers = ['semistandard']
+
+" airline
+let g:airline_theme='pencil'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols={}
+endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " vitality
 let g:vitality_always_assume_iterm = 1
@@ -140,9 +151,8 @@ function! MyFoldText()
   end
 endfunction
 
-" make space toggle folds in
-noremap <SPACE> zc
-noremap <RETURN> zo
+" make space toggle folds
+noremap <SPACE> za
 
 " uh
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
@@ -155,8 +165,8 @@ map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
 
 " syntax folding for php
-autocmd FileType php setlocal foldmethod=syntax
-autocmd FileType php setlocal foldlevel=99
+" autocmd FileType php setlocal foldmethod=syntax
+" autocmd FileType php setlocal foldlevel=99
 let php_folding=2
 let php_phpdoc_folding=1
 nnoremap <leader>f :set foldlevel=0<cr>
