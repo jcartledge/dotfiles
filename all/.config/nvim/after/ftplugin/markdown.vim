@@ -10,4 +10,4 @@ setlocal comments=b:-,b:+,b:*
 setlocal formatoptions+=ro
 
 " F5 to preview
-nnoremap <buffer> <silent> <f5> :w !markdown\|browser<cr>
+nnoremap <buffer> <f5> :w !markdown\|(echo "<link rel=stylesheet href=https://cdn.rawgit.com/markdowncss/modest/master/css/modest.css>" && cat)\|browser<cr>
