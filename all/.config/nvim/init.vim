@@ -163,6 +163,7 @@ noremap <SPACE> za
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
 " fzf
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 map <silent> <C-p> :FZF<cr>
 map <silent> <C-t> :Tags<cr>
 map <silent> <C-r> :BTags<cr>
