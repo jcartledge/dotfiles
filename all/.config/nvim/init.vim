@@ -58,6 +58,11 @@ set nobackup noswapfile
 set mousemodel=popup_setpos
 set shortmess=atI
 set clipboard+=unnamedplus
+set undofile
+set undodir=~/.vimundo
+
+" insert line in normal mode
+nnoremap <cr> o<esc>
 
 " undotree
 nnoremap <leader>u :UndotreeToggle\|UndotreeFocus<CR>
