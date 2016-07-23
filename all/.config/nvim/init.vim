@@ -95,14 +95,14 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:vitality_always_assume_iterm = 1
 
 " quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :edit $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 augroup sourcevimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
 augroup end
 
 " clear search highlight
-nmap <leader>/ :noh<CR><ESC>
+nnoremap <leader>/ :noh<CR><ESC>
 
 " better search highlight
 highlight Search ctermbg=blue
@@ -111,7 +111,7 @@ highlight Search ctermbg=blue
 "
 " To display tabs and trailing space use :set list
 " for word wrapping use :set nolist
-nmap <silent> <leader>w :set list!<cr>
+nnoremap <silent> <leader>w :set list!<cr>
 
 " word wrapping
 set lbr formatoptions=l
@@ -121,12 +121,12 @@ set list listchars=tab:⇥\ ,trail:·
 " hi Specialkey ctermfg=236 ctermbg=None
 
 " spellcheck in textish files
-autocmd FileType txt,markdown,todo nmap <silent> <leader>s :setlocal invspell<CR>
+autocmd FileType txt,markdown,todo nnoremap <silent> <leader>s :setlocal invspell<CR>
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
-nmap <silent> go :call system("open " . expand('<cWORD>'))<CR>
-vmap <silent> go :call system("open " . @*)<CR>
+nnoremap <silent> go :call system("open " . expand('<cWORD>'))<CR>
+vnoremap <silent> go :call system("open " . @*)<CR>
 
 " drupal stuff
 autocmd BufRead,BufNewFile *.module   set filetype=php
