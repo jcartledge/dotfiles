@@ -31,6 +31,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'joonty/vdebug'
 
 " Colors
 Plug 'xero/sourcerer.vim'
@@ -61,8 +62,14 @@ set clipboard+=unnamedplus
 set undofile
 set undodir=~/.vimundo
 
-" insert line in normal mode
-nnoremap <cr> o<esc>
+" vdebug
+if !exists('g:vdebug_options')
+  let g:vdebug_options = {}
+endif
+if !exists('g:vdebug_options.path_maps')
+  let g:vdebug_options.path_maps = {}
+endif
+let g:vdebug_options["break_on_open"] = 0
 
 " undotree
 nnoremap <leader>u :UndotreeToggle\|UndotreeFocus<CR>
