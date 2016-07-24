@@ -61,6 +61,7 @@ set shortmess=atI
 set clipboard+=unnamedplus
 set undofile
 set undodir=~/.vimundo
+set colorcolumn=81
 
 " vdebug
 if !exists('g:vdebug_options')
@@ -179,7 +180,7 @@ map <silent> <C-b> :Buffers<cr>
 
 " syntax folding for php
 " autocmd FileType php setlocal foldmethod=syntax
-" autocmd FileType php setlocal foldlevel=99
+autocmd FileType php setlocal foldlevel=99
 let php_folding=2
 let php_phpdoc_folding=1
 nnoremap <leader>f :set foldlevel=0<cr>
