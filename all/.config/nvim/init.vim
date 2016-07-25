@@ -98,6 +98,9 @@ if !exists('g:airline_symbols')
 endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#fnamecollapse=0
+let g:airline#extensions#tabline#fnametruncate=0
 
 " vitality
 let g:vitality_always_assume_iterm = 1
