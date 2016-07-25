@@ -129,10 +129,6 @@ set lbr formatoptions=l
 
 " highlight whitespace
 set list listchars=tab:⇥\ ,trail:·
-" hi Specialkey ctermfg=236 ctermbg=None
-
-" spellcheck in textish files
-autocmd FileType txt,markdown,todo nnoremap <silent> <leader>s :setlocal invspell<CR>
 
 " useful for browsing URLs, opening files in their default app etc
 " relies on OS X CLI open command
