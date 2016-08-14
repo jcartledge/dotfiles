@@ -38,9 +38,8 @@ Plug 'reedes/vim-colors-pencil'
 
 call plug#end()
 
-set t_Co=256
-colorscheme sourcerer
 set bg=dark
+colorscheme sourcerer
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -114,8 +113,6 @@ augroup end
 " clear search highlight
 nnoremap <leader>/ :noh<CR><ESC>
 
-" better search highlight
-highlight Search ctermbg=blue
 
 " The following two options interfere with one another.
 "
@@ -145,7 +142,6 @@ autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
 autocmd FileType css,scss,less,javascript normal zR
 
 " nice folding
-autocmd BufRead,BufNewFile,BufEnter * hi Folded ctermfg=242 ctermbg=236
 set fillchars="fold: "
 set foldtext=MyFoldText()
 function! MyFoldText()

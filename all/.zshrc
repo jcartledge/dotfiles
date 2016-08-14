@@ -95,4 +95,5 @@ alias te='todo.sh edit'
 eval "$(direnv hook zsh)"
 
 # nvim
-alias vim='nvim'
+export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim'
+alias vim=$EDITOR
