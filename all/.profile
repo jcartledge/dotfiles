@@ -39,5 +39,5 @@ for f in $(command ls ~/.node-completion); do
   test -f "$f" && . "$f"
 done
 # }}}
-
-export PATH="$PATH:/Applications/DevDesktop/drush"
+PATH=/Users/jcartledge/.composer/vendor/bin:$PATH
+PATH=/usr/local/bin:$PATH
