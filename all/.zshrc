@@ -57,6 +57,7 @@ PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/share/npm/bin/:$PATH
+PATH=/usr/local/php5/bin:$PATH
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
@@ -95,5 +96,6 @@ alias te='todo.sh edit'
 eval "$(direnv hook zsh)"
 
 # nvim
-export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 /usr/local/bin/nvim'
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+export EDITOR='/usr/local/bin/nvim'
 alias vim=$EDITOR
