@@ -17,6 +17,7 @@ Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'jiangmiao/auto-pairs'
+Plug 'joonty/vdebug'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
