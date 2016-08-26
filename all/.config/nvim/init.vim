@@ -4,6 +4,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+Plug 'jszakmeister/vim-togglecursor'
 Plug 'Konfekt/FastFold'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'airblade/vim-gitgutter'
