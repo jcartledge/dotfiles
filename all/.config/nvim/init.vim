@@ -20,6 +20,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vdebug'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -34,16 +36,18 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'joonty/vdebug'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'actionshrimp/vim-xpath'
 
 " Colors
 Plug 'xero/sourcerer.vim'
+Plug 'romainl/Apprentice'
 Plug 'reedes/vim-colors-pencil'
 
 call plug#end()
 
 set bg=dark
-colorscheme sourcerer
+colorscheme apprentice
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -64,6 +68,18 @@ set clipboard+=unnamedplus
 set undofile
 set undodir=~/.vimundo
 set colorcolumn=81
+let g:is_posix = 1
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" goyo
+nnoremap <leader><space> :Goyo<cr>
+
+" tagbar
+nnoremap <leader>t :TagbarToggle<cr>
 
 " vdebug
 if !exists('g:vdebug_options')
@@ -87,7 +103,7 @@ let g:gitgutter_sign_removed = '-'
 " neomake
 autocmd! BufWritePost,BufEnter * silent Neomake
 autocmd! InsertLeave,TextChanged * silent! update|Neomake
-autocmd! FocusLost * silent! stopinsert|update|Neomake
+autocmd! FocusLost * silent! stopinsert|silent! update|Neomake
 
 let g:neomake_vim_enabled_makers = ['vimlint']
 let g:neomake_javascript_enabled_makers = ['semistandard']
@@ -117,7 +133,6 @@ augroup end
 " clear search highlight
 nnoremap <leader>/ :noh<CR><ESC>
 
-
 " The following two options interfere with one another.
 "
 " To display tabs and trailing space use :set list
@@ -130,12 +145,8 @@ set lbr formatoptions=l
 " highlight whitespace
 set list listchars=tab:⇥\ ,trail:·
 
-" useful for browsing URLs, opening files in their default app etc
-" relies on OS X CLI open command
-nnoremap <silent> go :call system("open " . expand('<cWORD>'))<CR>
-vnoremap <silent> go :call system("open " . @*)<CR>
-
 " drupal stuff
+autocmd BufRead,BufNewFile *.module   set filetype=php
 autocmd BufRead,BufNewFile *.module   set filetype=php
 autocmd BufRead,BufNewFile *.install  set filetype=php
 autocmd BufRead,BufNewFile *.info     set filetype=dosini
@@ -169,7 +180,7 @@ noremap <SPACE> za
 autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
 map <silent> <C-p> :FZF<cr>
 map <silent> <C-t> :Tags<cr>
 map <silent> <C-r> :BTags<cr>
