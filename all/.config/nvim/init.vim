@@ -7,6 +7,8 @@ endfunction
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'Konfekt/FastFold'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'christoomey/vim-tmux-navigator'
@@ -195,13 +197,11 @@ augroup END
 " Interferes with markdown checkboxes.
 let g:AutoPairsMapSpace = 0
 
-" Split shell
-nnoremap <c-z> :silent !tmux split-window<cr>
-
 " Tab to switch buffers
 nnoremap <tab> <c-^>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-inoremap <expr> <Tab>  pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 inoremap <expr> <S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
