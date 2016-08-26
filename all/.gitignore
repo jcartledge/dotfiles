@@ -1,1 +1,6 @@
 .DS_Store
+tags*
+.tags*
+.envrc
+.vimrc
+.idea
