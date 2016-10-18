@@ -4,7 +4,6 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'jszakmeister/vim-togglecursor'
 Plug 'Konfekt/FastFold'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/neosnippet'
@@ -18,14 +17,17 @@ Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vdebug'
+Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'neomake/neomake'
+Plug 'rhysd/conflict-marker.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-commentary'
@@ -36,18 +38,28 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'actionshrimp/vim-xpath'
+Plug 'vim-scripts/confluencewiki.vim'
+Plug 'xolox/vim-colorscheme-switcher' | Plug 'xolox/vim-misc'
 
 " Colors
-Plug 'xero/sourcerer.vim'
-Plug 'romainl/Apprentice'
 Plug 'reedes/vim-colors-pencil'
+Plug 'rakr/vim-two-firewatch'
 
 call plug#end()
 
-set bg=dark
-colorscheme apprentice
+if (has("termguicolors"))
+  set termguicolors
+endif
+let g:pencil_higher_contrast_ui=1
+let g:pencil_gutter_color=1
+let g:pencil_terminal_italics=1
+colorscheme pencil
+nnoremap <silent> <leader>d :set bg=dark<cr>
+nnoremap <silent> <leader>l :set bg=light<cr>
+
+" colorscheme switcher
+" use F8 to switch between pencil and two-firewatch
+let g:colorscheme_switcher_exclude_builtins=1
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -68,7 +80,6 @@ set clipboard+=unnamedplus
 set undofile
 set undodir=~/.vimundo
 set colorcolumn=81
-let g:is_posix = 1
 
 " For conceal markers.
 if has('conceal')
@@ -92,6 +103,7 @@ let g:vdebug_options["break_on_open"] = 0
 
 " undotree
 nnoremap <leader>u :UndotreeToggle\|UndotreeFocus<CR>
+nnoremap U <c-r>
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
@@ -100,10 +112,13 @@ let g:gitgutter_sign_modified_removed = '±'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed = '-'
 
+" easyalign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " neomake
 autocmd! BufWritePost,BufEnter * silent Neomake
-autocmd! InsertLeave,TextChanged * silent! update|Neomake
-autocmd! FocusLost * silent! stopinsert|silent! update|Neomake
+autocmd! InsertLeave,TextChanged,FocusLost * silent! update|Neomake
 
 let g:neomake_vim_enabled_makers = ['vimlint']
 let g:neomake_javascript_enabled_makers = ['semistandard']
@@ -119,6 +134,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#fnamecollapse=0
 let g:airline#extensions#tabline#fnametruncate=0
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " vitality
 let g:vitality_always_assume_iterm = 1
@@ -146,10 +162,9 @@ set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 
 " drupal stuff
-autocmd BufRead,BufNewFile *.module   set filetype=php
-autocmd BufRead,BufNewFile *.module   set filetype=php
-autocmd BufRead,BufNewFile *.install  set filetype=php
-autocmd BufRead,BufNewFile *.info     set filetype=dosini
+autocmd BufRead,BufNewFile *.module set filetype=php
+autocmd BufRead,BufNewFile *.install set filetype=php
+autocmd BufRead,BufNewFile *.info set filetype=dosini
 
 " good enough folding for bracey languages
 autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
@@ -157,6 +172,7 @@ autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
 autocmd FileType css,scss,less,javascript normal zR
 
 " nice folding
+set foldlevel=99
 set fillchars="fold: "
 set foldtext=MyFoldText()
 function! MyFoldText()
@@ -176,9 +192,6 @@ endfunction
 " make space toggle folds
 noremap <SPACE> za
 
-" uh
-autocmd BufNewFile,BufRead Gemfile set ft=ruby
-
 " fzf
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
 map <silent> <C-p> :FZF<cr>
@@ -189,7 +202,6 @@ map <silent> <C-b> :Buffers<cr>
 
 " syntax folding for php
 " autocmd FileType php setlocal foldmethod=syntax
-autocmd FileType php setlocal foldlevel=99
 let php_folding=2
 let php_phpdoc_folding=1
 nnoremap <leader>f :set foldlevel=0<cr>
