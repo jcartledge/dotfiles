@@ -56,7 +56,8 @@ PATH=$HOME/.cabal/bin:$PATH
 PATH=$HOME/.composer/vendor/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=/usr/local/share/npm/bin/:$PATH
+PATH=/usr/local/sbin:$PATH
+PATH=/usr/local/share/npm/bin:$PATH
 PATH=/usr/local/php5/bin:$PATH
 
 # wrap git with hub: https://github.com/defunkt/hub
@@ -94,6 +95,9 @@ alias te='todo.sh edit'
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# tmux
+alias tmux="env TERM=xterm-256color tmux"
 
 # nvim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
