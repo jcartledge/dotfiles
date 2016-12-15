@@ -11,6 +11,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dzeban/vim-log-syntax'
 Plug 'file-line'
 Plug 'freitass/todo.txt-vim'
 Plug 'gmarik/sudo-gui.vim'
@@ -23,13 +24,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'neomake/neomake'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'sjl/vitality.vim'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
@@ -39,11 +42,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/confluencewiki.vim'
-Plug 'xolox/vim-colorscheme-switcher' | Plug 'xolox/vim-misc'
 
 " Colors
 Plug 'reedes/vim-colors-pencil'
 Plug 'rakr/vim-two-firewatch'
+Plug 'AlessandroYorba/Sierra'
 
 call plug#end()
 
@@ -56,10 +59,6 @@ let g:pencil_terminal_italics=1
 colorscheme pencil
 nnoremap <silent> <leader>d :set bg=dark<cr>
 nnoremap <silent> <leader>l :set bg=light<cr>
-
-" colorscheme switcher
-" use F8 to switch between pencil and two-firewatch
-let g:colorscheme_switcher_exclude_builtins=1
 
 " these plugins are bundled in $VIMRUNTIME
 runtime macros/matchit.vim
@@ -80,6 +79,7 @@ set clipboard+=unnamedplus
 set undofile
 set undodir=~/.vimundo
 set colorcolumn=81
+set inccommand=nosplit
 
 " For conceal markers.
 if has('conceal')
@@ -110,7 +110,6 @@ let g:gitgutter_sign_column_always = 1
 let g:gitgutter_sign_modified = '±'
 let g:gitgutter_sign_modified_removed = '±'
 let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_removed = '-'
 
 " easyalign
 xmap ga <Plug>(EasyAlign)
@@ -135,9 +134,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#fnamecollapse=0
 let g:airline#extensions#tabline#fnametruncate=0
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" vitality
-let g:vitality_always_assume_iterm = 1
 
 " quickly edit/reload the vimrc file
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
@@ -190,7 +186,7 @@ function! MyFoldText()
 endfunction
 
 " make space toggle folds
-noremap <SPACE> za
+noremap <Space> za
 
 " fzf
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
@@ -201,7 +197,6 @@ map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
 
 " syntax folding for php
-" autocmd FileType php setlocal foldmethod=syntax
 let php_folding=2
 let php_phpdoc_folding=1
 nnoremap <leader>f :set foldlevel=0<cr>
