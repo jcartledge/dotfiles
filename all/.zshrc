@@ -58,7 +58,6 @@ PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
-PATH=/usr/local/php5/bin:$PATH
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
