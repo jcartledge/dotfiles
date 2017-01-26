@@ -102,3 +102,8 @@ alias tmux="env TERM=xterm-256color tmux"
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export EDITOR='/usr/local/bin/nvim'
 alias vim=$EDITOR
+
+# brew-wrap
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
