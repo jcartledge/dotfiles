@@ -21,7 +21,6 @@ endif
 let g:netrw_liststyle=3
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
-
 " - nice folding {{{
 set foldlevel=99
 set fillchars="fold: "
@@ -45,10 +44,6 @@ endfunction
 " Plugins {{{
 call plug#begin()
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
 " - Language {{{
 Plug 'dzeban/vim-log-syntax'
 Plug 'sheerun/vim-polyglot'
@@ -69,8 +64,9 @@ Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 " - }}}
 " - Interface {{{
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
+Plug 'djoshea/vim-autoread'
 Plug 'file-line'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
@@ -86,6 +82,7 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'wellle/targets.vim'
 " - }}}
 " - Commands {{{
 Plug 'junegunn/fzf.vim'
@@ -99,8 +96,7 @@ Plug 'tpope/vim-unimpaired'
 " - }}}
 " - Colors {{{
 Plug 'reedes/vim-colors-pencil'
-Plug 'rakr/vim-two-firewatch'
-Plug 'AlessandroYorba/Sierra'
+Plug 'sonjapeterson/1989.vim'
 " - }}}
 
 call plug#end()
@@ -111,6 +107,9 @@ runtime macros/matchit.vim
 " }}}
 
 " Plugin settings {{{
+" - deoplete {{{
+let g:deoplete#enable_at_startup = 1
+" - }}}
 " - vdebug {{{
 if !exists('g:vdebug_options')
   let g:vdebug_options = {}
@@ -147,6 +146,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#fnamecollapse=0
 let g:airline#extensions#tabline#fnametruncate=0
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
 " - }}}
 " - fzf {{{
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
@@ -172,17 +174,15 @@ let g:pencil_higher_contrast_ui=0
 let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
 colorscheme pencil
-nnoremap <silent> <leader>d :set bg=dark<cr>
-nnoremap <silent> <leader>l :set bg=light<cr>
 " }}}
 
 " Mappings {{{
 " - Core {{{
 " - - redo {{{
-        nnoremap U <c-r>
+nnoremap U <c-r>
 " - - }}}
 " - - quickly edit the vimrc {{{
-        nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 " - - }}}
 " - - clear search highlight {{{
 nnoremap <leader>/ :noh<CR><ESC>
@@ -193,7 +193,7 @@ nnoremap <Space> za
 " - - TAB to switch buffers {{{
 nnoremap <tab> <c-^>
 " - - }}}
-" - - TAB in insert to autocomplete
+" - - TAB in insert to autocomplete {{{
 imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " - - }}}
 " - }}}
@@ -228,31 +228,31 @@ augroup drupal
   autocmd BufRead,BufNewFile *.install set filetype=php
   autocmd BufRead,BufNewFile *.info set filetype=dosini
 augroup end
-" - }}}
-" - good enough folding for bracey languages {{{
-augroup folding
-  autocmd!
-  autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
-  autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
-  autocmd FileType css,scss,less,javascript normal zR
-augroup end
-" - }}}
-" - highlight php docblocks {{{
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup end
-" - }}}
-" - vimrc {{{
-augroup vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
-  autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
-  autocmd BufRead $MYVIMRC normal zM
-augroup end
-" - }}}
-" }}}
+  " - }}}
+  " - good enough folding for bracey languages {{{
+  augroup folding
+    autocmd!
+    autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
+    autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
+    autocmd FileType css,scss,less,javascript normal zR
+  augroup end
+    " - }}}
+    " - highlight php docblocks {{{
+    function! PhpSyntaxOverride()
+      hi! def link phpDocTags phpDefine
+      hi! def link phpDocParam phpType
+    endfunction
+    augroup phpSyntaxOverride
+      autocmd!
+      autocmd FileType php call PhpSyntaxOverride()
+    augroup end
+      " - }}}
+      " - vimrc {{{
+      augroup vimrc
+        autocmd!
+        autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
+        autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
+        autocmd BufRead $MYVIMRC normal zM
+      augroup end
+        " - }}}
+        " }}}
