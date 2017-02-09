@@ -18,7 +18,6 @@ set inccommand=nosplit
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-let g:netrw_liststyle=3
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 " - nice folding {{{
