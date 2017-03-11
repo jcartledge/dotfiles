@@ -1,6 +1,6 @@
 [user]
-	email = jcartledge@gmail.com
-	name = James Cartledge
+  email = jcartledge@gmail.com
+  name = James Cartledge
 [color]
   branch = auto
   diff = auto
@@ -28,7 +28,7 @@
   dw    = diff -w
 
   l     = log
-  lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative
 
   ci    = commit
   cia   = commit -a
@@ -59,26 +59,12 @@
 
 [core]
   editor = /usr/bin/vim
-	excludesfile = /Users/jcartledge/.gitignore
+  excludesfile = ~/.gitignore
 [merge]
   tool = mvim -d
 
 [push]
-	default = current
+  default = current
 
 [pull]
-	default = current
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  default = current

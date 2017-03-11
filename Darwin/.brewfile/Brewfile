@@ -154,6 +154,7 @@ brew libiconv
 brew zlib
 
 tap homebrew/php
+brew composer
 brew php70
 brew phpunit
 brew wp-cli
