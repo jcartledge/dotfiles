@@ -31,5 +31,5 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-PATH=/Users/jcartledge/.composer/vendor/bin:$PATH
-PATH=/usr/local/bin:$PATH
+PATH="$HOME/.composer/vendor/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
