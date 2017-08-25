@@ -1,0 +1,177 @@
+
+# tap repositories and their packages
+
+tap caskroom/cask
+cask betterzipql
+cask browserstacklocal
+cask changes
+cask charles
+cask imageoptim
+cask java
+cask keyboardcleantool
+cask licecap
+cask ngrok
+cask numi
+cask qlcolorcode
+cask qlmarkdown
+cask qlprettypatch
+cask qlstephen
+cask quicklook-csv
+cask quicklook-json
+cask sequel-pro
+cask shiftit
+cask skype
+cask suspicious-package
+cask vagrant-manager
+cask vagrant
+cask virtualbox
+cask visual-studio-code
+
+tap homebrew/core
+brew ack
+brew ant
+brew apple-gcc42
+brew autoconf
+brew automake
+brew awscli
+brew beecrypt
+brew berkeley-db
+brew boost
+brew browser
+brew casperjs
+brew cloog@0.15
+brew cmake
+brew coreutils
+brew cscope
+brew ctags
+brew direnv
+brew dos2unix
+brew enscript
+brew exiv2
+brew faac
+brew fasd
+brew ffmpeg
+brew figlet
+brew freetype
+brew gcc@4.6
+brew gdbm
+brew gettext
+brew gist
+brew git --without-completions
+brew git-flow
+brew gmp
+brew gmp@4
+brew gnu-tar
+brew go
+brew graphicsmagick
+brew heroku
+brew highlight
+brew hub
+brew icu4c
+brew imagemagick
+brew jemalloc
+brew jpeg
+brew lame
+brew libevent
+brew libffi
+brew libgpg-error
+brew libiconv
+brew libksba
+brew libmagic
+brew libmpc@0.8
+brew libpng
+brew libtasn1
+brew libtermkey
+brew libtiff
+brew libtool
+brew libuv
+brew libvo-aacenc
+brew libvterm
+brew libxml2
+brew libxslt
+brew libyaml
+brew lorem
+brew lua
+brew makedepend
+brew markdown
+brew mas
+brew mcrypt
+brew mercurial
+brew mhash
+brew mpfr@2
+brew msgpack
+brew mysql
+brew neon
+brew neovim
+brew nmap
+brew node
+brew openssl
+brew ossp-uuid
+brew pandoc
+brew pcre
+brew phantomjs
+brew pkg-config
+brew popt
+brew postgresql
+brew ppl@0.11
+brew pv
+brew python
+brew python3
+brew readline
+brew reattach-to-user-namespace
+brew repl
+brew rpm
+brew rpm2cpio
+brew ruby@2.2
+brew saxon
+brew sqlite
+brew ssh-copy-id
+brew stow
+brew the_silver_searcher
+brew tmux
+brew todo-txt
+brew trash
+brew tree
+brew unibilium
+brew unixodbc
+brew utf8proc
+brew watch
+brew wget
+brew x11vnc
+brew x264
+brew xvid
+brew xz
+brew yarn
+brew zlib
+brew zsh
+
+tap homebrew/dupes
+
+tap homebrew/php
+brew composer
+brew php70
+brew phpunit
+brew wp-cli
+
+tap homebrew/versions
+
+tap neovim/neovim
+
+tap rcmdnk/file
+brew brew-file
+
+# App Store applications
+appstore 1091189122 Bear (1.1.2)
+appstore 682658836 GarageBand (10.1.6)
+appstore 408981434 iMovie (10.1.5)
+appstore 409183694 Keynote (7.1.1)
+appstore 405399194 Kindle (1.12.4)
+appstore 409203825 Numbers (4.1.1)
+appstore 409201541 Pages (6.1.1)
+appstore 429449079 Patterns (1.1.2)
+appstore 568494494 Pocket (1.6.2)
+appstore 880001334 Reeder (3.0.3)
+appstore 803453959 Slack (2.6.0)
+appstore 1176895641 Spark (1.2.2)
+appstore 557168941 Tweetbot (2.5.1)
+appstore 497799835 Xcode (8.3.2)

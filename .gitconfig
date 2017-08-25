@@ -1,0 +1,70 @@
+[user]
+  email = jcartledge@gmail.com
+  name = James Cartledge
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+
+  s     = status -s
+  sv    = status
+
+  d     = diff
+  dc    = diff --cached
+  dw    = diff -w
+
+  l     = log
+  lg    = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative
+
+  ci    = commit
+  cia   = commit -a
+  cim   = commit -m
+  ciam  = commit -am
+  fixup = commit --amend -CHEAD
+
+  co    = checkout
+  cob   = checkout -b
+
+  b     = branch
+  bd    = branch -d
+  bfd   = branch -D
+
+  a     = add
+  ap    = add --patch
+  ai    = add --interactive
+
+  pr    = pull --rebase
+
+  ps   = push
+  pom  = push origin master
+  phm  = push heroku master
+
+  rb   = rebase
+  rbi  = rebase -i
+  fix = !git status -s|grep \"^U\"|cut -d \" \" -f 2|xargs $EDITOR -nw
+
+[core]
+  editor = /usr/bin/vim
+	excludesfile = /Users/e5020488/.gitgnore_global
+[merge]
+  tool = mvim -d
+
+[push]
+  default = current
+
+[pull]
+  default = current
