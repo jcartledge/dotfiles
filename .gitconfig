@@ -59,7 +59,7 @@
 
 [core]
   editor = /usr/bin/vim
-	excludesfile = /Users/e5020488/.gitgnore_global
+	excludesfile = /Users/e5020488/.gitignore_global
 [merge]
   tool = mvim -d
 

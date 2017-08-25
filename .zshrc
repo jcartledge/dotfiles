@@ -118,4 +118,4 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 # config - for versioning config files in home dir
-alias config='git git-dir=$HOME/.config --work-tree=$HOME'
+alias config='hub --git-dir=$HOME/.cfg --work-tree=$HOME'
