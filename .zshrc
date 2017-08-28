@@ -15,6 +15,7 @@ zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
+zplug zsh-users/zsh-autosuggestions
 
 zplug mafredri/zsh-async
 zplug sindresorhus/pure
@@ -90,13 +91,6 @@ magic-enter () {
 }
 zle -N magic-enter
 bindkey "^M" magic-enter
-
-# todo.sh
-alias t='todo.sh'
-alias ta='todo.sh -t add'
-alias td='todo.sh do'
-alias tt='todo.sh ls && repl todo.sh -t'
-alias te='todo.sh edit'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
