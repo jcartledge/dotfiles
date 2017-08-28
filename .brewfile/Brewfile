@@ -98,6 +98,7 @@ brew mas
 brew mcrypt
 brew mercurial
 brew mhash
+brew mpack
 brew mpfr@2
 brew msgpack
 brew mysql
