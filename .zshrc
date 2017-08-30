@@ -6,6 +6,9 @@ fi
 
 source ~/.zplug/init.zsh
 
+zplug lib/directories, from:oh-my-zsh
+zplug lib/history, from:oh-my-zsh
+
 zplug plugins/history-substring-search, from:oh-my-zsh
 zplug plugins/vi-mode, from:oh-my-zsh
 zplug plugins/fasd, from:oh-my-zsh
@@ -15,7 +18,6 @@ zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
-zplug zsh-users/zsh-autosuggestions
 
 zplug mafredri/zsh-async
 zplug sindresorhus/pure
@@ -42,10 +44,6 @@ unsetopt correct
 # also seriously
 unsetopt nomatch
 
-# History
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-
 # Load completions for Ruby, Git, etc.
 autoload -U compinit
 compinit -u
@@ -58,16 +56,11 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^[.' insert-last-word
 
 # and fix history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# path
-PATH=$HOME/.cabal/bin:$PATH
-PATH=$HOME/.composer/vendor/bin:$PATH
-PATH=$HOME/local/bin:$PATH
-PATH=/usr/local/bin:$PATH
-PATH=/usr/local/sbin:$PATH
-PATH=/usr/local/share/npm/bin:$PATH
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
