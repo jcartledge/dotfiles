@@ -18,6 +18,7 @@ zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
+zplug zsh-users/zsh-autosuggestions
 
 zplug mafredri/zsh-async
 zplug sindresorhus/pure
@@ -84,6 +85,7 @@ magic-enter () {
 }
 zle -N magic-enter
 bindkey "^M" magic-enter
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=magic-enter
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
