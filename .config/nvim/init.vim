@@ -23,15 +23,15 @@ set foldlevel=99
 set fillchars="fold: "
 set foldtext=MyFoldText()
 function! MyFoldText()
-  let line = getline(v:foldstart)
+  let line=getline(v:foldstart)
   if match(line, "/\*\\*") == -1
     " not a docblock
     return line . " …"
   else
     " docblock - is it @file?
-    let firstLine = getline(v:foldstart + 1)
-    let secondLine = getline(v:foldstart + 2)
-    let description = (match(firstLine, "@file") == -1) ? firstLine : secondLine
+    let firstLine=getline(v:foldstart + 1)
+    let secondLine=getline(v:foldstart + 2)
+    let description=(match(firstLine, "@file") == -1) ? firstLine : secondLine
     return line . substitute(description, "^\\s*\\*", "", "") . " */"
   end
 endfunction
@@ -107,54 +107,54 @@ runtime macros/matchit.vim
 
 " Plugin settings {{{
 " - deoplete {{{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup=1
 " - }}}
 " - vdebug {{{
 if !exists('g:vdebug_options')
-  let g:vdebug_options = {}
+  let g:vdebug_options={}
 endif
 if !exists('g:vdebug_options.path_maps')
-  let g:vdebug_options.path_maps = {}
+  let g:vdebug_options.path_maps={}
 endif
-let g:vdebug_options["break_on_open"] = 0
+let g:vdebug_options["break_on_open"]=0
 " - }}}
 " - gitgutter {{{
 set signcolumn=yes
-let g:gitgutter_sign_modified = '±'
-let g:gitgutter_sign_modified_removed = '±'
-let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified='±'
+let g:gitgutter_sign_modified_removed='±'
+let g:gitgutter_sign_removed='-'
 " - }}}
 " - neomake {{{
 autocmd! BufWritePost,BufEnter * silent Neomake
 autocmd! InsertLeave,TextChanged,FocusLost * silent! update|Neomake
-let g:neomake_vim_enabled_makers = ['vimlint']
-let g:neomake_javascript_enabled_makers = ['semistandard']
-let g:neomake_open_list = 2
+let g:neomake_vim_enabled_makers=['vimlint']
+let g:neomake_javascript_enabled_makers=['semistandard']
+let g:neomake_open_list=2
 " - }}}
 " - behat {{{
 let g:feature_filetype='behat'
 " - }}}
 " - airline {{{
 let g:airline_theme='pencil'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols={}
 endif
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
+let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#fnamecollapse=0
 let g:airline#extensions#tabline#fnametruncate=0
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#left_sep=''
+let g:airline#extensions#tabline#right_sep=''
+let g:airline#extensions#tabline#left_alt_sep='|'
 " - }}}
 " - fzf {{{
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
 " - }}}
 " - deoplete {{{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup=1
 " - }}}
 " - php {{{
 let php_folding=2
@@ -162,7 +162,7 @@ let php_phpdoc_folding=1
 " - }}}
 " - auto-pairs {{{
 " Interferes with markdown checkboxes.
-let g:AutoPairsMapSpace = 0
+let g:AutoPairsMapSpace=0
 " - }}}
 " }}}
 
