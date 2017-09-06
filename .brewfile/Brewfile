@@ -19,13 +19,10 @@ cask qlstephen
 cask quicklook-csv
 cask quicklook-json
 cask sequel-pro
-cask shiftit
 cask skype
 cask suspicious-package
-cask vagrant-manager
 cask vagrant
 cask virtualbox
-cask visual-studio-code
 
 tap homebrew/core
 brew ack
@@ -154,10 +151,6 @@ brew drush
 brew php70
 brew phpunit
 brew wp-cli
-
-tap homebrew/versions
-
-tap neovim/neovim
 
 tap rcmdnk/file
 brew brew-file
