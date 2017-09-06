@@ -19,6 +19,7 @@ zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
 zplug zsh-users/zsh-autosuggestions
+zplug zsh-users/zsh-completions
 
 zplug mafredri/zsh-async
 zplug sindresorhus/pure
