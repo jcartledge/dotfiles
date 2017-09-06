@@ -39,8 +39,15 @@ endfunction
 " }}}
 
 " Plugins {{{
+" - Install and initialise vim-plug {{{
+let $PLUGDOTVIM=fnamemodify($MYVIMRC, ':p:h') . '/autoload/plug.vim'
+if empty(glob($PLUGDOTVIM))
+  silent !curl -fLo $PLUGDOTVIM --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin()
-
+" - }}}
 " - Language {{{
 Plug 'dzeban/vim-log-syntax'
 Plug 'sheerun/vim-polyglot'
@@ -64,7 +71,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
-Plug 'file-line'
+Plug 'vim-scripts/file-line'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'jiangmiao/auto-pairs'
