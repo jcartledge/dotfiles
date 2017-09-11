@@ -148,7 +148,7 @@ tap homebrew/dupes
 tap homebrew/php
 brew composer
 brew drush
-brew php70
+brew php71
 brew phpunit
 brew wp-cli
 
