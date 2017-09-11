@@ -9,7 +9,6 @@ source ~/.zplug/init.zsh
 zplug lib/directories, from:oh-my-zsh
 zplug lib/history, from:oh-my-zsh
 
-zplug plugins/history-substring-search, from:oh-my-zsh
 zplug plugins/vi-mode, from:oh-my-zsh
 zplug plugins/fasd, from:oh-my-zsh
 zplug plugins/git, from:oh-my-zsh
@@ -18,6 +17,7 @@ zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
+zplug zsh-users/zsh-history-substring-search
 zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-completions
 
@@ -58,9 +58,8 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^[.' insert-last-word
 
 # and fix history-substring-search
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
