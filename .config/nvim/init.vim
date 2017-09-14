@@ -1,6 +1,7 @@
 " Basic editor config {{{
 set hidden number relativenumber
 set expandtab tabstop=2 shiftwidth=2
+set noshowmode
 set smartindent
 set autoread
 set showmatch
@@ -52,12 +53,12 @@ call plug#begin()
 Plug 'dzeban/vim-log-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'freitass/todo.txt-vim'
+Plug 'vim-scripts/confluencewiki.vim'
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'veloce/vim-behat'
-Plug 'vim-scripts/confluencewiki.vim'
 " - }}}
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
@@ -66,12 +67,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'syngan/vim-vimlint'
+Plug 'ynkdir/vim-vimlparser'
 " - }}}
 " - Interface {{{
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
-Plug 'vim-scripts/file-line'
+Plug 'dojoteef/neomake-autolint'
+Plug 'gcmt/wildfire.vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'jiangmiao/auto-pairs'
@@ -88,6 +92,8 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/confluencewiki.vim'
+Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
 " - }}}
 " - Commands {{{
