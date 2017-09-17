@@ -62,12 +62,13 @@ Plug 'veloce/vim-behat'
 " - }}}
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'joonty/vdebug'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'neomake/neomake'
-Plug 'tpope/vim-fugitive'
 Plug 'syngan/vim-vimlint'
+Plug 'tpope/vim-fugitive'
 Plug 'ynkdir/vim-vimlparser'
 " - }}}
 " - Interface {{{
