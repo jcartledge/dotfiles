@@ -20,6 +20,7 @@ cask quicklook-csv
 cask quicklook-json
 cask sequel-pro
 cask skype
+cask sqlectron
 cask suspicious-package
 cask vagrant
 cask virtualbox
@@ -134,6 +135,7 @@ brew unibilium
 brew unixodbc
 brew utf8proc
 brew watch
+brew watchman
 brew wget
 brew x11vnc
 brew x264
