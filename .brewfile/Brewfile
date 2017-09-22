@@ -145,8 +145,6 @@ brew yarn
 brew zlib
 brew zsh
 
-tap homebrew/dupes
-
 tap homebrew/php
 brew composer
 brew drush
