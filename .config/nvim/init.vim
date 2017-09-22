@@ -75,7 +75,6 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
-Plug 'dojoteef/neomake-autolint'
 Plug 'gcmt/wildfire.vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
@@ -139,8 +138,7 @@ let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
 " - neomake {{{
-autocmd! BufWritePost,BufEnter * silent Neomake
-autocmd! InsertLeave,TextChanged,FocusLost * silent! update|Neomake
+call neomake#configure#automake('rw', 1000)
 let g:neomake_vim_enabled_makers=['vimlint']
 let g:neomake_javascript_enabled_makers=['semistandard']
 let g:neomake_open_list=2
@@ -242,31 +240,35 @@ augroup drupal
   autocmd BufRead,BufNewFile *.install set filetype=php
   autocmd BufRead,BufNewFile *.info set filetype=dosini
 augroup end
-  " - }}}
-  " - good enough folding for bracey languages {{{
-  augroup folding
-    autocmd!
-    autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
-    autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
-    autocmd FileType css,scss,less,javascript normal zR
-  augroup end
-    " - }}}
-    " - highlight php docblocks {{{
-    function! PhpSyntaxOverride()
-      hi! def link phpDocTags phpDefine
-      hi! def link phpDocParam phpType
-    endfunction
-    augroup phpSyntaxOverride
-      autocmd!
-      autocmd FileType php call PhpSyntaxOverride()
-    augroup end
-      " - }}}
-      " - vimrc {{{
-      augroup vimrc
-        autocmd!
-        autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
-        autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
-        autocmd BufRead $MYVIMRC normal zM
-      augroup end
-        " - }}}
-        " }}}
+" - }}}
+" - good enough folding for bracey languages {{{
+augroup folding
+  autocmd!
+  autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
+  autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
+  autocmd FileType css,scss,less,javascript normal zR
+augroup end
+" - }}}
+" - highlight php docblocks {{{
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup end
+" - }}}
+" - vimrc {{{
+augroup vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
+  autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
+  autocmd BufRead $MYVIMRC normal zM
+augroup end
+" - }}}
+" - write all the time {{{
+autocmd! BufWritePost,BufEnter,InsertLeave,TextChanged * silent! update
+autocmd! FocusLost * silent! stopinsert|update
+" - }}}
+" }}}
