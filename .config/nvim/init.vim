@@ -63,13 +63,10 @@ Plug 'veloce/vim-behat'
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'joonty/vdebug'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'neomake/neomake'
-Plug 'syngan/vim-vimlint'
 Plug 'tpope/vim-fugitive'
-Plug 'ynkdir/vim-vimlparser'
 " - }}}
 " - Interface {{{
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -122,15 +119,6 @@ runtime macros/matchit.vim
 " - deoplete {{{
 let g:deoplete#enable_at_startup=1
 " - }}}
-" - vdebug {{{
-if !exists('g:vdebug_options')
-  let g:vdebug_options={}
-endif
-if !exists('g:vdebug_options.path_maps')
-  let g:vdebug_options.path_maps={}
-endif
-let g:vdebug_options["break_on_open"]=0
-" - }}}
 " - gitgutter {{{
 set signcolumn=yes
 let g:gitgutter_sign_modified='±'
@@ -139,7 +127,6 @@ let g:gitgutter_sign_removed='-'
 " - }}}
 " - neomake {{{
 call neomake#configure#automake('rw', 1000)
-let g:neomake_vim_enabled_makers=['vimlint']
 let g:neomake_javascript_enabled_makers=['semistandard']
 let g:neomake_open_list=2
 " - }}}
