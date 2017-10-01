@@ -152,9 +152,6 @@ let g:airline#extensions#tabline#left_alt_sep='|'
 " - fzf {{{
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
 " - }}}
-" - deoplete {{{
-let g:deoplete#enable_at_startup=1
-" - }}}
 " - php {{{
 let php_folding=2
 let php_phpdoc_folding=1
