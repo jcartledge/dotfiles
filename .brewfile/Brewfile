@@ -2,28 +2,28 @@
 # tap repositories and their packages
 
 tap caskroom/cask
-cask betterzipql
-cask browserstacklocal
-cask changes
-cask charles
 cask imageoptim
-cask java
-cask keyboardcleantool
-cask licecap
-cask ngrok
-cask numi
-cask qlcolorcode
 cask qlmarkdown
-cask qlprettypatch
-cask qlstephen
-cask quicklook-csv
-cask quicklook-json
-cask sequel-pro
-cask skype
-cask sqlectron
-cask suspicious-package
-cask vagrant
+cask keyboardcleantool
 cask virtualbox
+cask skype
+cask suspicious-package
+cask betterzipql
+cask numi
+cask vagrant
+cask qlprettypatch
+cask quicklook-json
+cask qlstephen
+cask sqlectron
+cask sequel-pro
+cask qlcolorcode
+cask browserstacklocal
+cask quicklook-csv
+cask ngrok
+cask java
+cask licecap
+cask charles
+cask changes
 
 tap homebrew/core
 brew ack
