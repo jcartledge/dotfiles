@@ -170,6 +170,7 @@ let g:pencil_higher_contrast_ui=0
 let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
 colorscheme pencil
+set bg=dark
 " }}}
 
 " Mappings {{{
