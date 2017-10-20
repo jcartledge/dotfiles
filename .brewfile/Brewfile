@@ -1,30 +1,6 @@
 
 # tap repositories and their packages
 
-tap caskroom/cask
-cask imageoptim
-cask qlmarkdown
-cask keyboardcleantool
-cask virtualbox
-cask skype
-cask suspicious-package
-cask betterzipql
-cask numi
-cask vagrant
-cask qlprettypatch
-cask quicklook-json
-cask qlstephen
-cask sqlectron
-cask sequel-pro
-cask qlcolorcode
-cask browserstacklocal
-cask quicklook-csv
-cask ngrok
-cask java
-cask licecap
-cask charles
-cask changes
-
 tap homebrew/core
 brew ack
 brew ant
@@ -119,6 +95,7 @@ brew python3
 brew readline
 brew reattach-to-user-namespace
 brew repl
+brew ripgrep
 brew rpm
 brew rpm2cpio
 brew ruby@2.2
@@ -151,6 +128,30 @@ brew drush
 brew php71
 brew phpunit
 brew wp-cli
+
+tap caskroom/cask
+cask imageoptim
+cask qlmarkdown
+cask keyboardcleantool
+cask virtualbox
+cask skype
+cask suspicious-package
+cask betterzipql
+cask numi
+cask vagrant
+cask qlprettypatch
+cask quicklook-json
+cask qlstephen
+cask sqlectron
+cask sequel-pro
+cask qlcolorcode
+cask browserstacklocal
+cask quicklook-csv
+cask ngrok
+cask java
+cask licecap
+cask charles
+cask changes
 
 tap rcmdnk/file
 brew brew-file
