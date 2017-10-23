@@ -54,6 +54,7 @@ Plug 'dzeban/vim-log-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'freitass/todo.txt-vim'
 Plug 'vim-scripts/confluencewiki.vim'
+Plug 'Shougo/context_filetype.vim'
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
@@ -84,9 +85,8 @@ Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
-Plug 'mbbill/undotree'
 Plug 'rhysd/conflict-marker.vim'
-Plug 'tpope/vim-commentary'
+Plug 'tyru/caw.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/confluencewiki.vim'
@@ -106,6 +106,7 @@ Plug 'tpope/vim-unimpaired'
 " - Colors {{{
 Plug 'reedes/vim-colors-pencil'
 Plug 'sonjapeterson/1989.vim'
+Plug 'brendonrapp/smyck-vim'
 " - }}}
 
 call plug#end()
@@ -149,9 +150,6 @@ let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#right_sep=''
 let g:airline#extensions#tabline#left_alt_sep='|'
 " - }}}
-" - fzf {{{
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore=.git -g ""'
-" - }}}
 " - php {{{
 let php_folding=2
 let php_phpdoc_folding=1
@@ -169,7 +167,7 @@ endif
 let g:pencil_higher_contrast_ui=0
 let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
-colorscheme pencil
+colorscheme 1989
 set bg=dark
 " }}}
 
@@ -201,9 +199,6 @@ nnoremap <leader><space> :Goyo<cr>
 " - - Tagbar {{{
 nnoremap <leader>t :TagbarToggle<cr>
 " - - }}}
-" - - UndoTree {{{
-nnoremap <leader>u :UndotreeToggle\|UndotreeFocus<CR>
-" - - }}}
 " - - EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -214,6 +209,7 @@ map <silent> <C-t> :Tags<cr>
 map <silent> <C-r> :BTags<cr>
 map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
+map <silent> <C-c> :Colors<cr>
 " - - }}}
 " - }}}
 " }}}
