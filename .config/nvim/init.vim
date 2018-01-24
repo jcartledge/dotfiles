@@ -19,6 +19,7 @@ set colorcolumn=81
 set inccommand=nosplit
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
+set splitright splitbelow
 " - nice folding {{{
 set foldlevel=99
 set fillchars="fold: "
@@ -66,7 +67,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 " - }}}
 " - Interface {{{
@@ -81,7 +82,6 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
@@ -117,6 +117,9 @@ runtime macros/matchit.vim
 " }}}
 
 " Plugin settings {{{
+" - caw {{{
+let g:caw_operator_keymappings=1
+" - }}}
 " - deoplete {{{
 let g:deoplete#enable_at_startup=1
 " - }}}
@@ -126,10 +129,10 @@ let g:gitgutter_sign_modified='±'
 let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
-" - neomake {{{
-call neomake#configure#automake('rw', 1000)
-let g:neomake_javascript_enabled_makers=['semistandard']
-let g:neomake_open_list=2
+" - ale {{{
+let g:ale_javascript_standard_executable = 'semistandard'
+let g:ale_javascript_standard_options = ''
+let g:ale_javascript_standard_use_global = 1
 " - }}}
 " - behat {{{
 let g:feature_filetype='behat'
@@ -149,6 +152,7 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#right_sep=''
 let g:airline#extensions#tabline#left_alt_sep='|'
+let g:airline#extensions#ale#enabled=1
 " - }}}
 " - php {{{
 let php_folding=2
@@ -157,6 +161,10 @@ let php_phpdoc_folding=1
 " - auto-pairs {{{
 " Interferes with markdown checkboxes.
 let g:AutoPairsMapSpace=0
+" - }}}
+" - netrw {{{
+let g:netrw_liststyle=3
+let g:netrw_banner=0
 " - }}}
 " }}}
 
@@ -167,8 +175,8 @@ endif
 let g:pencil_higher_contrast_ui=0
 let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
-colorscheme 1989
-set bg=dark
+colorscheme pencil
+set bg=light
 " }}}
 
 " Mappings {{{
@@ -210,6 +218,9 @@ map <silent> <C-r> :BTags<cr>
 map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
 map <silent> <C-c> :Colors<cr>
+" - - }}}
+" - - netrw {{{
+nnoremap <silent> - :Ex<CR>
 " - - }}}
 " - }}}
 " }}}
