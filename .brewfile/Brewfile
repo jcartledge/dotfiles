@@ -136,13 +136,14 @@ cask keyboardcleantool
 cask virtualbox
 cask skype
 cask suspicious-package
-cask betterzipql
+cask now
 cask numi
 cask vagrant
 cask qlprettypatch
 cask quicklook-json
 cask qlstephen
 cask sqlectron
+cask vcv-rack
 cask sequel-pro
 cask qlcolorcode
 cask browserstacklocal
@@ -155,6 +156,9 @@ cask changes
 
 tap rcmdnk/file
 brew brew-file
+
+# Cask applications
+cask betterzipql
 
 # App Store applications
 appstore 1091189122 Bear (1.1.2)
