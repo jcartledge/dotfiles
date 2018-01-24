@@ -35,6 +35,7 @@
   cim   = commit -m
   ciam  = commit -am
   fixup = commit --amend -CHEAD
+  wip = commit -nm WIP
 
   co    = checkout
   cob   = checkout -b
