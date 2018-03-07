@@ -13,7 +13,6 @@ brew berkeley-db
 brew boost
 brew browser
 brew casperjs
-brew cloog@0.15
 brew cmake
 brew coreutils
 brew cscope
@@ -27,14 +26,12 @@ brew fasd
 brew ffmpeg
 brew figlet
 brew freetype
-brew gcc@4.6
 brew gdbm
 brew gettext
 brew gist
 brew git --without-completions
 brew git-flow
 brew gmp
-brew gmp@4
 brew gnu-tar
 brew go
 brew graphicsmagick
@@ -52,7 +49,6 @@ brew libgpg-error
 brew libiconv
 brew libksba
 brew libmagic
-brew libmpc@0.8
 brew libpng
 brew libtasn1
 brew libtermkey
@@ -73,7 +69,6 @@ brew mcrypt
 brew mercurial
 brew mhash
 brew mpack
-brew mpfr@2
 brew msgpack
 brew mysql
 brew neon
@@ -88,10 +83,8 @@ brew phantomjs
 brew pkg-config
 brew popt
 brew postgresql
-brew ppl@0.11
 brew pv
 brew python
-brew python3
 brew readline
 brew reattach-to-user-namespace
 brew repl
@@ -103,6 +96,7 @@ brew saxon
 brew sqlite
 brew ssh-copy-id
 brew stow
+brew swftools
 brew the_silver_searcher
 brew tmux
 brew todo-txt
@@ -131,6 +125,7 @@ brew wp-cli
 
 tap caskroom/cask
 cask imageoptim
+cask sketch
 cask qlmarkdown
 cask keyboardcleantool
 cask virtualbox
@@ -156,6 +151,15 @@ cask changes
 
 tap rcmdnk/file
 brew brew-file
+
+# Other Homebrew packages
+brew cloog@0.15
+brew gcc@4.6
+brew gmp@4
+brew libmpc@0.8
+brew mpfr@2
+brew ppl@0.11
+brew python3
 
 # Cask applications
 cask betterzipql
