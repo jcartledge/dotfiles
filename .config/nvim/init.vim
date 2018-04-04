@@ -77,17 +77,19 @@ Plug 'djoshea/vim-autoread'
 Plug 'gcmt/wildfire.vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'henrik/vim-indexed-search'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vim-peekaboo'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
-Plug 'tyru/caw.vim'
 Plug 'tpope/vim-sleuth'
+Plug 'tyru/caw.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/confluencewiki.vim'
 Plug 'vim-scripts/file-line'
@@ -97,6 +99,7 @@ Plug 'wellle/targets.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
@@ -130,9 +133,13 @@ let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
 " - ale {{{
-let g:ale_javascript_standard_executable = 'semistandard'
-let g:ale_javascript_standard_options = ''
-let g:ale_javascript_standard_use_global = 1
+if emoji#available()
+  highlight clear ALEErrorSign
+  highlight clear ALEWarningSign
+  let g:ale_sign_error = emoji#for('exclamation')
+  let g:ale_sign_warning = emoji#for('grey_exclamation')
+endif
+let g:ale_echo_msg_format = '%linter%: %s'
 " - }}}
 " - behat {{{
 let g:feature_filetype='behat'
@@ -165,6 +172,9 @@ let g:AutoPairsMapSpace=0
 " - netrw {{{
 let g:netrw_liststyle=3
 let g:netrw_banner=0
+" - }}}
+" - javascript {{{
+let g:javascript_plugin_flow = 1
 " - }}}
 " }}}
 
@@ -261,6 +271,6 @@ augroup end
 " - }}}
 " - write all the time {{{
 autocmd! BufWritePost,BufEnter,InsertLeave,TextChanged * silent! update
-autocmd! FocusLost * silent! stopinsert|update
+autocmd! FocusLost * silent! update
 " - }}}
 " }}}
