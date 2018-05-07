@@ -71,6 +71,7 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 " - }}}
 " - Interface {{{
+Plug '907th/vim-auto-save'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
@@ -120,6 +121,10 @@ runtime macros/matchit.vim
 " }}}
 
 " Plugin settings {{{
+" - auto-save {{{
+let g:auto_save=1
+let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+"   }}}
 " - caw {{{
 let g:caw_operator_keymappings=1
 " - }}}
@@ -268,9 +273,5 @@ augroup vimrc
   autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
   autocmd BufRead $MYVIMRC normal zM
 augroup end
-" - }}}
-" - write all the time {{{
-autocmd! BufWritePost,BufEnter,InsertLeave,TextChanged * silent! update
-autocmd! FocusLost * silent! update
 " - }}}
 " }}}
