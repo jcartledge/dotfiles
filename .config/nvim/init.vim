@@ -145,6 +145,7 @@ if emoji#available()
   let g:ale_sign_warning = emoji#for('grey_exclamation')
 endif
 let g:ale_echo_msg_format = '%linter%: %s'
+let g:ale_fixers = {'javascript': ['eslint']}
 " - }}}
 " - behat {{{
 let g:feature_filetype='behat'
