@@ -69,6 +69,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " - }}}
 " - Interface {{{
 Plug '907th/vim-auto-save'
@@ -124,7 +125,7 @@ runtime macros/matchit.vim
 " - auto-save {{{
 let g:auto_save=1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
-"   }}}
+" - }}}
 " - caw {{{
 let g:caw_operator_keymappings=1
 " - }}}
@@ -182,12 +183,16 @@ let g:netrw_banner=0
 " - javascript {{{
 let g:javascript_plugin_flow = 1
 " - }}}
+" - language-client {{{
+let g:LanguageClient_serverCommands = {  'javascript.jsx': ['javascript-typescript-stdio'] }
+" - }}}
 " }}}
 
 " Colours {{{
 if (has("termguicolors"))
   set termguicolors
 endif
+
 let g:pencil_higher_contrast_ui=0
 let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
