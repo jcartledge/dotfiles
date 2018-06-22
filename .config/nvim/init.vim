@@ -87,7 +87,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vim-peekaboo'
 Plug 'machakann/vim-highlightedyank'
-Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-sleuth'
@@ -103,7 +102,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -224,9 +222,6 @@ imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " - Plugins {{{
 " - - Goyo {{{
 nnoremap <leader><space> :Goyo<cr>
-" - - }}}
-" - - Tagbar {{{
-nnoremap <leader>t :TagbarToggle<cr>
 " - - }}}
 " - - EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
