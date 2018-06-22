@@ -91,7 +91,6 @@ Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tyru/caw.vim'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/confluencewiki.vim'
 Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
@@ -149,23 +148,6 @@ let g:ale_fixers = {'javascript': ['eslint']}
 " - behat {{{
 let g:feature_filetype='behat'
 " - }}}
-" - airline {{{
-let g:airline_theme='pencil'
-let g:airline_powerline_fonts=1
-if !exists('g:airline_symbols')
-  let g:airline_symbols={}
-endif
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#formatter='unique_tail_improved'
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#fnamecollapse=0
-let g:airline#extensions#tabline#fnametruncate=0
-let g:airline#extensions#tabline#buffer_nr_show=1
-let g:airline#extensions#tabline#left_sep=''
-let g:airline#extensions#tabline#right_sep=''
-let g:airline#extensions#tabline#left_alt_sep='|'
-let g:airline#extensions#ale#enabled=1
-" - }}}
 " - php {{{
 let php_folding=2
 let php_phpdoc_folding=1
@@ -196,6 +178,9 @@ let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
 colorscheme pencil
 set bg=light
+
+highlight StatusLineNC guifg=#BBBBBB guibg=#E8E8E8
+
 " }}}
 
 " Mappings {{{
@@ -276,3 +261,9 @@ augroup vimrc
 augroup end
 " - }}}
 " }}}
+
+" statusline
+set statusline =\ %f
+set statusline +=%=
+set statusline +=%y
+set statusline +=\ %-2{mode()}
