@@ -1,10 +1,10 @@
 " Basic editor config {{{
 set hidden number relativenumber
 set expandtab tabstop=2 shiftwidth=2
-set noshowmode
 set smartindent
 set autoread
 set showmatch
+set laststatus=0
 set ignorecase smartcase
 set scrolloff=2
 set whichwrap+=<,>,[,]
@@ -257,13 +257,6 @@ augroup vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
   autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
-  autocmd BufRead $MYVIMRC normal zM
 augroup end
 " - }}}
 " }}}
-
-" statusline
-set statusline =\ %f
-set statusline +=%=
-set statusline +=%y
-set statusline +=\ %-2{mode()}
