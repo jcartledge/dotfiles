@@ -21,14 +21,14 @@ set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 set splitright splitbelow
 " - nice folding {{{
-set foldlevel=99
 set fillchars="fold: "
+set foldlevelstart=99
 set foldtext=MyFoldText()
 function! MyFoldText()
   let line=getline(v:foldstart)
   if match(line, "/\*\\*") == -1
     " not a docblock
-    return line . " …"
+    return line
   else
     " docblock - is it @file?
     let firstLine=getline(v:foldstart + 1)
@@ -194,8 +194,10 @@ nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 " - - clear search highlight {{{
 nnoremap <leader>/ :noh<CR><ESC>
 " - - }}}
-" - - make space toggle folds {{{
+" - - folding shortcuts {{{
 nnoremap <Space> za
+nnoremap <left> zc
+nnoremap <right> zo
 " - - }}}
 " - - TAB to switch buffers {{{
 nnoremap <tab> <c-^>
@@ -237,9 +239,8 @@ augroup end
 " - good enough folding for bracey languages {{{
 augroup folding
   autocmd!
-  autocmd FileType css,scss,less,javascript setlocal foldmethod=marker
-  autocmd FileType css,scss,less,javascript setlocal foldmarker={,}
-  autocmd FileType css,scss,less,javascript normal zR
+  autocmd FileType css,scss,less setlocal foldmethod=marker
+  autocmd FileType css,scss,less setlocal foldmarker={,}
 augroup end
 " - }}}
 " - highlight php docblocks {{{
@@ -258,5 +259,11 @@ augroup vimrc
   autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
   autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
 augroup end
+" - }}}
+" - javascript folding {{{
+augroup javascript_folding
+    autocmd!
+    autocmd FileType javascript setlocal foldmethod=syntax
+augroup END
 " - }}}
 " }}}
