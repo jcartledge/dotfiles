@@ -68,7 +68,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
-Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/gina.vim'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " - }}}
 " - Interface {{{
@@ -84,7 +84,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vim-emoji'
 Plug 'junegunn/vim-peekaboo'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
@@ -136,12 +135,6 @@ let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
 " - ale {{{
-if emoji#available()
-  highlight clear ALEErrorSign
-  highlight clear ALEWarningSign
-  let g:ale_sign_error = emoji#for('exclamation')
-  let g:ale_sign_warning = emoji#for('grey_exclamation')
-endif
 let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_fixers = {'javascript': ['eslint']}
 " - }}}
@@ -178,9 +171,6 @@ let g:pencil_gutter_color=1
 let g:pencil_terminal_italics=1
 colorscheme pencil
 set bg=light
-
-highlight StatusLineNC guifg=#BBBBBB guibg=#E8E8E8
-
 " }}}
 
 " Mappings {{{
@@ -220,7 +210,6 @@ map <silent> <C-t> :Tags<cr>
 map <silent> <C-r> :BTags<cr>
 map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
-map <silent> <C-c> :Colors<cr>
 " - - }}}
 " - - netrw {{{
 nnoremap <silent> - :Ex<CR>
