@@ -142,6 +142,7 @@ cask betterzipql
 cask browserstacklocal
 cask changes
 cask charles
+cask docker
 cask imageoptim
 cask java
 cask keyboardcleantool
