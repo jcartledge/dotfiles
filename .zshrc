@@ -12,7 +12,6 @@ zplug lib/history, from:oh-my-zsh
 zplug plugins/vi-mode, from:oh-my-zsh
 zplug plugins/fasd, from:oh-my-zsh
 zplug plugins/git, from:oh-my-zsh
-zplug plugins/heroku, from:oh-my-zsh
 zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
