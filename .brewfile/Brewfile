@@ -110,7 +110,6 @@ brew utf8proc
 brew watch
 brew watchman
 brew wget
-brew wp-cli
 brew x11vnc
 brew x264
 brew xvid
@@ -164,6 +163,7 @@ cask suspicious-package
 cask vagrant
 cask vcv-rack
 cask virtualbox
+cask visual-studio-code
 
 # App Store applications
 appstore 1091189122 Bear (1.1.2)
