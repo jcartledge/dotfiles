@@ -66,10 +66,10 @@ Plug 'veloce/vim-behat'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'lambdalisue/gina.vim'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 " - }}}
 " - Interface {{{
 Plug '907th/vim-auto-save'
@@ -155,9 +155,11 @@ let g:netrw_banner=0
 " - }}}
 " - javascript {{{
 let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
 " - }}}
 " - language-client {{{
-let g:LanguageClient_serverCommands = {  'javascript.jsx': ['javascript-typescript-stdio'] }
+let g:LanguageClient_serverCommands={'javascript.jsx': ['javascript-typescript-stdio']}
+let g:LanguageClient_LoggingLevel='ERROR'
 " - }}}
 " }}}
 
@@ -206,13 +208,17 @@ nmap ga <Plug>(EasyAlign)
 " - - }}}
 " - - fzf {{{
 map <silent> <C-p> :FZF<cr>
-map <silent> <C-t> :Tags<cr>
-map <silent> <C-r> :BTags<cr>
+map <silent> <C-t> :call LanguageClient_workspace_symbol()<cr>
+map <silent> <C-r> :call LanguageClient_textDocument_documentSymbol()<cr>
 map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
 " - - }}}
 " - - netrw {{{
 nnoremap <silent> - :Ex<CR>
+" - - }}}
+" - - LanguageClient {{{
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <C-x> :call LanguageClient_contextMenu()<CR>
 " - - }}}
 " - }}}
 " }}}
