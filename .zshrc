@@ -9,7 +9,6 @@ source ~/.zplug/init.zsh
 zplug lib/directories, from:oh-my-zsh
 zplug lib/history, from:oh-my-zsh
 
-zplug plugins/vi-mode, from:oh-my-zsh
 zplug plugins/fasd, from:oh-my-zsh
 zplug plugins/git, from:oh-my-zsh
 zplug plugins/vagrant, from:oh-my-zsh
@@ -20,8 +19,8 @@ zplug zsh-users/zsh-history-substring-search
 zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-completions
 
-zplug mafredri/zsh-async
-zplug sindresorhus/pure
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
