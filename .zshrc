@@ -11,7 +11,6 @@ zplug lib/history, from:oh-my-zsh
 
 zplug plugins/fasd, from:oh-my-zsh
 zplug plugins/git, from:oh-my-zsh
-zplug plugins/vagrant, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
 
 zplug zsh-users/zsh-syntax-highlighting
