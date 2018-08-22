@@ -56,6 +56,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'freitass/todo.txt-vim'
 Plug 'vim-scripts/confluencewiki.vim'
 Plug 'Shougo/context_filetype.vim'
+Plug 'heavenshell/vim-jsdoc'
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
