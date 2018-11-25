@@ -51,12 +51,14 @@ endif
 call plug#begin()
 " - }}}
 " - Language {{{
-Plug 'dzeban/vim-log-syntax'
-Plug 'sheerun/vim-polyglot'
-Plug 'freitass/todo.txt-vim'
-Plug 'vim-scripts/confluencewiki.vim'
 Plug 'Shougo/context_filetype.vim'
+Plug 'dzeban/vim-log-syntax'
+Plug 'freitass/todo.txt-vim'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'heavenshell/vim-jsdoc'
+Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'vim-scripts/confluencewiki.vim'
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
@@ -67,10 +69,8 @@ Plug 'veloce/vim-behat'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'w0rp/ale'
 Plug 'lambdalisue/gina.vim'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+Plug 'w0rp/ale'
 " - }}}
 " - Interface {{{
 Plug '907th/vim-auto-save'
@@ -136,8 +136,14 @@ let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
 " - ale {{{
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '%linter%: %s'
-let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\}
 " - }}}
 " - behat {{{
 let g:feature_filetype='behat'
@@ -158,9 +164,8 @@ let g:netrw_banner=0
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 " - }}}
-" - language-client {{{
-let g:LanguageClient_serverCommands={'javascript.jsx': ['javascript-typescript-stdio']}
-let g:LanguageClient_LoggingLevel='ERROR'
+" - sort-imports {{{
+let g:import_sort_auto = 1
 " - }}}
 " }}}
 
@@ -218,7 +223,7 @@ map <silent> <C-b> :Buffers<cr>
 nnoremap <silent> - :Ex<CR>
 " - - }}}
 " - - LanguageClient {{{
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gh :ALEHover<CR>
 nnoremap <silent> <C-x> :call LanguageClient_contextMenu()<CR>
 " - - }}}
 " - }}}
@@ -263,3 +268,14 @@ augroup javascript_folding
 augroup END
 " - }}}
 " }}}
+
+function! OpenTest ()
+  if expand("%") =~ ".test."
+    let l:altFilePath = substitute(expand("%"), ".test.", ".", "")
+  else
+    let l:altFilePath = expand("%:r") . ".test." . expand("%:e")
+  endif
+  execute "edit " . l:altFilePath
+endfunction
+
+nnoremap <silent> <leader>t :call OpenTest()<cr>

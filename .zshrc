@@ -94,8 +94,6 @@ eval "$(direnv hook zsh)"
 alias tmux="env TERM=xterm-256color tmux"
 
 # nvim
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-export EDITOR='/usr/local/bin/nvim'
 alias vim=$EDITOR
 
 # brew-wrap - updates Brewfile automatically.
@@ -105,3 +103,7 @@ fi
 
 # config - for versioning config files in home dir
 alias G='hub --git-dir=$HOME/.cfg --work-tree=$HOME'
+
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
