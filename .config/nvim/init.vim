@@ -53,28 +53,22 @@ call plug#begin()
 " - Language {{{
 Plug 'Shougo/context_filetype.vim'
 Plug 'dzeban/vim-log-syntax'
-Plug 'freitass/todo.txt-vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'vim-scripts/confluencewiki.vim'
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'veloce/vim-behat'
 " - }}}
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lambdalisue/gina.vim'
-Plug 'w0rp/ale'
 " - }}}
 " - Interface {{{
 Plug '907th/vim-auto-save'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
 Plug 'gcmt/wildfire.vim'
@@ -91,7 +85,6 @@ Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tyru/caw.vim'
-Plug 'vim-scripts/confluencewiki.vim'
 Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
 " - }}}
@@ -126,42 +119,17 @@ let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 " - caw {{{
 let g:caw_operator_keymappings=1
 " - }}}
-" - deoplete {{{
-let g:deoplete#enable_at_startup=1
-" - }}}
 " - gitgutter {{{
 set signcolumn=yes
 let g:gitgutter_sign_modified='±'
 let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
 " - }}}
-" - ale {{{
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_echo_msg_format = '%linter%: %s'
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'typescript': ['prettier'],
-\   'css': ['prettier'],
-\}
-" - }}}
-" - behat {{{
-let g:feature_filetype='behat'
-" - }}}
-" - php {{{
-let php_folding=2
-let php_phpdoc_folding=1
-" - }}}
-" - auto-pairs {{{
-" Interferes with markdown checkboxes.
-let g:AutoPairsMapSpace=0
-" - }}}
 " - netrw {{{
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 " - }}}
 " - javascript {{{
-let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 " - }}}
 " - sort-imports {{{
@@ -230,30 +198,6 @@ nnoremap <silent> <C-x> :call LanguageClient_contextMenu()<CR>
 " }}}
 
 " Autocommands {{{
-" - drupal stuff {{{
-augroup drupal
-  autocmd BufRead,BufNewFile *.module set filetype=php
-  autocmd BufRead,BufNewFile *.install set filetype=php
-  autocmd BufRead,BufNewFile *.info set filetype=dosini
-augroup end
-" - }}}
-" - good enough folding for bracey languages {{{
-augroup folding
-  autocmd!
-  autocmd FileType css,scss,less setlocal foldmethod=marker
-  autocmd FileType css,scss,less setlocal foldmarker={,}
-augroup end
-" - }}}
-" - highlight php docblocks {{{
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup end
-" - }}}
 " - vimrc {{{
 augroup vimrc
   autocmd!
