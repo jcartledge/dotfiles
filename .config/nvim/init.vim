@@ -20,9 +20,9 @@ set inccommand=nosplit
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 set splitright splitbelow
-" - nice folding {{{
-set fillchars="fold: "
 set foldlevelstart=99
+" - nice folding {{{
+set fillchars=fold:\ 
 set foldtext=MyFoldText()
 function! MyFoldText()
   let line=getline(v:foldstart)
@@ -66,6 +66,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lambdalisue/gina.vim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " - }}}
 " - Interface {{{
 Plug '907th/vim-auto-save'
@@ -85,6 +87,7 @@ Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tyru/caw.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
 " - }}}
@@ -102,6 +105,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'reedes/vim-colors-pencil'
 Plug 'sonjapeterson/1989.vim'
 Plug 'brendonrapp/smyck-vim'
+Plug 'rakr/vim-one'
 " - }}}
 
 call plug#end()
@@ -112,12 +116,40 @@ runtime macros/matchit.vim
 " }}}
 
 " Plugin settings {{{
+" - airline {{{
+let g:airline#extensions#disable_rtp_load = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_extensions = ['branch', 'hunks', 'coc', 'tabline']
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+" - }}}
 " - auto-save {{{
 let g:auto_save=1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 " - }}}
 " - caw {{{
 let g:caw_operator_keymappings=1
+" - }}}
+" - coc {{{
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Highlight symbol under cursor on CursorHold
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
 " - }}}
 " - gitgutter {{{
 set signcolumn=yes
@@ -132,8 +164,9 @@ let g:netrw_banner=0
 " - javascript {{{
 let g:javascript_plugin_jsdoc = 1
 " - }}}
-" - sort-imports {{{
-let g:import_sort_auto = 1
+" - prettier {{{
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 " - }}}
 " }}}
 
@@ -141,12 +174,17 @@ let g:import_sort_auto = 1
 if (has("termguicolors"))
   set termguicolors
 endif
-
-let g:pencil_higher_contrast_ui=0
-let g:pencil_gutter_color=1
-let g:pencil_terminal_italics=1
-colorscheme pencil
-set bg=light
+colorscheme one
+set background=light
+call one#highlight('Folded', 'AAAAAA', 'EEEEEE', 'none')
+call one#highlight('jsParens', 'BBBBBB', '', 'none')
+call one#highlight('jsFuncBraces', 'BBBBBB', '', 'none')
+call one#highlight('jsObjectBraces', 'BBBBBB', '', 'none')
+call one#highlight('jsDestructuringBraces', 'BBBBBB', '', 'none')
+call one#highlight('jsNoise', 'BBBBBB', '', 'none')
+call one#highlight('Noise', 'BBBBBB', '', 'none')
+call one#highlight('Search', '333333', 'AACCFF', 'none')
+call one#highlight('IncSearch', '333333', 'AACCFF', 'none')
 " }}}
 
 " Mappings {{{
@@ -160,11 +198,6 @@ nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 " - - clear search highlight {{{
 nnoremap <leader>/ :noh<CR><ESC>
 " - - }}}
-" - - folding shortcuts {{{
-nnoremap <Space> za
-nnoremap <left> zc
-nnoremap <right> zo
-" - - }}}
 " - - TAB to switch buffers {{{
 nnoremap <tab> <c-^>
 " - - }}}
@@ -173,6 +206,16 @@ imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " - - }}}
 " - }}}
 " - Plugins {{{
+" - - Coc {{{
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+" Remap for format selected region
+vmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+" - - }}}
 " - - Goyo {{{
 nnoremap <leader><space> :Goyo<cr>
 " - - }}}
@@ -182,17 +225,11 @@ nmap ga <Plug>(EasyAlign)
 " - - }}}
 " - - fzf {{{
 map <silent> <C-p> :FZF<cr>
-map <silent> <C-t> :call LanguageClient_workspace_symbol()<cr>
-map <silent> <C-r> :call LanguageClient_textDocument_documentSymbol()<cr>
 map <silent> <C-f> :Ag<cr>
 map <silent> <C-b> :Buffers<cr>
 " - - }}}
 " - - netrw {{{
 nnoremap <silent> - :Ex<CR>
-" - - }}}
-" - - LanguageClient {{{
-nnoremap <silent> gh :ALEHover<CR>
-nnoremap <silent> <C-x> :call LanguageClient_contextMenu()<CR>
 " - - }}}
 " - }}}
 " }}}
@@ -201,7 +238,6 @@ nnoremap <silent> <C-x> :call LanguageClient_contextMenu()<CR>
 " - vimrc {{{
 augroup vimrc
   autocmd!
-  autocmd BufWritePost $MYVIMRC nested silent source $MYVIMRC
   autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
 augroup end
 " - }}}
@@ -223,3 +259,7 @@ function! OpenTest ()
 endfunction
 
 nnoremap <silent> <leader>t :call OpenTest()<cr>
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

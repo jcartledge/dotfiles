@@ -45,14 +45,14 @@
   bfd   = branch -D
 
   a     = add
+  ita   = add --intent-to-add
   ap    = add --patch
   ai    = add --interactive
 
-  pr    = pull --rebase
+  plr    = pull --rebase
 
   ps   = push
   pom  = push origin master
-  phm  = push heroku master
 
   rb   = rebase
   rbi  = rebase -i
@@ -60,7 +60,6 @@
 
 [core]
   editor = /usr/bin/vim
-	excludesfile = /Users/e5020488/.gitignore_global
 [merge]
   tool = mvim -d
 
