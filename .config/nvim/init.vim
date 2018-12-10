@@ -37,6 +37,8 @@ function! MyFoldText()
     return line . substitute(description, "^\\s*\\*", "", "") . " */"
   end
 endfunction
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 " - }}}
 " }}}
 
@@ -59,13 +61,13 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " - }}}
 " - Code display {{{
 Plug 'Konfekt/FastFold'
-Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 " - }}}
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lambdalisue/gina.vim'
+Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " - }}}
@@ -85,7 +87,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
-Plug 'tpope/vim-sleuth'
 Plug 'tyru/caw.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/file-line'
@@ -116,7 +117,15 @@ runtime macros/matchit.vim
 " }}}
 
 " Plugin settings {{{
+" - ack {{{
+let g:ackprg = "ag --vimgrep"
+let g:ackhighlight = 1
+let g:ack_autofold_results = 1
+let g:ackpreview = 1
+let g:ack_qhandler = "botright copen 20"
+" - }}}
 " - airline {{{
+let g:airline_theme='one'
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -146,10 +155,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
 " - }}}
 " - gitgutter {{{
 set signcolumn=yes
@@ -164,16 +169,13 @@ let g:netrw_banner=0
 " - javascript {{{
 let g:javascript_plugin_jsdoc = 1
 " - }}}
-" - prettier {{{
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
-" - }}}
 " }}}
 
 " Colours {{{
 if (has("termguicolors"))
   set termguicolors
 endif
+let g:one_allow_italics = 1
 colorscheme one
 set background=light
 call one#highlight('Folded', 'AAAAAA', 'EEEEEE', 'none')
@@ -249,16 +251,19 @@ augroup END
 " - }}}
 " }}}
 
+" `gt` to switch between implementation and test.
 function! OpenTest ()
-  if expand("%") =~ ".test."
+  if expand("%") =~ "\.test\."
     let l:altFilePath = substitute(expand("%"), ".test.", ".", "")
   else
     let l:altFilePath = expand("%:r") . ".test." . expand("%:e")
   endif
   execute "edit " . l:altFilePath
 endfunction
+nnoremap <silent> gt :call OpenTest()<cr>
 
-nnoremap <silent> <leader>t :call OpenTest()<cr>
+" `gb` to git blame for the current line.
+nnoremap <silent> gb :execute "!git blame -L" . line(".").",".line(".") . " " . expand("%")<cr>
 
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
