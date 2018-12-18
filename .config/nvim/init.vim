@@ -1,26 +1,27 @@
 " Basic editor config {{{
-set hidden number relativenumber
-set expandtab tabstop=2 shiftwidth=2
-set smartindent
 set autoread
-set showmatch
-set laststatus=0
-set ignorecase smartcase
-set scrolloff=2
-set whichwrap+=<,>,[,]
-set nobackup noswapfile
-set mouse=a
-set mousemodel=popup_setpos
-set shortmess=atI
 set clipboard+=unnamedplus
-set undofile
-set undodir=~/.vimundo
 set colorcolumn=81
+set expandtab tabstop=2 shiftwidth=2
+set foldlevelstart=99
+set hidden number relativenumber
+set ignorecase smartcase
 set inccommand=nosplit
+set laststatus=0
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
+set mouse=a
+set mousemodel=popup_setpos
+set nobackup noswapfile
+set scrolloff=2
+set shortmess=atI
+set showmatch
+set smartindent
 set splitright splitbelow
-set foldlevelstart=99
+set undodir=~/.vimundo
+set undofile
+set updatetime=100
+set whichwrap+=<,>,[,]
 " - nice folding {{{
 set fillchars=fold:\ 
 set foldtext=MyFoldText()
@@ -37,8 +38,6 @@ function! MyFoldText()
     return line . substitute(description, "^\\s*\\*", "", "") . " */"
   end
 endfunction
-let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
 " - }}}
 " }}}
 
@@ -183,10 +182,22 @@ call one#highlight('jsParens', 'BBBBBB', '', 'none')
 call one#highlight('jsFuncBraces', 'BBBBBB', '', 'none')
 call one#highlight('jsObjectBraces', 'BBBBBB', '', 'none')
 call one#highlight('jsDestructuringBraces', 'BBBBBB', '', 'none')
+call one#highlight('jsModuleKeyword', '', '', 'bold')
+call one#highlight('jsVariableDef', '', '', 'bold')
+call one#highlight('jsObjectKey', '', '', 'bold')
+call one#highlight('jsFuncCall', '', '', 'bold')
+call one#highlight('jsDestructuringBlock', '', '', 'bold')
 call one#highlight('jsNoise', 'BBBBBB', '', 'none')
+call one#highlight('xmlTag', '', '', 'bold')
+call one#highlight('xmlEndTag', '', '', 'bold')
+call one#highlight('xmlTagName', '', '', 'bold')
+call one#highlight('xmlAttrib', '', '', 'italic')
+call one#highlight('String', '', '', 'bold')
+call one#highlight('Function', '', '', 'bold')
 call one#highlight('Noise', 'BBBBBB', '', 'none')
 call one#highlight('Search', '333333', 'AACCFF', 'none')
 call one#highlight('IncSearch', '333333', 'AACCFF', 'none')
+call one#highlight('CocHighlightText', '', '', 'none')
 " }}}
 
 " Mappings {{{
