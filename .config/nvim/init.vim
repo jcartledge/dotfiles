@@ -3,7 +3,7 @@ set autoread
 set clipboard+=unnamedplus
 set colorcolumn=81
 set expandtab tabstop=2 shiftwidth=2
-set foldlevelstart=99
+set foldlevelstart=99 foldmethod=syntax
 set hidden number relativenumber
 set ignorecase smartcase
 set inccommand=nosplit
@@ -17,7 +17,7 @@ set scrolloff=2
 set shortmess=atI
 set showmatch
 set smartindent
-set splitright splitbelow
+set splitright
 set undodir=~/.vimundo
 set undofile
 set updatetime=100
@@ -58,9 +58,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " - }}}
-" - Code display {{{
-Plug 'Konfekt/FastFold'
-" - }}}
 " - Integrations {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
@@ -84,7 +81,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mattn/emmet-vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tyru/caw.vim'
 Plug 'vim-airline/vim-airline'
@@ -93,7 +89,6 @@ Plug 'wellle/targets.vim'
 " - }}}
 " - Commands {{{
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
@@ -102,9 +97,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 " - }}}
 " - Colors {{{
-Plug 'reedes/vim-colors-pencil'
-Plug 'sonjapeterson/1989.vim'
-Plug 'brendonrapp/smyck-vim'
 Plug 'rakr/vim-one'
 " - }}}
 
@@ -145,6 +137,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" Snippets
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+autocmd CompleteDone * silent! pclose
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -154,6 +151,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" highlight current word
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 " - }}}
 " - gitgutter {{{
 set signcolumn=yes
@@ -208,14 +207,14 @@ nnoremap U <c-r>
 " - - quickly edit the vimrc {{{
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 " - - }}}
-" - - clear search highlight {{{
-nnoremap <leader>/ :noh<CR><ESC>
+" - - clear search highlight and close preview {{{
+nnoremap <silent> <esc><esc> :nohlsearch<cr>:pclose<cr>
 " - - }}}
 " - - TAB to switch buffers {{{
 nnoremap <tab> <c-^>
 " - - }}}
 " - - TAB in insert to autocomplete {{{
-imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><tab> pumvisible() ? "\<cr>" : "\<tab>"
 " - - }}}
 " - }}}
 " - Plugins {{{
@@ -253,12 +252,6 @@ augroup vimrc
   autocmd!
   autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
 augroup end
-" - }}}
-" - javascript folding {{{
-augroup javascript_folding
-    autocmd!
-    autocmd FileType javascript setlocal foldmethod=syntax
-augroup END
 " - }}}
 " }}}
 

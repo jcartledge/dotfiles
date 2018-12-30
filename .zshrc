@@ -102,7 +102,7 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 # config - for versioning config files in home dir
-alias G='hub --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias G='git --git-dir=$HOME/.cfg --work-tree=$HOME'
 
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
