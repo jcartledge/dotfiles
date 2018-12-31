@@ -1,6 +1,5 @@
 " Basic editor config {{{
 set autoread
-set clipboard+=unnamedplus
 set colorcolumn=81
 set expandtab tabstop=2 shiftwidth=2
 set foldlevelstart=99 foldmethod=syntax
@@ -14,8 +13,9 @@ set mouse=a
 set mousemodel=popup_setpos
 set nobackup noswapfile
 set scrolloff=2
-set shortmess=atI
+set shortmess=atIc
 set showmatch
+set signcolumn=yes
 set smartindent
 set splitright
 set undodir=~/.vimundo
@@ -59,15 +59,18 @@ Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " - }}}
 " - Integrations {{{
+Plug 'Shougo/neco-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lambdalisue/gina.vim'
 Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " - }}}
 " - Interface {{{
+Plug 'tpope/vim-obsession'
 Plug '907th/vim-auto-save'
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
@@ -116,13 +119,14 @@ let g:ackpreview = 1
 let g:ack_qhandler = "botright copen 20"
 " - }}}
 " - airline {{{
+let g:airline#extensions#disable_rtp_load=1
+let g:airline#extensions#obsession#enabled=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline_extensions=['branch', 'hunks', 'coc', 'tabline']
+let g:airline_section_error='%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning='%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:airline_theme='one'
-let g:airline#extensions#disable_rtp_load = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_extensions = ['branch', 'hunks', 'coc', 'tabline']
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 " - }}}
 " - auto-save {{{
 let g:auto_save=1
@@ -132,30 +136,10 @@ let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 let g:caw_operator_keymappings=1
 " - }}}
 " - coc {{{
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Snippets
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
-autocmd CompleteDone * silent! pclose
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-" highlight current word
-" autocmd CursorHold * silent call CocActionAsync('highlight')
 " - }}}
 " - gitgutter {{{
-set signcolumn=yes
 let g:gitgutter_sign_modified='±'
 let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
@@ -196,26 +180,46 @@ call one#highlight('Function', '', '', 'bold')
 call one#highlight('Noise', 'BBBBBB', '', 'none')
 call one#highlight('Search', '333333', 'AACCFF', 'none')
 call one#highlight('IncSearch', '333333', 'AACCFF', 'none')
-call one#highlight('CocHighlightText', '', '', 'none')
+call one#highlight('CocHighlightText', '', '', 'bold,underline')
+
 " }}}
 
 " Mappings {{{
 " - Core {{{
-" - - redo {{{
+" - - U: redo {{{
 nnoremap U <c-r>
 " - - }}}
-" - - quickly edit the vimrc {{{
+" - - \ev: quickly edit the vimrc {{{
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 " - - }}}
-" - - clear search highlight and close preview {{{
+" - - <esc><esc>: clear search highlight and close preview {{{
 nnoremap <silent> <esc><esc> :nohlsearch<cr>:pclose<cr>
 " - - }}}
-" - - TAB to switch buffers {{{
+" - - TAB: switch buffers in normal mode {{{
 nnoremap <tab> <c-^>
 " - - }}}
-" - - TAB in insert to autocomplete {{{
+" - - TAB: autocomplete in insert mode {{{
 imap <expr><tab> pumvisible() ? "\<cr>" : "\<tab>"
 " - - }}}
+" - - gt: switch between implementation and test {{{
+function! OpenTest ()
+  if expand("%") =~ "\.test\."
+    let l:altFilePath = substitute(expand("%"), ".test.", ".", "")
+  else
+    let l:altFilePath = expand("%:r") . ".test." . expand("%:e")
+  endif
+  execute "edit " . l:altFilePath
+endfunction
+nnoremap <silent> gt :call OpenTest()<cr>
+" - - }}}
+" - - gb: git blame for the current line {{{
+nnoremap <silent> gb :execute "!git blame -L" . line(".").",".line(".") . " " . expand("%")<cr>
+" - - }}}
+" - - F10: show highlight group under cursor {{{
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"  - - }}}
 " - }}}
 " - Plugins {{{
 " - - Coc {{{
@@ -227,6 +231,22 @@ nmap <leader>f <Plug>(coc-format-selected)
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Snippets
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 " - - }}}
 " - - Goyo {{{
 nnoremap <leader><space> :Goyo<cr>
@@ -250,25 +270,13 @@ nnoremap <silent> - :Ex<CR>
 " - vimrc {{{
 augroup vimrc
   autocmd!
-  autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker
+  autocmd BufRead $MYVIMRC silent setlocal foldmethod=marker foldlevel=0
 augroup end
 " - }}}
+" - coc {{{
+" Close preview after completion.
+autocmd CompleteDone * silent! pclose
+" highlight current word
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"   }}}
 " }}}
-
-" `gt` to switch between implementation and test.
-function! OpenTest ()
-  if expand("%") =~ "\.test\."
-    let l:altFilePath = substitute(expand("%"), ".test.", ".", "")
-  else
-    let l:altFilePath = expand("%:r") . ".test." . expand("%:e")
-  endif
-  execute "edit " . l:altFilePath
-endfunction
-nnoremap <silent> gt :call OpenTest()<cr>
-
-" `gb` to git blame for the current line.
-nnoremap <silent> gb :execute "!git blame -L" . line(".").",".line(".") . " " . expand("%")<cr>
-
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
