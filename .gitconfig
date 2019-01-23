@@ -60,6 +60,7 @@
 
 [core]
   editor = /usr/bin/vim
+	excludesfile = /Users/jcartledge/.gitignore_global
 [merge]
   tool = mvim -d
 
