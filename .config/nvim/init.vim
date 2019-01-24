@@ -1,4 +1,7 @@
-" Basic editor config
+" =======
+" CONFIG:
+" =======
+
 set autoread
 set clipboard+=unnamedplus
 set cmdheight=2
@@ -26,7 +29,7 @@ set undofile
 set updatetime=100
 set whichwrap+=<,>,[,]
 
-" nice folding
+" CONFIG: nice folding
 let g:vimsyn_folding='af'
 set fillchars=fold:\ 
 set foldtext=MyFoldText()
@@ -44,25 +47,31 @@ function! MyFoldText()
   end
 endfunction
 
-" Plugins
-" Install and initialise vim-plug
+" ========
+" PLUGINS:
+" ========
+
+" PLUGINS: Install and initialise vim-plug
 let $PLUGDOTVIM=fnamemodify($MYVIMRC, ':p:h') . '/autoload/plug.vim'
 if empty(glob($PLUGDOTVIM))
   silent !curl -fLo $PLUGDOTVIM --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-" Language
+
+" PLUGINS: Language
 Plug 'Shougo/context_filetype.vim'
 Plug 'dzeban/vim-log-syntax'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Integrations
+
+" PLUGINS: Integrations
 Plug 'Shougo/neco-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'lambdalisue/gina.vim'
-" Interface
+
+" PLUGINS: Interface
 Plug '907th/vim-auto-save'
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
@@ -78,7 +87,8 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'tyru/caw.vim'
 Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
-" Commands
+
+" PLUGINS: Commands
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
@@ -87,7 +97,8 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-" Non-oni
+
+" PLUGINS: Non-oni
 if !exists("g:gui_oni")
   Plug 'tmsvg/pear-tree'
   Plug 'vim-airline/vim-airline'
@@ -101,11 +112,14 @@ endif
 
 call plug#end()
 
-" Plugins bundled in $VIMRUNTIME
+" PLUGINS: bundled in $VIMRUNTIME
 runtime macros/matchit.vim
 
-" Plugin settings
-" airline
+" ================
+" PLUGIN SETTINGS:
+" ================
+
+" PLUGIN SETTINGS: airline
 let g:airline#extensions#disable_rtp_load=1
 let g:airline#extensions#obsession#enabled=1
 let g:airline#extensions#tabline#enabled=1
@@ -114,27 +128,33 @@ let g:airline_extensions=['branch', 'hunks', 'coc', 'tabline']
 let g:airline_section_error='%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning='%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:airline_theme='one'
-" auto-save
+
+" PLUGIN SETTINGS: auto-save
 let g:auto_save=1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
-" caw
+
+" PLUGIN SETTINGS: caw
 let g:caw_operator_keymappings=1
-" coc
+
+" PLUGIN SETTINGS: coc
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
-" gitgutter
+
+" PLUGIN SETTINGS: gitgutter
 let g:gitgutter_sign_modified='±'
 let g:gitgutter_sign_modified_removed='±'
 let g:gitgutter_sign_removed='-'
-" netrw
+
+" PLUGIN SETTINGS: netrw
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 let g:netrw_browse_split=4
 let g:netrw_winsize=20
-" javascript
+
+" PLUGIN SETTINGS: javascript
 let g:javascript_plugin_jsdoc = 1
 
-" Colours
+" PLUGIN SETTINGS: colours
 if !exists("g:gui_oni")
   if (has("termguicolors"))
     set termguicolors
@@ -174,19 +194,26 @@ if !exists("g:gui_oni")
   call one#highlight('CocHintHighlight', '', '', 'underline')
 endif
 
-" Mappings
-" Core
-" U: redo
+" =========
+" MAPPINGS:
+" =========
+
+" MAPPINGS: Core
+" --------------
+
+" MAPPINGS: U = redo
 nnoremap U <c-r>
-" \ev: quickly edit the vimrc
+
+" MAPPINGS: \ev = quickly edit the vimrc
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
-" <esc><esc>: clear search highlight and close preview, help, loclist and quickfix
+
+" MAPPINGS: <esc><esc> = clear search highlight and close preview, help, loclist and quickfix
 nnoremap <silent> <esc><esc> :nohlsearch<cr>:helpclose<cr>:pclose<cr>:lclose<cr>:cclose<cr>
-" TAB: switch buffers in normal mode
+
+" MAPPINGS: TAB = switch buffers in normal mode
 nnoremap <tab> <c-^>
-" TAB: autocomplete in insert mode
-" imap <expr><tab> pumvisible() ? "\<cr>" : "\<tab>"
-" gt: switch between implementation and test
+
+" MAPPINGS: gt = switch between implementation and test
 function! OpenTest ()
   if expand("%") =~ "\.test\."
     let l:altFilePath = substitute(expand("%"), ".test.", ".", "")
@@ -196,27 +223,30 @@ function! OpenTest ()
   execute "edit " . l:altFilePath
 endfunction
 nnoremap <silent> gt :call OpenTest()<cr>
-" gb: git blame for the current line
+
+" MAPPINGS: gb = git blame for the current line
 nnoremap <silent> gb :execute "!git blame -L" . line(".").",".line(".") . " " . expand("%")<cr>
-" F10: show highlight group under cursor
+
+" MAPPINGS: F10 = show highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" ;;: insert semicolon at eol
+" ;; = insert semicolon at eol
 inoremap ;; <c-o>A;
-" <leader>t: run tests for current file
+
+" MAPPINGS: <leader>t = run tests for current file
 function! YarnTest()
   execute "below split|terminal yarn test \#:r"
 endfunction
 nnoremap <silent> <leader>t :call YarnTest()<cr>
-" Plugins
-" Coc
+
+" MAPPINGS: Plugins
+" -----------------
+
+" MAPPINGS: Coc
 if !exists("g:gui_oni")
   " Remap for rename current word
   nmap <leader>rn <Plug>(coc-rename)
-  " Remap for format selected region
-  vmap <leader>f <Plug>(coc-format-selected)
-  nmap <leader>f <Plug>(coc-format-selected)
   " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
   vmap <leader>a <Plug>(coc-codeaction-selected)
   nmap <leader>a <Plug>(coc-codeaction-selected)
@@ -225,6 +255,8 @@ if !exists("g:gui_oni")
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  " Document symbols
+  nnoremap <silent> <c-t> :CocList --normal outline<cr>
   " Snippets
   inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
   " Use K for show documentation in preview window
@@ -237,30 +269,41 @@ if !exists("g:gui_oni")
       endif
   endfunction
 endif
-" EasyAlign
+
+" MAPPINGS: EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-" fzf
+
+" MAPPINGS: fzf
 if !exists("g:gui_oni")
   map <silent> <C-p> :FZF<cr>
   map <silent> <C-f> :Ag<cr>
   map <silent> <C-b> :Buffers<cr>
 endif
-" netrw
+
+" MAPPINGS: netrw
 if !exists("g:gui_oni")
   nnoremap <silent> - :Lexplore %:h<CR>
 endif
-" pear-tree
+
+" MAPPINGS: pear-tree
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
+let g:pear_tree_repeatable_expand = 0
 
-" Autocommands
+" =============
+" AUTOCOMMANDS:
+" =============
+
+" AUTOCOMMANDS: cursorline
 augroup cursorline
-  autocmd! InsertEnter * setlocal cursorcolumn cursorline
-  autocmd! InsertLeave * setlocal nocursorline nocursorcolumn
+  autocmd!
+  autocmd InsertEnter * setlocal cursorcolumn cursorline
+  autocmd InsertLeave * setlocal nocursorline nocursorcolumn
 augroup end
-" coc
+
+" AUTOCOMMANDS: coc
 if !exists("g:gui_oni")
   augroup coc
     autocmd!
@@ -268,9 +311,12 @@ if !exists("g:gui_oni")
     autocmd CompleteDone * silent! pclose
     " highlight current word
     autocmd CursorHold * silent call CocActionAsync('highlight')
+    " organize imports
+    autocmd InsertLeave * silent call CocActionAsync('runCommand', 'tsserver.organizeImports')
   augroup end
 endif
-" netrw
+
+" AUTOCOMMANDS: netrw
 if !exists("g:gui_oni")
   augroup netrw
     autocmd!
