@@ -69,7 +69,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " PLUGINS: Integrations
 Plug 'Shougo/neco-vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'lambdalisue/gina.vim'
+Plug 'jcartledge/git-blame-nvim'
 
 " PLUGINS: Interface
 Plug '907th/vim-auto-save'
@@ -81,8 +81,8 @@ Plug 'henrik/vim-indexed-search'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-slash'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mtth/scratch.vim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tyru/caw.vim'
 Plug 'vim-scripts/file-line'
@@ -100,7 +100,6 @@ Plug 'tpope/vim-unimpaired'
 
 " PLUGINS: Non-oni
 if !exists("g:gui_oni")
-  Plug 'tmsvg/pear-tree'
   Plug 'vim-airline/vim-airline'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -120,11 +119,9 @@ runtime macros/matchit.vim
 " ================
 
 " PLUGIN SETTINGS: airline
-let g:airline#extensions#disable_rtp_load=1
 let g:airline#extensions#obsession#enabled=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
-let g:airline_extensions=['branch', 'hunks', 'coc', 'tabline']
 let g:airline_section_error='%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning='%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:airline_theme='one'
@@ -162,36 +159,36 @@ if !exists("g:gui_oni")
   let g:one_allow_italics = 1
   colorscheme one
   set background=light
-  call one#highlight('Folded', 'AAAAAA', 'EEEEEE', 'none')
-  call one#highlight('jsParens', 'BBBBBB', '', 'none')
-  call one#highlight('jsFuncBraces', 'BBBBBB', '', 'none')
-  call one#highlight('jsObjectBraces', 'BBBBBB', '', 'none')
-  call one#highlight('jsDestructuringBraces', 'BBBBBB', '', 'none')
-  call one#highlight('jsModuleKeyword', '', '', 'bold')
-  call one#highlight('jsVariableDef', '', '', 'bold')
-  call one#highlight('jsObjectKey', '', '', 'bold')
-  call one#highlight('jsFuncCall', '', '', 'bold')
-  call one#highlight('jsDestructuringBlock', '', '', 'bold')
-  call one#highlight('jsNoise', 'BBBBBB', '', 'none')
-  call one#highlight('jsCommentTodo', 'EEEEEE', 'EE6666', 'bold')
-  call one#highlight('xmlTag', '', '', 'bold')
-  call one#highlight('xmlEndTag', '', '', 'bold')
-  call one#highlight('xmlTagName', '', '', 'bold')
-  call one#highlight('xmlAttrib', '', '', 'italic')
-  call one#highlight('String', '', '', 'bold')
-  call one#highlight('Function', '', '', 'bold')
-  call one#highlight('Noise', 'BBBBBB', '', 'none')
-  call one#highlight('Search', '333333', 'AACCFF', 'none')
-  call one#highlight('IncSearch', '333333', 'AACCFF', 'none')
-  call one#highlight('CocHighlightText', '', 'ECECEC', 'none')
-  call one#highlight('CocErrorSign', 'EE6666', '', 'bold')
-  call one#highlight('CocErrorHighlight', '', 'EECCCC', '')
-  call one#highlight('CocWarningSign', 'EE9966', '', 'bold')
-  call one#highlight('CocWarningHighlight', 'EEEECC', '', '')
-  call one#highlight('CocInfoSign', '6666EE', '', 'bold')
-  call one#highlight('CocInfoHighlight', '', '', 'underline')
-  call one#highlight('CocHintSign', '66EE66', '', 'bold')
-  call one#highlight('CocHintHighlight', '', '', 'underline')
+  highlight CocErrorHighlight guibg=#FFDDDD
+  highlight CocErrorSign guifg=#EE3333 guibg=#FFDDDD gui=italic
+  highlight CocHighlightText guibg=#ECECEC gui=none
+  highlight CocHintHighlight gui=underline
+  highlight CocHintSign guifg=#66EE66 guibg=#DDFFDD gui=italic
+  highlight CocInfoHighlight gui=underline
+  highlight CocInfoSign guifg=#6666EE guibg=#DDDDFF gui=italic
+  highlight CocWarningHighlight guifg=#EEEECC
+  highlight CocWarningSign guifg=#EE9966 guibg=#FFDDCC gui=italic
+  highlight Folded guifg=#AAAAAA guibg=#EEEEEE gui=none
+  highlight Function gui=bold
+  highlight IncSearch guifg=#333333 guibg=#AACCFF gui=none
+  highlight Noise guifg=#BBBBBB gui=none
+  highlight Search guifg=#333333 guibg=#AACCFF gui=none
+  highlight String gui=bold
+  highlight jsCommentTodo guifg=#EEEEEE guibg=#EE6666 gui=bold
+  highlight jsDestructuringBlock gui=bold
+  highlight jsDestructuringBraces guifg=#BBBBBB gui=none
+  highlight jsFuncBraces guifg=#BBBBBB gui=none
+  highlight jsFuncCall gui=bold
+  highlight jsModuleKeyword gui=bold
+  highlight jsNoise guifg=#BBBBBB gui=none
+  highlight jsObjectBraces guifg=#BBBBBB gui=none
+  highlight jsObjectKey gui=bold
+  highlight jsParens guifg=#BBBBBB gui=none
+  highlight jsVariableDef gui=bold
+  highlight xmlAttrib gui=italic
+  highlight xmlEndTag gui=bold
+  highlight xmlTag gui=bold
+  highlight xmlTagName gui=bold
 endif
 
 " =========
@@ -224,8 +221,10 @@ function! OpenTest ()
 endfunction
 nnoremap <silent> gt :call OpenTest()<cr>
 
-" MAPPINGS: gb = git blame for the current line
-nnoremap <silent> gb :execute "!git blame -L" . line(".").",".line(".") . " " . expand("%")<cr>
+" MAPPINGS: splits stuff
+nnoremap <silent> <leader>\|<cr> :vsplit\<cr>
+nnoremap <silent> <leader>\|t :vsplit\|call OpenTest()<cr>
+nnoremap <silent> <leader>\|ga :vsplit\|terminal git add --patch<cr>
 
 " MAPPINGS: F10 = show highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -255,6 +254,8 @@ if !exists("g:gui_oni")
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  " List
+  nnoremap <silent> <c-c> :CocList --normal<cr>
   " Document symbols
   nnoremap <silent> <c-t> :CocList --normal outline<cr>
   " Snippets
@@ -286,12 +287,6 @@ if !exists("g:gui_oni")
   nnoremap <silent> - :Lexplore %:h<CR>
 endif
 
-" MAPPINGS: pear-tree
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
-let g:pear_tree_repeatable_expand = 0
-
 " =============
 " AUTOCOMMANDS:
 " =============
@@ -311,8 +306,6 @@ if !exists("g:gui_oni")
     autocmd CompleteDone * silent! pclose
     " highlight current word
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    " organize imports
-    autocmd InsertLeave * silent call CocActionAsync('runCommand', 'tsserver.organizeImports')
   augroup end
 endif
 
