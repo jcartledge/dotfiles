@@ -63,6 +63,7 @@ call plug#begin()
 Plug 'Shougo/context_filetype.vim'
 Plug 'dzeban/vim-log-syntax'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'ianks/vim-tsx'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
@@ -105,7 +106,6 @@ if !exists("g:gui_oni")
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'neoclide/coc-neco'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'rakr/vim-one'
 endif
 

@@ -1,0 +1,19 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "css", "typescript"],
+  "coc.preferences.diagnostic.virtualText": true,
+  "coc.preferences.autoTrigger": "always",
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.diagnostic.enable": true,
+  "coc.preferences.diagnostic.errorSign": "X",
+  "coc.preferences.diagnostic.hintSign": "ⓘ",
+  "coc.preferences.diagnostic.infoSign": "ⓘ",
+  "coc.preferences.diagnostic.signOffset": 1000,
+  "coc.preferences.diagnostic.warningSign": "!",
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.jumpCommand": "edit",
+  "coc.preferences.noselect": false,
+  "coc.preferences.preferCompleteThanJumpPlaceholder": true,
+  "coc.preferences.timeout": 500,
+  "coc.preferences.triggerAfterInsertEnter": true,
+  "snippets.priority": 99
+}
