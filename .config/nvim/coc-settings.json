@@ -1,6 +1,5 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "css", "typescript"],
-  "coc.preferences.diagnostic.virtualText": true,
   "coc.preferences.autoTrigger": "always",
   "coc.preferences.colorSupport": true,
   "coc.preferences.diagnostic.enable": true,
@@ -9,7 +8,7 @@
   "coc.preferences.diagnostic.infoSign": "ⓘ",
   "coc.preferences.diagnostic.signOffset": 1000,
   "coc.preferences.diagnostic.warningSign": "!",
-  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnType": false,
   "coc.preferences.jumpCommand": "edit",
   "coc.preferences.noselect": false,
   "coc.preferences.preferCompleteThanJumpPlaceholder": true,

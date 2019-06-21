@@ -1,50 +1,50 @@
 {
-    "extension": {
-        "coc-tsserver": {
-            "ts": 1549323525417
-        },
-        "coc-prettier": {
-            "ts": 1546136707844
-        },
-        "coc-json": {
-            "ts": 1549323468634
-        },
-        "coc-css": {
-            "ts": 1548912684497
-        },
-        "coc-ultisnips": {
-            "ts": 1543529785968
-        },
-        "coc-neosnippet": {
-            "ts": 1544063918493
-        },
-        "coc-html": {
-            "ts": 1549322949061
-        },
-        "coc-highlight": {
-            "ts": 1547511464942
-        },
-        "coc-emmet": {
-            "ts": 1544993261389
-        },
-        "coc-stylelint": {
-            "ts": 1548912694868
-        },
-        "coc-snippets": {
-            "ts": 1549322937904
-        },
-        "coc-jest": {
-            "ts": 1548966032207
-        },
-        "coc-pairs": {
-            "ts": 1548454611651
-        },
-        "coc-lists": {
-            "ts": 1548506473389
-        },
-        "coc-vetur": {
-            "ts": 1548912683399
-        }
+  "extension": {
+    "coc-tsserver": {
+      "ts": 1549323525417
     },
-    "lastUpdate": 1549405196143
+    "coc-prettier": {
+      "ts": 1546136707844
+    },
+    "coc-json": {
+      "ts": 1549323468634
+    },
+    "coc-css": {
+      "ts": 1548912684497
+    },
+    "coc-ultisnips": {
+      "ts": 1543529785968
+    },
+    "coc-neosnippet": {
+      "ts": 1544063918493
+    },
+    "coc-html": {
+      "ts": 1549322949061
+    },
+    "coc-highlight": {
+      "ts": 1547511464942
+    },
+    "coc-emmet": {
+      "ts": 1544993261389
+    },
+    "coc-stylelint": {
+      "ts": 1548912694868
+    },
+    "coc-snippets": {
+      "ts": 1549322937904
+    },
+    "coc-jest": {
+      "ts": 1548966032207
+    },
+    "coc-pairs": {
+      "ts": 1548454611651
+    },
+    "coc-lists": {
+      "ts": 1548506473389
+    },
+    "coc-vetur": {
+      "ts": 1548912683399
+    }
+  },
+  "lastUpdate": 1555040774245
 }

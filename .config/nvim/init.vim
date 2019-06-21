@@ -18,15 +18,17 @@ set list listchars=tab:⇥\ ,trail:·
 set mouse=a
 set mousemodel=popup_setpos
 set nobackup noswapfile
+set pumblend=20
 set scrolloff=2
 set shortmess=atIc
 set showmatch
-set signcolumn=yes
+set signcolumn=auto:2
 set smartindent
 set splitright
 set undodir=~/.vimundo
 set undofile
 set updatetime=100
+set wildoptions=pum
 set whichwrap+=<,>,[,]
 
 " CONFIG: nice folding
@@ -71,9 +73,12 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'Shougo/neco-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jcartledge/git-blame-nvim'
+Plug 'prettier/vim-prettier'
+Plug 'tpope/vim-fugitive'
 
 " PLUGINS: Interface
 Plug '907th/vim-auto-save'
+Plug 'TaDaa/vimade'
 Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
 Plug 'gcmt/wildfire.vim'
@@ -83,14 +88,12 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
-Plug 'machakann/vim-highlightedyank'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tyru/caw.vim'
 Plug 'vim-scripts/file-line'
 Plug 'wellle/targets.vim'
 
 " PLUGINS: Commands
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-obsession'
@@ -103,7 +106,6 @@ Plug 'tpope/vim-unimpaired'
 if !exists("g:gui_oni")
   Plug 'vim-airline/vim-airline'
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'neoclide/coc-neco'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   Plug 'rakr/vim-one'
@@ -125,6 +127,14 @@ let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_section_error='%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning='%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:airline_theme='one'
+" powerline symbols
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 
 " PLUGIN SETTINGS: auto-save
 let g:auto_save=1
@@ -159,15 +169,11 @@ if !exists("g:gui_oni")
   let g:one_allow_italics = 1
   colorscheme one
   set background=light
-  highlight CocErrorHighlight guibg=#FFDDDD
-  highlight CocErrorSign guifg=#EE3333 guibg=#FFDDDD gui=italic
+  highlight CocErrorHighlight guibg=#FFDDDD gui=underline
   highlight CocHighlightText guibg=#ECECEC gui=none
   highlight CocHintHighlight gui=underline
-  highlight CocHintSign guifg=#66EE66 guibg=#DDFFDD gui=italic
   highlight CocInfoHighlight gui=underline
-  highlight CocInfoSign guifg=#6666EE guibg=#DDDDFF gui=italic
-  highlight CocWarningHighlight guifg=#EEEECC
-  highlight CocWarningSign guifg=#EE9966 guibg=#FFDDCC gui=italic
+  highlight CocWarningHighlight gui=underline
   highlight Folded guifg=#AAAAAA guibg=#EEEEEE gui=none
   highlight Function gui=bold
   highlight IncSearch guifg=#333333 guibg=#AACCFF gui=none
@@ -230,8 +236,14 @@ nnoremap <silent> <leader>\|ga :vsplit\|terminal git add --patch<cr>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" ;; = insert semicolon at eol
+
+" MAPPINGS: ;; = insert semicolon at eol, same for ,, and ::
 inoremap ;; <c-o>A;
+inoremap ,, <c-o>A,
+
+" MAPPINGS: insert ooo = new line below, OOO = new line above
+inoremap ooo <c-o>o
+inoremap OOO <c-o>O
 
 " MAPPINGS: <leader>t = run tests for current file
 function! YarnTest()
@@ -263,24 +275,26 @@ if !exists("g:gui_oni")
   " Use K for show documentation in preview window
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
-      if &filetype == 'vim'
-          execute 'h '.expand('<cword>')
-      else
-          call CocAction('doHover')
-      endif
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
   endfunction
+  " :(
+  nnoremap <silent> <leader>c :CocRestart<cr>
+
+  " lists
+  map <silent> <C-p> :exe 'CocList files'<cr>
+  map <silent> <C-f> :exe 'CocList grep'<cr>
+  map <silent> <C-b> :exe 'CocList buffers'<cr>
+  map <silent> <C-e> :exe 'CocList locationlist'<cr>
+  map <silent> <C-y> :exe 'CocList yank'<cr>
 endif
 
 " MAPPINGS: EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" MAPPINGS: fzf
-if !exists("g:gui_oni")
-  map <silent> <C-p> :FZF<cr>
-  map <silent> <C-f> :Ag<cr>
-  map <silent> <C-b> :Buffers<cr>
-endif
 
 " MAPPINGS: netrw
 if !exists("g:gui_oni")
