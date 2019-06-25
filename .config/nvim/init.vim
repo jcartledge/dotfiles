@@ -83,6 +83,23 @@ function! PackagerInit() abort
   call packager#add('prettier/vim-prettier')
   call packager#add('tpope/vim-fugitive')
 
+  " PLUGINS: COC extensions
+  call packager#add('andys8/vscode-jest-snippets', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'})
+
   " PLUGINS: Interface
   call packager#add('907th/vim-auto-save')
   call packager#add('TaDaa/vimade')
