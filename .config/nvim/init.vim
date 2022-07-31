@@ -12,7 +12,7 @@ set foldmethod=syntax
 set hidden number relativenumber
 set ignorecase smartcase
 set inccommand=nosplit
-set laststatus=0
+set laststatus=2
 set lbr formatoptions=l
 set list listchars=tab:⇥\ ,trail:·
 set mouse=a
@@ -49,6 +49,7 @@ function! MyFoldText()
   end
 endfunction
 
+""
 " ========
 " PLUGINS:
 " ========
@@ -77,7 +78,6 @@ function! PackagerInit() abort
   call packager#add('Shougo/neco-vim')
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('editorconfig/editorconfig-vim')
-  call packager#add('jcartledge/git-blame-nvim')
   call packager#add('neoclide/coc-neco')
   call packager#add('neoclide/coc.nvim', {'branch': 'release'})
   call packager#add('prettier/vim-prettier')
@@ -85,8 +85,11 @@ function! PackagerInit() abort
 
   " PLUGINS: COC extensions
   call packager#add('andys8/vscode-jest-snippets', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'})
@@ -96,14 +99,14 @@ function! PackagerInit() abort
   call packager#add('neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'})
   call packager#add('neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'})
+  call packager#add('weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'})
 
   " PLUGINS: Interface
   call packager#add('907th/vim-auto-save')
-  call packager#add('TaDaa/vimade')
-  call packager#add('airblade/vim-gitgutter')
   call packager#add('djoshea/vim-autoread')
   call packager#add('gcmt/wildfire.vim')
   call packager#add('gmarik/sudo-gui.vim')
@@ -114,10 +117,12 @@ function! PackagerInit() abort
   call packager#add('junegunn/vim-slash')
   call packager#add('rakr/vim-one')
   call packager#add('rhysd/conflict-marker.vim')
+  call packager#add('ryanoasis/vim-devicons')
   call packager#add('tyru/caw.vim')
   call packager#add('vim-airline/vim-airline')
   call packager#add('vim-scripts/file-line')
   call packager#add('wellle/targets.vim')
+  call packager#add('jcartledge/git-blame-nvim')
 
   " PLUGINS: Commands
   call packager#add('tpope/vim-abolish')
@@ -142,20 +147,7 @@ runtime macros/matchit.vim
 " ================
 
 " PLUGIN SETTINGS: airline
-let g:airline#extensions#obsession#enabled=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#formatter='unique_tail'
-let g:airline_section_error='%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning='%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let g:airline_theme='one'
-" powerline symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
+let g:airline#extensions#tabline#enabled = 1
 
 " PLUGIN SETTINGS: auto-save
 let g:auto_save=1
@@ -168,17 +160,6 @@ let g:caw_operator_keymappings=1
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-" PLUGIN SETTINGS: gitgutter
-let g:gitgutter_sign_modified='±'
-let g:gitgutter_sign_modified_removed='±'
-let g:gitgutter_sign_removed='-'
-
-" PLUGIN SETTINGS: netrw
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_winsize=20
-
 " PLUGIN SETTINGS: javascript
 let g:javascript_plugin_jsdoc = 1
 
@@ -189,32 +170,36 @@ endif
 let g:one_allow_italics = 1
 set background=light
 colorscheme one
-highlight CocErrorHighlight guibg=#FFDDDD gui=none
-highlight CocHighlightText guibg=#ECECEC gui=none
-highlight CocHintHighlight gui=underline
-highlight CocInfoHighlight gui=underline
-highlight CocWarningHighlight gui=underline
-highlight Folded guifg=#AAAAAA guibg=#EEEEEE gui=none
-highlight Function gui=bold
-highlight IncSearch guifg=#333333 guibg=#AACCFF gui=none
-highlight Noise guifg=#BBBBBB gui=none
-highlight Search guifg=#333333 guibg=#AACCFF gui=none
-highlight String gui=bold
-highlight jsCommentTodo guifg=#EEEEEE guibg=#EE6666 gui=bold
-highlight jsDestructuringBlock gui=bold
-highlight jsDestructuringBraces guifg=#BBBBBB gui=none
-highlight jsFuncBraces guifg=#BBBBBB gui=none
-highlight jsFuncCall gui=bold
-highlight jsModuleKeyword gui=bold
-highlight jsNoise guifg=#BBBBBB gui=none
-highlight jsObjectBraces guifg=#BBBBBB gui=none
-highlight jsObjectKey gui=bold
-highlight jsParens guifg=#BBBBBB gui=none
-highlight jsVariableDef gui=bold
-highlight xmlAttrib gui=italic
-highlight xmlEndTag gui=bold
-highlight xmlTag gui=bold
-highlight xmlTagName gui=bold
+
+function! CustomiseOne()
+  highlight CocErrorHighlight guibg=#FFF0F0 gui=none
+  highlight CocHighlightText guibg=#ECECEC gui=none
+  highlight CocHintHighlight gui=underline
+  highlight CocInfoHighlight gui=underline
+  highlight CocWarningHighlight gui=underline
+  highlight Folded guifg=#AAAAAA guibg=#EEEEEE gui=none
+  highlight Function gui=bold
+  highlight IncSearch guifg=#333333 guibg=#AACCFF gui=none
+  highlight Noise guifg=#BBBBBB gui=none
+  highlight Search guifg=#333333 guibg=#AACCFF gui=none
+  highlight String gui=bold
+  highlight jsCommentTodo guifg=#EEEEEE guibg=#EE6666 gui=bold
+  highlight jsDestructuringBlock gui=bold
+  highlight jsDestructuringBraces guifg=#BBBBBB gui=none
+  highlight jsFuncBraces guifg=#BBBBBB gui=none
+  highlight jsFuncCall gui=bold
+  highlight jsModuleKeyword gui=bold
+  highlight jsNoise guifg=#BBBBBB gui=none
+  highlight jsObjectBraces guifg=#BBBBBB gui=none
+  highlight jsObjectKey gui=bold
+  highlight jsParens guifg=#BBBBBB gui=none
+  highlight jsVariableDef gui=bold
+  highlight xmlAttrib gui=italic
+  highlight xmlEndTag gui=bold
+  highlight xmlTag gui=bold
+  highlight xmlTagName gui=bold
+endfunction
+call CustomiseOne()
 
 " =========
 " MAPPINGS:
@@ -230,7 +215,7 @@ nnoremap U <c-r>
 nnoremap <silent> <leader>ev :edit $MYVIMRC<CR>
 
 " MAPPINGS: <esc><esc> = clear search highlight and close preview, help, loclist and quickfix
-nnoremap <silent> <esc><esc> :nohlsearch<cr>:helpclose<cr>:pclose<cr>:lclose<cr>:cclose<cr>
+nnoremap <silent> <esc><esc> :nohlsearch<cr>:helpclose<cr>:pclose<cr>:lclose<cr>:cclose<cr>:so $MYVIMRC<cr>
 
 " MAPPINGS: TAB = switch buffers in normal mode
 nnoremap <tab> <c-^>
@@ -249,12 +234,11 @@ nnoremap <silent> gt :call OpenTest()<cr>
 " MAPPINGS: splits stuff
 nnoremap <silent> <leader>\|<cr> :vsplit\<cr>
 nnoremap <silent> <leader>\|t :vsplit\|call OpenTest()<cr>
-nnoremap <silent> <leader>\|ga :vsplit\|terminal git add --patch<cr>
 
 " MAPPINGS: F10 = show highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " MAPPINGS: ;; = insert semicolon at eol, same for ,, and ::
 inoremap ;; <c-o>A;
@@ -276,9 +260,12 @@ nnoremap <silent> <leader>t :call YarnTest()<cr>
 " MAPPINGS: Coc
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -313,9 +300,6 @@ map <silent> <C-y> :exe 'CocList yank'<cr>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" MAPPINGS: netrw
-nnoremap <silent> - :Lexplore %:h<CR>
-
 " =============
 " AUTOCOMMANDS:
 " =============
@@ -336,8 +320,8 @@ augroup coc
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
 
-" AUTOCOMMANDS: netrw
-augroup netrw
+" AUTOCOMMANDS: one
+augroup one
   autocmd!
-  autocmd FileType netrw silent nnoremap <buffer> <tab> :q<cr>
+  autocmd VimEnter * silent call CustomiseOne()
 augroup end

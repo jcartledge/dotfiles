@@ -4,6 +4,5 @@ tags*
 .envrc
 .vimrc
 .idea
-.vscode
 yarn-error.log
 Session.vim

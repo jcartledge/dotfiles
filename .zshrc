@@ -9,6 +9,7 @@ source ~/.zplug/init.zsh
 zplug lib/directories, from:oh-my-zsh
 zplug lib/history, from:oh-my-zsh
 
+zplug plugins/asdf, from:oh-my-zsh
 zplug plugins/fasd, from:oh-my-zsh
 zplug plugins/git, from:oh-my-zsh
 zplug plugins/git-flow, from:oh-my-zsh
@@ -19,6 +20,7 @@ zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-completions
 
 zplug mafredri/zsh-async, from:github
+zplug lukechilds/zsh-nvm, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Install packages that have not been installed yet
@@ -62,28 +64,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # wrap git with hub: https://github.com/defunkt/hub
 eval "$(hub alias -s)"
-
-# gitignore.io
-function gi() { curl https://www.gitignore.io/api/$@ ;}
-
-# enter = git status or ls
-magic-enter () {
-  if [[ -z $BUFFER ]]; then
-    echo ""
-    if git rev-parse --is-inside-work-tree &>/dev/null; then
-      git status -s; git lg | head -5
-    else
-      ls -CF
-    fi
-    zle redisplay
-  else
-    zle accept-line
-  fi
-}
-zle -N magic-enter
-bindkey "^M" magic-enter
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=magic-enter
-
+#
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -107,3 +88,12 @@ alias G='git --git-dir=$HOME/.cfg --work-tree=$HOME'
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias nuget="mono /usr/local/bin/nuget.exe"
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
