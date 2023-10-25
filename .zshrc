@@ -1,39 +1,26 @@
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
+if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
 fi
 
-source ~/.zplug/init.zsh
+source ~/.zpm/zpm.zsh
 
-zplug lib/directories, from:oh-my-zsh
-zplug lib/history, from:oh-my-zsh
+zpm load @omz
+zpm load @omz/lib/directories
+zpm load @omz/lib/history
 
-zplug plugins/asdf, from:oh-my-zsh
-zplug plugins/fasd, from:oh-my-zsh
-zplug plugins/git, from:oh-my-zsh
-zplug plugins/git-flow, from:oh-my-zsh
+zpm load @omz/asdf
+zpm load @omz/fasd
+zpm load @omz/git
 
-zplug zsh-users/zsh-syntax-highlighting
-zplug zsh-users/zsh-history-substring-search
-zplug zsh-users/zsh-autosuggestions
-zplug zsh-users/zsh-completions
+zpm load zpm-zsh/fast-syntax-highlighting
 
-zplug mafredri/zsh-async, from:github
-zplug lukechilds/zsh-nvm, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zpm load zsh-users/zsh-history-substring-search
+zpm load zsh-users/zsh-autosuggestions
+zpm load zsh-users/zsh-completions
 
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  else
-    echo
-  fi
-fi
-
-zplug load
+zpm load mafredri/zsh-async
+zpm load lukechilds/zsh-nvm
+zpm load sindresorhus/pure,source:pure.zsh
 
 # Lazy cd
 setopt autocd
@@ -97,3 +84,4 @@ alias nuget="mono /usr/local/bin/nuget.exe"
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"

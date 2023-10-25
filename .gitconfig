@@ -1,38 +1,34 @@
 [user]
   email = jcartledge@gmail.com
   name = James Cartledge
-[color]
-  branch = auto
-  diff = auto
-  status = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
-[alias]
-  s = status -s
+
 [core]
-  editor = /usr/bin/vim
 	excludesfile = /Users/jcartledge/.gitignore_global
+	pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
 [merge]
-  tool = mvim -d
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
 
 [push]
   default = current
 
 [pull]
   default = current
+	rebase = true
+
 [init]
 	templatedir = /Users/jcartledge/.git-template
 	defaultBranch = main
+
 [url "https://"]
 	insteadOf = git://
